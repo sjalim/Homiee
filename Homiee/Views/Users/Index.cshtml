@@ -1,0 +1,111 @@
+﻿@model IEnumerable<Homiee.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserPassword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserTypeID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserAddressID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserRegistrationData)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserProfilePicture)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AddressCountry)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AddressDivision)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AddressCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AddressArea)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AddressExtension)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserPassword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserFirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserLastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserTypeID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserAddressID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserRegistrationData)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserProfilePicture)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AddressCountry)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AddressDivision)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AddressCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AddressArea)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AddressExtension)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UserID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.UserID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UserID })
+        </td>
+    </tr>
+}
+
+</table>
