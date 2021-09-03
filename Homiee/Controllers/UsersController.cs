@@ -4,9 +4,10 @@ using System.Data;
 using System.Linq;
 using System.Net;
 using System.Text;
-using System.Web;
+using System.Web.Security;
 using System.Web.Mvc;
 using Homiee.Models;
+using System.Web;
 
 namespace Homiee.Controllers
 {
@@ -92,28 +93,57 @@ namespace Homiee.Controllers
                 db.Users.Add(newUser);
                 db.SaveChanges();
 
-                return RedirectToAction("Login","Account");
+                return RedirectToAction("Login");
             }
 
             return View();
 
-            
+
         }
 
 
         [HttpGet]
         public ActionResult Login()
         {
-            return View();        
+            return View();
         }
         [HttpPost]
         public ActionResult Login(LoginUser user)
         {
-            return RedirectToAction("Index", "Home");
 
+            if (ModelState.IsValid)
+            {
+                String encryptedPass = Encryptdata(user.Password);
+
+             
+
+                User logedInUser = db.Users.Where(a => a.UserEmail.Equals(user.Email)
+                &&
+                a.UserPassword.Equals(encryptedPass)).FirstOrDefault();
+
+                //Response.Cookies["UserID"].Value = logedInUser.UserID.ToString();
+                //Response.Cookies["UserEmail"].Value = logedInUser.UserEmail.ToString();
+
+                Session["UserID"] = logedInUser.UserID.ToString();
+                Session["UserEmail"] = logedInUser.UserEmail.ToString();
+
+
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
         }
 
+        [HttpPost]
+        public ActionResult LogOut()
+        {
 
+            Session.Abandon();
+
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login");
+
+
+        }
 
         public static string Encryptdata(string password)
         {
