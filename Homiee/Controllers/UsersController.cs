@@ -8,6 +8,7 @@ using System.Web.Security;
 using System.Web.Mvc;
 using Homiee.Models;
 using System.Web;
+using System.Diagnostics;
 
 namespace Homiee.Controllers
 {
@@ -164,6 +165,22 @@ namespace Homiee.Controllers
             Decode.GetChars(todecode_byte, 0, todecode_byte.Length, decoded_char, 0);
             decryptpwd = new String(decoded_char);
             return decryptpwd;
+        }
+
+
+        [HttpGet]
+        public ActionResult Profile()
+        {
+
+            int userId =  Convert.ToInt32(Session["UserID"]);
+
+            Debug.WriteLine("check the id:" + userId);
+
+            User user = db.Users.Where(a => a.UserID.Equals(userId)).FirstOrDefault();
+
+            Debug.WriteLine(user.UserFirstName + " " + user.UserLastName);
+            
+            return View(user);
         }
     }
 }

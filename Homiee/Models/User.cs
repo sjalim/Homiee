@@ -8,6 +8,7 @@ namespace Homiee.Models
 {
     public class User
     {
+     
         [Key]
         public int UserID { get; set; }
         public string UserEmail { get; set; }
