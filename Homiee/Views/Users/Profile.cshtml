@@ -4,80 +4,136 @@
     ViewBag.Title = "Profile";
 
     var userName = Model.UserFirstName.ToString() + " " + Model.UserLastName.ToString();
-
+    Layout = null;
 }
 
-<h2>Profile</h2>
 
-<div>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6">
 
-                <div class="card">
-                    <img src="~/Content/profile.png" width="200px" height="200px"/>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <title>Plot Listing HTML5 Website Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="~/Template/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="~/Template/assets/css/templatemo-plot-listing.css">
+    <link rel="stylesheet" href="~/Template/assets/css/animated.css">
+    <link rel="stylesheet" href="~/Template/assets/css/owl.css">
+</head>
+
+
+
+<script src="~/Scripts/_profile.js"></script>
+
+<body>
+
+
+
+
+    @Html.Partial("_Preloader")
+    @Html.Partial("_navbar")
+
+    <div class="main-banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+
+                    <div class="card">
+                        <img src="~/Content/profile.png" width="200px" height="200px" />
+                    </div>
                 </div>
-
-            </div>
-
-            <div class="col-sm-6">
-                <div class="card">
-                    <form>
-                        <div class="form-group">
-
+                <div class="col-sm-6">
+                    <div class="card">
+                        <form>
                             <div class="form-group">
-                                <label for="firstName">First Name</label>
-                                <input type="text" id="firstName" value=@(Model.UserFirstName) class="form-control" readonly />
+                                <div class="form-group">
+                                    <label for="firstName">First Name</label>
+                                    <input type="text" id="firstName" value=@(Model.UserFirstName) class="form-control" readonly="readonly" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="lastName">Last Name</label>
+                                    <input type="text" id="lastName" value=@(Model.UserLastName) class="form-control" readonly />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="text" id="email" value=@(Model.UserEmail) class="form-control" readonly />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="phone">Phone</label>
+                                    <input type="text" id="phone" value=@(Model.UserPhone) class="form-control" readonly />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="country">Country</label>
+                                    <input type="text" id="country" value=@(Model.AddressCountry) class="form-control" readonly />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="division">Division</label>
+                                    <input type="text" id="division" value=@(Model.AddressDivision) class="form-control" readonly />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="city">City</label>
+                                    <input type="text" id="city" value=@(Model.AddressCity) class="form-control" readonly />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="area">Area</label>
+                                    <input type="text" id="area" value=@(Model.AddressArea) class="form-control" readonly />
+                                </div>
+                                <div class="form-group">
+                                    <label for="addressExtension">Address Extension</label>
+                                    <input type="text" id="addressExtension" value=@(Model.AddressExtension) class="form-control" readonly />
+                                </div>
+
+                                <div class="form-group text-left">
+                                    <button class="btn btn-primary" onclick="EditButton()"><img src="~/Content/edit.png" width="20px" height="20px" />Edit</button>
+
+                                    <input type="submit" class="btn btn-primary" value="Save" onclick="SubmitButton()" id="sumbitButton" />
+
+                                    <button class="btn btn-primary" id="cancelButton" onclick="CancelButton()">Cancel</button>
+
+
+                                </div>
+
+
+
                             </div>
-
-                            <div class="form-group">
-                                <label for="lastName">Last Name</label>
-                                <input type="text" id="lastName" value=@(Model.UserLastName)  class="form-control" readonly/>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="text" id="email" value=@(Model.UserEmail) class="form-control" readonly/>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="phone">Phone</label>
-                                <input type="text" id="phone" value=@(Model.UserPhone) class="form-control" readonly/>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="country">Country</label>
-                                <input type="text" id="country" value=@(Model.AddressCountry) class="form-control" readonly/>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="division">Division</label>
-                                <input type="text" id="division" value=@(Model.AddressDivision) class="form-control" readonly/>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="city">City</label>
-                                <input type="text" id="city" value=@(Model.AddressCity) class="form-control" readonly/>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="area">Area</label>
-                                <input type="text" id="area" value=@(Model.AddressArea) class="form-control" readonly/>
-                            </div>
-
-                            <div class="form-group">
-                               <button></button>
-
-                            </div>
-
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
+
+
+
     </div>
 
 
 
-</div>
 
+    @Html.Partial("_Footer")
+
+
+    <!-- Scripts -->
+    <script src="~/Template/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Template/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Template/assets/js/owl-carousel.js"></script>
+    <script src="~/Template/assets/js/animation.js"></script>
+    <script src="~/Template/assets/js/imagesloaded.js"></script>
+    <script src="~/Template/assets/js/custom.js"></script>
+
+
+</body>

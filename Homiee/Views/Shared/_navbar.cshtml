@@ -1,0 +1,50 @@
+﻿<header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+
+                    @Html.ActionLink(" ", "Index", "Home", new { area = "" }, new { @class = "logo" })
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Explore", "About", "Home")</li>
+                        <li>@Html.ActionLink("Become Host", "Contact", "Home")</li>
+
+
+                        @if (Session["UserID"] != null)
+                        {
+                            <li>
+                                @Html.ActionLink("Profile", "Profile", "Users", routeValues: null, htmlAttributes: new { title = "Manage" })
+                            </li>
+                            <li>
+                                @using (Html.BeginForm("LogOut", "Users", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                {
+                                @Html.AntiForgeryToken()
+                                <a href="javascript:document.getElementById('logoutForm').submit()">Log Out</a>
+                                }
+                            </li>
+                        }
+                        else
+                        {
+
+                            <li>@Html.ActionLink("Sign Up", "SignUp", "Users", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                            <li>@Html.ActionLink("Log in", "Login", "Users", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+
+                        }
+
+
+                    </ul>
+
+
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
