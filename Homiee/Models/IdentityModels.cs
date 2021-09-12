@@ -21,6 +21,19 @@ namespace Homiee.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<User> Users { get; set; }
+        public DbSet<Hotel> Hotels { get; set; }
+
+        public DbSet<UserComment> UserComments { get; set; }
+
+        public DbSet<Rating> Ratings { get; set; }
+        public DbSet<PostComment> PostComments { get; set; }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<MobileBanking> MobileBankings { get; set; }
+        public DbSet<HostsToGuestsReview> HostsToGuestsReviews { get; set; }
+        public DbSet<GuestsToHostsReview> GuestsToHostsReviews { get; set; }
+        public DbSet<GuestsToHotelsReview> GuestsToHotelsReviews { get; set; }
+        public DbSet<Chat> Chats { get; set; }
+        public DbSet<Bank> Banks { get; set; }
         public ApplicationDbContext()
             : base("DBConnection", throwIfV1Schema: false)
         {
