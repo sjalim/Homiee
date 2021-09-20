@@ -34,6 +34,8 @@ namespace Homiee.Models
         public DbSet<GuestsToHotelsReview> GuestsToHotelsReviews { get; set; }
         public DbSet<Chat> Chats { get; set; }
         public DbSet<Bank> Banks { get; set; }
+
+        public DbSet<HostInfo> HostInfos { get; set; }
         public ApplicationDbContext()
             : base("DBConnection", throwIfV1Schema: false)
         {
