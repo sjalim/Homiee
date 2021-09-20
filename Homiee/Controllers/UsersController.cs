@@ -10,6 +10,10 @@ using Homiee.Models;
 using System.Web;
 using System.Diagnostics;
 
+using System.Data.Entity;
+using System.Threading.Tasks;
+using System.Web.UI.WebControls;
+
 namespace Homiee.Controllers
 {
     public class UsersController : Controller
@@ -116,7 +120,7 @@ namespace Homiee.Controllers
             {
                 String encryptedPass = Encryptdata(user.Password);
 
-             
+
 
                 User logedInUser = db.Users.Where(a => a.UserEmail.Equals(user.Email)
                 &&
@@ -141,7 +145,7 @@ namespace Homiee.Controllers
             Session.Abandon();
 
             FormsAuthentication.SignOut();
-            return RedirectToAction("Login");
+            return RedirectToAction("Index", "Home");
 
 
         }
@@ -172,15 +176,94 @@ namespace Homiee.Controllers
         public ActionResult Profile()
         {
 
-            int userId =  Convert.ToInt32(Session["UserID"]);
+            int userId = Convert.ToInt32(Session["UserID"]);
 
-            Debug.WriteLine("check the id:" + userId);
+            //Debug.WriteLine("check the id:" + userId);
+            if (userId != null)
+            {
 
-            User user = db.Users.Where(a => a.UserID.Equals(userId)).FirstOrDefault();
 
-            Debug.WriteLine(user.UserFirstName + " " + user.UserLastName);
-            
-            return View(user);
+                User user = db.Users.Where(a => a.UserID.Equals(userId)).FirstOrDefault();
+
+                Debug.WriteLine(user.UserFirstName + " from get " + user.UserLastName);
+
+                return View(user);
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        public ActionResult Profile(FormCollection data)
+        {
+            User user = null;
+            if (data != null)
+            {
+                if (ModelState.IsValid)
+                {
+                    int Id = Convert.ToInt32(Session["UserID"]);
+
+                    user = db.Users.Where(a => a.UserID == Id).FirstOrDefault();
+
+                    user.UserFirstName = data["UserFirstName"];
+                    user.UserLastName = data["UserLastName"];
+                    user.UserPhone = data["UserPhone"];
+                    user.UserEmail = data["UserEmail"];
+                    user.AddressArea = data["AddressArea"];
+                    user.AddressCity = data["AddressCity"];
+                    user.AddressCountry = data["AddressCountry"];
+                    user.AddressDivision = data["AddressDivision"];
+                    user.AddressExtension = data["AddressExtension"];
+
+
+
+                    Debug.WriteLine("first name=" + user.UserFirstName);
+                    Debug.WriteLine("last name=" + user.UserLastName);
+
+                    //db.Entry(user).State = EntityState.Modified;
+
+                    Debug.WriteLine("at success");
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index", "Home");
+                }
+                Debug.WriteLine("not null");
+                return RedirectToAction("Profile", "Users");
+            }
+            Debug.WriteLine("is null");
+            return RedirectToAction("Profile", "Users");
+
+
+        }
+
+        [HttpPost]
+        public ActionResult UploadProfileImage(HttpPostedFileBase UserProfilePicture)
+        {
+
+
+            User user = null;
+
+            if (ModelState.IsValid)
+            {
+
+                int Id = Convert.ToInt32(Session["UserID"]);
+                user = db.Users.Where(a => a.UserID == Id).FirstOrDefault();
+                var uploadedFile = (UserProfilePicture.ContentLength > 0) ? new byte[UserProfilePicture.InputStream.Length] : null;
+
+
+
+                if (uploadedFile != null)
+                {
+                    UserProfilePicture.InputStream.Read(uploadedFile, 0, uploadedFile.Length);
+                }
+
+                user.UserProfilePicture = uploadedFile;
+           
+                db.SaveChanges();
+
+
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }

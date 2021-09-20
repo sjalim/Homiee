@@ -13,14 +13,14 @@ namespace Homiee.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Explore()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Host()
         {
             ViewBag.Message = "Your contact page.";
 
