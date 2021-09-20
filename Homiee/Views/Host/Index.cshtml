@@ -1,0 +1,203 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<h2>Index</h2>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="colorlib.com">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form</title>
+
+    <!-- Font Icon -->
+    <link href="~/fonts/material-icon/css/material-design-iconic-font.css" rel="stylesheet" />
+    <link href="~/Template/vendor/nouislider/nouislider.min.css" rel="stylesheet" />
+
+    <!-- Main css -->
+    
+    <link href="~/Content/style.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div class="main">
+
+        <div class="container">
+            <form method="POST" id="signup-form" class="signup-form" action="#">
+                <div>
+                    <h3>General Info</h3>
+                    <fieldset>
+                        <h2>Apartment Information</h2>
+                        <p class="desc">Please enter your infomation and proceed to add new place</p>
+                        <div class="fieldset-content">
+                            <div class="form-row">
+                                <label class="form-label">Rental Type</label>
+                                <div class="form-flex">
+
+                                    <div class="form-check" style="margin:10px 10px">
+                                        <input style="height:20px" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                            Single Room
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check" style="margin:10px 10px">
+                                        <input style="height:20px" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                        <label class="form-check-label mx-2" for="flexRadioDefault2">
+                                            Apartment
+                                        </label>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label">Number Of Rooms</label>
+                                <input type="email" name="email" id="rooms" />
+
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Number Of Kitchens</label>
+                                <input type="text" name="phone" id="kitchens" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Number Of Washrooms</label>
+                                <input type="text" name="phone" id="washrooms" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Number Of Balconys</label>
+                                <input type="text" name="phone" id="balconys" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Additional Features</label>
+                                <input type="text" name="phone" id="additional-features" />
+                            </div>
+
+
+
+                        </div>
+                    </fieldset>
+
+                    <h3>Location</h3>
+                    <fieldset>
+                        <h2>Apartment Address</h2>
+                        <p class="desc">Please enter your infomation and proceed to add new place</p>
+                        <div class="fieldset-content">
+
+                            <div class="form-group">
+                                <label for="email" class="form-label">Country</label>
+                                <input type="email" name="email" id="country" />
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Street Address</label>
+                                <input type="text" name="phone" id="street" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone" class="form-label">City</label>
+                                <input type="text" name="phone" id="city" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone" class="form-label">State</label>
+                                <input type="text" name="phone" id="state" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Postal Code</label>
+                                <input type="text" name="phone" id="post-code" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Map</label>
+                                <input type="text" name="phone" id="map" />
+                            </div>
+
+
+                        </div>
+                    </fieldset>
+
+
+
+
+                    <h3>Rules and Pricing</h3>
+                    <fieldset>
+                        <h2>Apartment Rules and Pricing</h2>
+                        <p class="desc">Please enter your infomation and proceed to add new place</p>
+                        <div class="fieldset-content">
+
+                            <div class="form-group">
+                                <label for="email" class="form-label">Host Rules</label>
+                                <input type="email" name="email" id="rules-host" />
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Stay Minimum</label>
+                                <input type="text" name="phone" id="stay-min" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Stay Maximum</label>
+                                <input type="text" name="phone" id="stay-max" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Price</label>
+                                <input type="text" name="phone" id="host-price" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Offer</label>
+                                <input type="text" name="phone" id="host-offer" />
+                            </div>
+
+                        </div>
+                    </fieldset>
+
+
+
+                    <h3>Image and Caption</h3>
+                    <fieldset>
+                        <h2>Set Rental Image and Caption</h2>
+                        <p class="desc">Set up your money limit to reach the future plan</p>
+                        <div class="fieldset-content">
+                            <div class="donate-us">
+                                <div class="price_slider ui-slider ui-slider-horizontal">
+                                    <div id="slider-margin"></div>
+                                    <p class="your-money">
+                                        Your money you can spend per month :
+                                        <span class="money" id="value-lower"></span>
+                                        <span class="money" id="value-upper"></span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- JS -->
+    <script src="~/Template/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Template/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Template/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/Template/vendor/jquery-validation/dist/additional-methods.min.js"></script>
+    <script src="~/Template/vendor/jquery-steps/jquery.steps.min.js"></script>
+    <script src="~/Template/vendor/minimalist-picker/dobpicker.js"></script>
+    <script src="~/Template/vendor/nouislider/nouislider.min.js"></script>
+    <script src="~/Template/vendor/wnumb/wNumb.js"></script>
+
+    <script src="~/Scripts/main.js"></script>
+</body>
+
+</html>
