@@ -214,6 +214,7 @@
     <Content Include="Content\edit.png" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\profile.css" />
     <Content Include="Content\profile.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />

@@ -5,6 +5,9 @@
 
     var userName = Model.UserFirstName.ToString() + " " + Model.UserLastName.ToString();
     Layout = null;
+
+    var lastName = Model.UserLastName.ToString();
+ 
 }
 
 
@@ -27,11 +30,49 @@
     <link rel="stylesheet" href="~/Template/assets/css/templatemo-plot-listing.css">
     <link rel="stylesheet" href="~/Template/assets/css/animated.css">
     <link rel="stylesheet" href="~/Template/assets/css/owl.css">
+
+    <style>
+        .card-design {
+            padding: 20px;
+        }
+
+        .button-edit {
+            width: 70px;
+            height: 55px;
+            margin-left: 400px;
+        }
+
+        .edit-mode-btn {
+            margin-top: 20px;
+        }
+
+        .text-field {
+            background: white;
+        }
+
+        .change-pic-btn {
+            width: 240px;
+            margin-top: 20px;
+        }
+
+        .pro-pic {
+            width: 200px;
+            height: 200px;
+            display: inline;
+            border-radius:40px;
+        }
+
+        .pro-pic-card {
+            padding-bottom: 50px;
+            padding-top: 50px;
+        }
+        .pro-pic-upload-form{
+
+            visibility:hidden;
+        }
+    </style>
+
 </head>
-
-
-
-<script src="~/Scripts/_profile.js"></script>
 
 <body>
 
@@ -41,99 +82,230 @@
     @Html.Partial("_Preloader")
     @Html.Partial("_navbar")
 
+
     <div class="main-banner">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-6 ">
+                    <div class="card pro-pic-card d-flex align-items-center justify-content-center">
 
-                    <div class="card">
-                        <img src="~/Content/profile.png" width="200px" height="200px" />
+
+                        <img class="pro-pic shadow-lg p-3 mb-5 bg-white" src="~/Content/profile.png" width="50%" height="50%" />
+
+                        <button class="change-pic-btn btn btn-primary" id="changeProPicButton" onclick="ChangeProPic()">Change Profile Picture</button>
+
+                        @using (Html.BeginForm("UploadProfileImage", "Users", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="mb-3">
+                                <input name="UserProfilePicture" class="form-control picForm" type="file" id="UserProfilePicture" style="visibility:hidden">
+                            </div>
+
+                            <input class="form-control btn btn-primary picForm" type="submit" id="formSaveButton" value="Save" style="visibility:hidden">
+
+
+
+                        }
+                        <button style="visibility:hidden" class="picForm change-pic-btn btn btn-primary" id="formCancelButton" onclick="picFormCancel()">Cancel</button>
+
+
                     </div>
+
                 </div>
                 <div class="col-sm-6">
-                    <div class="card">
-                        <form>
+                    <div class="card card-design">
+
+                        @using (Html.BeginForm("Profile", "Users", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
                             <div class="form-group">
                                 <div class="form-group">
-                                    <label for="firstName">First Name</label>
-                                    <input type="text" id="firstName" value=@(Model.UserFirstName) class="form-control" readonly="readonly" />
+                                    <label for="UserFirstName">First Name</label>
+                                    <input type="text" name="UserFirstName" id="UserFirstName" value="@(Model.UserFirstName)" class="form-control text-field" readonly="readonly" />
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="lastName">Last Name</label>
-                                    <input type="text" id="lastName" value=@(Model.UserLastName) class="form-control" readonly />
+                                    <label for="UserLastName">Last Name</label>
+                                    <input type="text" name="UserLastName" id="UserLastName" value="@(Model.UserLastName)" class="form-control" readonly />
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="text" id="email" value=@(Model.UserEmail) class="form-control" readonly />
+                                    <label for="UserEmail">Email</label>
+                                    <input type="text" name="UserEmail" id="UserEmail" value="@(Model.UserEmail)" class="form-control" readonly />
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="phone">Phone</label>
-                                    <input type="text" id="phone" value=@(Model.UserPhone) class="form-control" readonly />
+                                    <label for="UserPhone">Phone</label>
+                                    <input type="text" name="UserPhone" id="UserPhone" value="@(Model.UserPhone)" class="form-control" readonly />
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="country">Country</label>
-                                    <input type="text" id="country" value=@(Model.AddressCountry) class="form-control" readonly />
+                                    <label for="AddressCountry">Country</label>
+                                    <input type="text" name="AddressCountry" id="AddressCountry" value="@(Model.AddressCountry)" class="form-control" readonly />
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="division">Division</label>
-                                    <input type="text" id="division" value=@(Model.AddressDivision) class="form-control" readonly />
+                                    <label for="AddressDivision">Division</label>
+                                    <input type="text" name="AddressDivision" id="AddressDivision" value="@(Model.AddressDivision)" class="form-control" readonly />
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="city">City</label>
-                                    <input type="text" id="city" value=@(Model.AddressCity) class="form-control" readonly />
+                                    <label for="AddressCity">City</label>
+                                    <input type="text" name="AddressCity" id="AddressCity" value="@(Model.AddressCity)" class="form-control" readonly />
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="area">Area</label>
-                                    <input type="text" id="area" value=@(Model.AddressArea) class="form-control" readonly />
+                                    <label for="AddressArea">Area</label>
+                                    <input type="text" name="AddressArea" id="AddressArea" value="@(Model.AddressArea)" class="form-control" readonly />
                                 </div>
                                 <div class="form-group">
-                                    <label for="addressExtension">Address Extension</label>
-                                    <input type="text" id="addressExtension" value=@(Model.AddressExtension) class="form-control" readonly />
+                                    <label for="AddressExtension">Address Extension</label>
+                                    <input type="text" name="AddressExtension" id="AddressExtension" value="@(Model.AddressExtension)" class="form-control" readonly />
                                 </div>
 
-                                <div class="form-group text-left">
-                                    <button class="btn btn-primary" onclick="EditButton()"><img src="~/Content/edit.png" width="20px" height="20px" />Edit</button>
-
-                                    <input type="submit" class="btn btn-primary" value="Save" onclick="SubmitButton()" id="sumbitButton" />
-
-                                    <button class="btn btn-primary" id="cancelButton" onclick="CancelButton()">Cancel</button>
-
-
+                                <div class="form-group text-left edit-mode-btn">
+                                    <input type="submit" class="btn btn-primary m-2" value="Save" onclick="SubmitButton();" id="submitButton" style="visibility:hidden" />
+                                    <label class="btn btn-primary m-2" onclick="CancelButton()" style="visibility:hidden" id="cancelButton">Cancel</label>
                                 </div>
-
-
-
                             </div>
-                        </form>
+                        }
+                        <button class="button-edit btn btn-outline-primary" onclick="EditButton()" id="editButton"><img src="~/Content/edit.png" width="20px" height="20px" />Edit</button>
                     </div>
+
                 </div>
             </div>
+
+
+
         </div>
 
 
 
+
+        @Html.Partial("_Footer")
+
+
+        <!-- Scripts -->
+
+        <script type="text/javascript">
+
+
+            var firstNameFiled = document.getElementById("UserFirstName");
+            var lastNameFiled = document.getElementById("UserLastName");
+            var emailFiled = document.getElementById("UserEmail");
+            var phoneFiled = document.getElementById("UserPhone");
+            var countryFiled = document.getElementById("AddressCountry");
+            var divisionFiled = document.getElementById("AddressDivision");
+            var cityFiled = document.getElementById("AddressCity");
+            var area = document.getElementById("AddressArea");
+            var addressExtension = document.getElementById("AddressExtension");
+            var cancelButton = document.getElementById("cancelButton");
+            var submitButton = document.getElementById("submitButton");
+            var editButton = document.getElementById("editButton");
+            var changeProPicButton = document.getElementById("changeProPicButton");
+            var picForm = document.getElementsByClassName("picForm");
+            var formCancelButton = document.getElementById("formCancelButton");
+            var formSaveButton = document.getElementById("formSaveButton");
+            var formFile = document.getElementById("UserProfilePicture");
+
+            function picFormCancel() {
+                formSaveButton.style.visibility = "hidden";
+                formFile.style.visibility = "hidden";
+                formCancelButton.style.visibility = "hidden";
+                changeProPicButton.style.visibility = "visible";
+                console.log("here changepropic v");
+            }
+
+            function ChangeProPic() {
+
+                if (formSaveButton.style.visibility == "hidden") {
+                    formSaveButton.style.visibility = "visible";
+                    formFile.style.visibility = "visible";
+                    formCancelButton.style.visibility = "visible";
+                    changeProPicButton.style.visibility = "hidden";
+                    console.log("here changepropic h");
+
+                }
+                else if (formSaveButton.style.visibility == "visible") {
+                    formSaveButton.style.visibility = "hidden";
+                    formFile.style.visibility = "hidden";
+                    formCancelButton.style.visibility = "hidden";
+                    console.log("here changepropic v");
+                }
+
+
+            }
+
+            function EditButton() {
+
+                if (submitButton.style.visibility == "hidden") {
+                    submitButton.style.visibility = "visible";
+                    cancelButton.style.visibility = "visible";
+                    firstNameFiled.readOnly = false;
+                    lastNameFiled.readOnly = false;
+                    emailFiled.readOnly = false;
+                    phoneFiled.readOnly = false;
+                    countryFiled.readOnly = false;
+                    divisionFiled.readOnly = false;
+                    cityFiled.readOnly = false;
+                    area.readOnly = false;
+                    addressExtension.readOnly = false;
+
+
+                }
+                else {
+                    submitButton.style.visibility = "hidden";
+                    cancelButton.style.visibility = "hidden";
+                    firstNameFiled.readOnly = true;
+                    lastNameFiled.readOnly = true;
+                    emailFiled.readOnly = true;
+                    phoneFiled.readOnly = true;
+                    countryFiled.readOnly = true;
+                    divisionFiled.readOnly = true;
+                    cityFiled.readOnly = true;
+                    area.readOnly = true;
+                    addressExtension.readOnly = true;
+                }
+
+                editButton.style.visibility = "hidden";
+
+
+            }
+
+            function SubmitButton() {
+
+            }
+
+            function CancelButton() {
+                submitButton.style.visibility = "hidden";
+                cancelButton.style.visibility = "hidden";
+                firstNameFiled.readOnly = true;
+                lastNameFiled.readOnly = true;
+                emailFiled.readOnly = true;
+                phoneFiled.readOnly = true;
+                countryFiled.readOnly = true;
+                divisionFiled.readOnly = true;
+                cityFiled.readOnly = true;
+                area.readOnly = true;
+                addressExtension.readOnly = true;
+                editButton.style.visibility = "visible";
+
+            }
+
+
+           
+
+
+
+
+        </script>
+
+        <script src="~/Template/vendor/jquery/jquery.min.js"></script>
+        <script src="~/Template/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="~/Template/assets/js/owl-carousel.js"></script>
+        <script src="~/Template/assets/js/animation.js"></script>
+        <script src="~/Template/assets/js/imagesloaded.js"></script>
+        <script src="~/Template/assets/js/custom.js"></script>
     </div>
-
-
-
-
-    @Html.Partial("_Footer")
-
-
-    <!-- Scripts -->
-    <script src="~/Template/vendor/jquery/jquery.min.js"></script>
-    <script src="~/Template/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="~/Template/assets/js/owl-carousel.js"></script>
-    <script src="~/Template/assets/js/animation.js"></script>
-    <script src="~/Template/assets/js/imagesloaded.js"></script>
-    <script src="~/Template/assets/js/custom.js"></script>
-
 
 </body>

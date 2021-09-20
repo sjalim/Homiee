@@ -18,7 +18,7 @@ namespace Homiee.Models
         public string UserPhone { get; set; }
         public int UserTypeID { get; set; }
         public Nullable<System.DateTime> UserRegistrationDate { get; set; }
-        public byte[] UserProfilePicture { get; set; }
+        public string UserProfilePicture { get; set; }
 
         public string AddressCountry { get; set; }
         public string AddressDivision { get; set; }

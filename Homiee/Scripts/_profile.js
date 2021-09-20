@@ -15,7 +15,7 @@
     console.log("edit button");
         
 
-        }
+    }
 
     function SubmitButton() {
 
