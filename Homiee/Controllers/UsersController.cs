@@ -256,7 +256,7 @@ namespace Homiee.Controllers
                     UserProfilePicture.InputStream.Read(uploadedFile, 0, uploadedFile.Length);
                 }
 
-                user.UserProfilePicture = uploadedFile;
+                //user.UserProfilePicture = uploadedFile;
            
                 db.SaveChanges();
 
