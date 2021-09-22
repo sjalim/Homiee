@@ -1,0 +1,155 @@
+﻿@model Homiee.Models.HostingInfo
+
+@{
+    ViewBag.Title = "Details";
+    //Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HostingInfo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Rooms)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rooms)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberRooms)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberRooms)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberKitchens)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberKitchens)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberWashrooms)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberWashrooms)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberBalconys)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberBalconys)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdditionalFeaturess)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdditionalFeaturess)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CountryNames)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CountryNames)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StreetNames)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StreetNames)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CityNames)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CityNames)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StateNames)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StateNames)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostalCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostalCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HostingRules)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HostingRules)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MinimumStay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MinimumStay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaximumStay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaximumStay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prices)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prices)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Offers)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Offers)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoomsCaption)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoomsCaption)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.HostingInfoID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
