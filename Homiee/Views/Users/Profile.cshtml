@@ -7,6 +7,8 @@
     Layout = null;
 
     var lastName = Model.UserLastName.ToString();
+
+   
  
 }
 
@@ -90,7 +92,7 @@
                     <div class="card pro-pic-card d-flex align-items-center justify-content-center">
 
 
-                        <img class="pro-pic shadow-lg p-3 mb-5 bg-white" src="~/Content/profile.png" width="50%" height="50%" />
+                        <img class="pro-pic shadow-lg p-3 mb-5 bg-white" src=@Url.Content(Model.UserProfilePicture), alt="Profile Picture" width="50%" height="50%" />
 
                         <button class="change-pic-btn btn btn-primary" id="changeProPicButton" onclick="ChangeProPic()">Change Profile Picture</button>
 
