@@ -13,6 +13,7 @@ using System.Diagnostics;
 using System.Data.Entity;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
+using System.IO;
 
 namespace Homiee.Controllers
 {
@@ -185,7 +186,7 @@ namespace Homiee.Controllers
 
                 User user = db.Users.Where(a => a.UserID.Equals(userId)).FirstOrDefault();
 
-                Debug.WriteLine(user.UserFirstName + " from get " + user.UserLastName);
+                Debug.WriteLine(" Images: " + user.UserProfilePicture);
 
                 return View(user);
             }
@@ -239,30 +240,36 @@ namespace Homiee.Controllers
         public ActionResult UploadProfileImage(HttpPostedFileBase UserProfilePicture)
         {
 
+            int Id = Convert.ToInt32(Session["UserID"]);
 
-            User user = null;
+            User user = db.Users.Where(a => a.UserID == Id).FirstOrDefault();
 
-            if (ModelState.IsValid)
+            string extension = Path.GetExtension(UserProfilePicture.FileName);
+
+            string fileName = "DP" + DateTime.Now.ToString("yymmssfff") + extension;
+
+            string path = Path.Combine(Server.MapPath("~/Images/"), fileName);
+
+            Debug.WriteLine("  at image:" + user.UserFirstName + " file name:" + UserProfilePicture.FileName+ " path:"+ path);
+
+
+
+            Debug.WriteLine("Extension:" + extension);
+            if (extension.ToLower() == ".jpg" || extension.ToLower() == ".jpeg" || extension.ToLower() == ".png")
             {
 
-                int Id = Convert.ToInt32(Session["UserID"]);
-                user = db.Users.Where(a => a.UserID == Id).FirstOrDefault();
-                var uploadedFile = (UserProfilePicture.ContentLength > 0) ? new byte[UserProfilePicture.InputStream.Length] : null;
-
-
-
-                if (uploadedFile != null)
+                Debug.WriteLine("at jpg");
+                if (UserProfilePicture.ContentLength <= 4194304)
                 {
-                    UserProfilePicture.InputStream.Read(uploadedFile, 0, uploadedFile.Length);
+
+                    Debug.WriteLine("at saveas");
+                    user.UserProfilePicture = "~/Images/" + fileName;
+                    UserProfilePicture.SaveAs(path);
+                     db.Entry(user).State = EntityState.Modified;
+                    db.SaveChanges();
                 }
-
-                //user.UserProfilePicture = uploadedFile;
-           
-                db.SaveChanges();
-
-
             }
-
+            ModelState.Clear();
             return RedirectToAction("Index");
         }
     }

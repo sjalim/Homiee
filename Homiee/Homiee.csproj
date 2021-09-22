@@ -196,6 +196,10 @@
     <Compile Include="Migrations\202109201357548_HostInfo1.Designer.cs">
       <DependentUpon>202109201357548_HostInfo1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109210352060_updt.cs" />
+    <Compile Include="Migrations\202109210352060_updt.Designer.cs">
+      <DependentUpon>202109210352060_updt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bank.cs" />
@@ -501,8 +505,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -555,6 +557,7 @@
     <Content Include="Views\HostLanding\AddPlace.cshtml" />
     <Content Include="Views\HostLanding\Preview.cshtml" />
     <Content Include="Views\HostLanding\Reviews.cshtml" />
+    <Content Include="Views\Home\Explore.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -587,6 +590,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109201357548_HostInfo1.resx">
       <DependentUpon>202109201357548_HostInfo1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109210352060_updt.resx">
+      <DependentUpon>202109210352060_updt.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
