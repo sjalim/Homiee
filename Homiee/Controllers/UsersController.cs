@@ -335,6 +335,7 @@ namespace Homiee.Controllers
             Debug.WriteLine("  at image:" + user.UserFirstName + " file name:" + UserProfilePicture.FileName + " path:" + path);
 
 
+
             Debug.WriteLine("Extension:" + extension);
             if (extension.ToLower() == ".jpg" || extension.ToLower() == ".jpeg" || extension.ToLower() == ".png")
             {
