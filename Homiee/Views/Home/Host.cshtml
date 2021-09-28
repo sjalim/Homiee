@@ -1,0 +1,397 @@
+﻿@model Homiee.Models.SignInModelHosts
+
+@{
+    Layout = null;
+
+    var check = Model.Host.UserEmail;
+
+   
+}
+
+
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <title>Plot Listing Page</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Additional CSS Files -->
+
+    <link rel="stylesheet" href="~/Template/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="~/Template/assets/css/templatemo-plot-listing.css">
+    <link rel="stylesheet" href="~/Template/assets/css/animated.css">
+    <link rel="stylesheet" href="~/Template/assets/css/owl.css">
+    <link href="~/Content/signup-main.css" rel="stylesheet" />
+    <link href="~/Template/vendor/select2/select2.min.css" rel="stylesheet" />
+    <link href="~/Template/vendor/datepicker/daterangepicker.css" rel="stylesheet" />
+    <link href="~/Template/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" />
+
+    <style>
+        .title {
+            display: inherit;
+            margin-bottom: 50px;
+            font-family: 'Lobster', cursive;
+            font-size: 100px;
+            color: #9EAAEB;
+        }
+
+        .card-option {
+            text-align: center;
+            height: 400px;
+            border-radius: 30px;
+        }
+
+        .host-card-bg {
+            background-image: url("../../Images/hostBG.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .hotel-card-bg {
+            background-image: url("../../Images/hotelBG.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        button {
+            width: 150px;
+            height: 50px;
+            cursor: pointer;
+            border: none;
+            align-items: center;
+            justify-content: center;
+            background-color: #9EAAEB;
+            color: black;
+            background-image: linear-gradient(315deg, #ffff 0%, rgba(255,255,255,0.5) 74%);
+            background-size: 200% 100%;
+            background-position: left;
+            background-repeat: no-repeat;
+            transition: 500ms;
+            border: 2px solid grey;
+        }
+
+            button:before {
+                color: rgba(255,255,255,0.5);
+                font-size: 16px;
+                position: absolute;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 140px;
+                height: 40px;
+                background-color: #1b2845;
+                background-image: linear-gradient(315deg, #1b2845 0%, #274060 74%);
+                transition: 500ms;
+            }
+
+            button:hover {
+                background-position: right;
+            }
+
+                button:hover:before {
+                    color: #fff;
+                }
+
+            button:focus {
+                outline: none;
+            }
+    </style>
+
+
+</head>
+
+<body>
+
+
+    @Html.Partial("_Preloader")
+    @Html.Partial("_navbar")
+
+
+    <div class="main-banner">
+
+        <div class="container">
+            <div class="row justify-content-center">
+
+                <div class="col-md-6">
+                    <div class="card card-option host-card-bg">
+                        <div class="card-body">
+                            <label class="title">Host</label>
+                            <button onClick="handleHostRegActive()">Get Started</button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card card-option hotel-card-bg">
+                        <div class="card-body">
+                            <label class="title">Hotel</label>
+                            <button onClick="handleHotelRegActive()">Get Started</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+    <div class="container" id="form-section-host">
+
+        @using (Html.BeginForm("SignUp", "Host", FormMethod.Post))
+        {
+            <div class="page-wrapper p-t-130 p-b-100 font-poppins">
+                <div class="wrapper wrapper--w680">
+                    <div class="card card-4">
+                        <div class="card-body">
+                            <h2 class="top-text header-text">
+                                Registration Form
+                            </h2>
+                            <hr />
+
+                            
+                            <div class="form-group">
+                                <label for="UserEmail">Email</label>
+                                <div class="col-md-10">
+                                    <input type="email" name="UserEmail" class="form-control"/>
+                                    <p class="text-danger">Field is empty!</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="UserPassword">Password</label>
+                                <div class="col-md-10">
+                                     <input type="password" name="UserPassword" class="form-control" />
+                                    <p class="text-danger">Field is empty!</p>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="UserConfirmPassword">Confirm Password</label>
+                                <div class="col-md-10">
+                                     <input type="password" name="UserConfirmPassword" class="form-control" />
+                                    <p class="text-danger">Field is empty!</p>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="UserFirstName">First Name</label>
+                                <div class="col-md-10">
+                                    <input type="text" name="UserFirstName" class="form-control" />
+                                    <p class="text-danger">Field is empty!</p>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="UserLastName"></label>
+                                <div class="col-md-10">
+                                    <input type="text" name="UserLastName" class="form-control" />
+                                    <p class="text-danger">Field is empty!</p>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="UserPhone">Phone</label>
+                                <div class="col-md-10">
+                                    <input type="number" name="UserPhone" class="form-control" />
+                                    <p class="text-danger">Field is empty!</p>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="AddressCountry">Country</label>
+                                <div class="col-md-10">
+                                      <input type="text" name="AddressCountry" class="form-control" />
+                                    <p class="text-danger">Field is empty!</p>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                               <label for="AddressDivision">Division</label>
+                               <div class="col-md-10">
+                                   <input type="text" name="AddressDivision" class="form-control" />
+                                   <p class="text-danger">Field is empty!</p>
+                               </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="AddressCity">City</label>
+                                <div class="col-md-10">
+                                    <input type="text" name="AddressCity" class="form-control" />
+                                    <p class="text-danger">Field is empty!</p>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="AddressArea">Area</label>
+                                <div class="col-md-10">
+                                   <input type="text" name="AddressArea" class="form-control" />
+                                    <p class="text-danger">Field is empty!</p>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="AddressExtension">Extension</label>
+                                <div class="col-md-10">
+                                    <input type="text" name="AddressExtension" class="form-control" />
+                                    <p class="text-danger">Field is empty!</p>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Submit" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="container" id="form-section-hotel">
+
+        @using (Html.BeginForm("SignUp", "Hotel", FormMethod.Post))
+        {
+            <div class="page-wrapper p-t-130 p-b-100 font-poppins">
+                <div class="wrapper wrapper--w680">
+                    <div class="card card-4">
+                        <div class="card-body">
+                            <h2 class="top-text header-text">
+                                Registration Form
+                            </h2>
+                            <hr />
+                         
+                            <div class="form-group">
+                                <label for="HotelName">Hotel Name</label>
+                                <div class="col-md-10">
+                                     <input type="text" name="HotelName" class="form-control" />
+                                    <p class="text-danger">Field is empty!</p>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                               <label for="HotelManager">Hotel Manager</label>
+                                <div class="col-md-10">
+                                    <input type="text" name="HotelManager" class="form-control" />
+                                    <p class="text-danger">Field is empty!</p>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                               <label for="HoteManagerPhone">Manager Phone</label>
+                               <div class="col-md-10">
+                                  <input type="text" name="HoteManagerPhone" class="form-control" />
+                                   <p class="text-danger">Field is empty!</p>
+
+                               </div>
+                            </div>
+
+                            <div class="form-group">
+                               <label for="HotelEmail">Email</label>
+                               <div class="col-md-10">
+                                  <input type="text" name="HotelEmail" class="form-control" />
+                                   <p class="text-danger">Field is empty!</p>
+
+                               </div>
+                            </div>
+
+                            <div class="form-group">
+                               <label for="HotelPassword">Password</label>
+                               <div class="col-md-10">
+                                   <input type="password" name="HotelPassword" class="form-control" />
+                                   <p class="text-danger">Field is empty!</p>
+
+                               </div>
+                            </div>
+
+                            <div class="form-group">
+                               <label for="HotelConfirmPassword">Confirm Password</label>
+                                <div class="col-md-10">
+                                   <input type="text" name="HotelConfirmPassword" class="form-control" />
+                                    <p class="text-danger">Field is empty!</p>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="HotelTradeLicenseNo">Trade License No</label>
+                                <div class="col-md-10">
+                                    <input type="text" name="HotelTradeLicenseNo" class="form-control" />
+                                    <p class="text-danger">Field is empty!</p>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Submit" class="btn btn-outline" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <script>
+
+        var hotelRegSection = document.getElementById("form-section-hotel");
+        var hostRegSection = document.getElementById("form-section-host");
+        console.log("check");
+
+        hostRegSection.style.display = "none";
+        hotelRegSection.style.display = "none";
+
+        function handleHostRegActive() {
+            hotelRegSection.style.display = "none";
+            hostRegSection.style.display = "block";
+            hostRegSection.scrollIntoView();
+        }
+
+        function handleHotelRegActive() {
+            hostRegSection.style.display = "none";
+            hotelRegSection.style.display = "block";
+            hotelRegSection.scrollIntoView();
+        }
+
+        
+
+
+
+    </script>
+
+
+
+
+
+
+    @Html.Partial("_Footer")
+
+    <script src="~/Template/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Template/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Template/assets/js/owl-carousel.js"></script>
+    <script src="~/Template/assets/js/animation.js"></script>
+    <script src="~/Template/assets/js/imagesloaded.js"></script>
+    <script src="~/Template/assets/js/custom.js"></script>
+
+    <script src="~/Template/vendor/datepicker/daterangepicker.js"></script>
+    <script src="~/Template/vendor/datepicker/moment.min.js"></script>
+    <script src="~/Template/vendor/select2/select2.min.js"></script>
+    <script src="~/Scripts/global.js"></script>
+</body>
