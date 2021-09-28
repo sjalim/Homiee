@@ -1,8 +1,9 @@
 ﻿@model Homiee.Models.LoginUser
 
+@using Homiee.Models
 @{
     ViewBag.Title = "Login";
-
+    var errMsg = ViewBag.errorMsgLogin;
     Layout = null;
 }
 
@@ -24,51 +25,91 @@
     <link rel="stylesheet" href="~/Template/assets/css/templatemo-plot-listing.css">
     <link rel="stylesheet" href="~/Template/assets/css/animated.css">
     <link rel="stylesheet" href="~/Template/assets/css/owl.css">
+    <link href="~/Content/login-main.css" rel="stylesheet" />
+    <link href="~/Content/login-util.css" rel="stylesheet" />
+    <link href="~/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 </head>
 
 <body>
-
-
     @Html.Partial("_Preloader")
     @Html.Partial("_navbar")
-
     <div class="main-banner">
+        <div class="limiter">
+            <div class="container-login100 ">
+                <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="login100-form validate-form flex-sb flex-w">
+                            <span class="login100-form-title p-b-32  header-text">
+                                Account Login
+                            </span>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="container">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div>
+                                    @Html.DropDownListFor(model => model.UserCategory,
+                                        new SelectList(Enum.GetValues(typeof(Category))),
+                                        "Select Category", new { @class = "form-select" })
+                                </div>
+                            </div>
 
-            @using (Html.BeginForm())
-            {
-                @Html.AntiForgeryToken()
 
-                <div class="form-horizontal">
-                    <h4>LoginUser</h4>
-                    <hr />
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10 wrap-input100 validate-input m-b-12">
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "input100" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10 wrap-input100 validate-input m-b-12">
+                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input100" } })
+                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="flex-sb-m w-full p-b-48">
+                                <div class="contact100-form-checkbox">
+                                    <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                                    <label class="label-checkbox100" for="ckb1">
+                                        Remember me
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <a href="#" class="txt3">
+                                        Forgot Password?
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Login" class="btn btn-primary" />
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    }
+                    <div>
+                        @{
+                            if (errMsg != null)
+                            {
+                                <p class="text-danger">@errMsg</p>
+                            }
+                        }
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Create" class="btn btn-default" />
-                        </div>
                     </div>
                 </div>
-            }
+
+            </div>
+
         </div>
+
     </div>
+
     @Html.Partial("_Footer")
 
     <!-- Scripts -->
@@ -79,5 +120,7 @@
     <script src="~/Template/assets/js/animation.js"></script>
     <script src="~/Template/assets/js/imagesloaded.js"></script>
     <script src="~/Template/assets/js/custom.js"></script>
+    <script src="~/js/login-main.js"></script>
+
 
 </body>

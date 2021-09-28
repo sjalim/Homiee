@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Homiee.Models;
+using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -24,7 +26,15 @@ namespace Homiee.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
-            return View();
+            SignInModelHosts regModel = new SignInModelHosts();
+            SigninUser Host = new SigninUser() ;
+            SigninHotel Hotel = new SigninHotel();
+
+            regModel.Host = Host;
+            regModel.Hotel = Hotel;
+
+
+            return View(regModel);
         }
     }
 }

@@ -36,6 +36,8 @@ namespace Homiee.Models
         public DbSet<Bank> Banks { get; set; }
 
         public DbSet<HostInfo> HostInfos { get; set; }
+
+        public DbSet<HotelAddress> HotelAddresses { get; set; }
         public ApplicationDbContext()
             : base("DBConnection", throwIfV1Schema: false)
         {

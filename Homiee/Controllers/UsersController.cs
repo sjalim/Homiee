@@ -22,7 +22,8 @@ namespace Homiee.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         public static int GUEST_CATEGORY = 0;
-
+        public static int HOST_CATEGORY = 1;
+        public static int HOTEL_CATEGORY = 2;
         // GET: Users
         public ActionResult Index()
         {
@@ -101,40 +102,121 @@ namespace Homiee.Controllers
 
                 return RedirectToAction("Login");
             }
-
             return View();
-
-
         }
-
 
         [HttpGet]
         public ActionResult Login()
         {
+            var user = Session["UserID"];
+            var typeId = Convert.ToInt32(Session["UserType"]);
+
+            if (user != null)
+            {
+                if (typeId == GUEST_CATEGORY)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else if (typeId == HOST_CATEGORY)
+                {
+                    return RedirectToAction("Index", "Host");
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Hotel");
+                }
+            }
+
             return View();
+
+
         }
         [HttpPost]
         public ActionResult Login(LoginUser user)
         {
 
+            User logedInUser = null;
+
             if (ModelState.IsValid)
             {
+
+                Debug.WriteLine("User category" + user.UserCategory);
+
                 String encryptedPass = Encryptdata(user.Password);
-
-
-
-                User logedInUser = db.Users.Where(a => a.UserEmail.Equals(user.Email)
-                &&
-                a.UserPassword.Equals(encryptedPass)).FirstOrDefault();
+                String category = user.UserCategory.ToString();
 
                 //Response.Cookies["UserID"].Value = logedInUser.UserID.ToString();
                 //Response.Cookies["UserEmail"].Value = logedInUser.UserEmail.ToString();
 
-                Session["UserID"] = logedInUser.UserID.ToString();
-                Session["UserEmail"] = logedInUser.UserEmail.ToString();
 
+                if (category.Equals("Host") || category.Equals("Guest"))
+                {
+                    logedInUser = db.Users.Where(a => a.UserEmail.Equals(user.Email)
+               &&
+               a.UserPassword.Equals(encryptedPass)).FirstOrDefault();
 
-                return RedirectToAction("Index", "Home");
+                    if (logedInUser != null)
+                    {
+
+                        Session["UserID"] = logedInUser.UserID.ToString();
+                        Session["UserEmail"] = logedInUser.UserEmail.ToString();
+
+                        if (category.Equals("Host"))
+                        {
+                            Debug.WriteLine("check host");
+                            if (logedInUser.UserTypeID == HOST_CATEGORY)
+                            {
+
+                                Session["UserType"] = HOST_CATEGORY;
+                                return RedirectToAction("Index", "Host");
+                            }
+                            else
+                            {
+                                ViewBag.errorMsgLogin = "Your not HOST! Category invalid";
+                            }
+                        }
+                        else if (category.Equals("Guest"))
+                        {
+                            Debug.WriteLine("check guest");
+                            if (logedInUser.UserTypeID == GUEST_CATEGORY)
+                            {
+
+                                Session["UserType"] = GUEST_CATEGORY;
+                                return RedirectToAction("Index", "Home");
+                            }
+                            else
+                            {
+                                ViewBag.errorMsgLogin = "Your not Guest! Category invalid";
+                            }
+                        }
+                    }
+                    else
+                    {
+                        ViewBag.errorMsgLogin = "User not found!";
+                    }
+                }
+                else
+                {
+                    Hotel logedInHotel = db.Hotels.Where(a => a.HotelEmail.Equals(user.Email)
+                   &&
+                   a.HotelPassword.Equals(encryptedPass)).FirstOrDefault();
+
+                    Debug.WriteLine("check hotel");
+                    if (logedInHotel != null)
+                    {
+
+                        Session["UserID"] = logedInUser.UserID.ToString();
+                        Session["UserEmail"] = logedInUser.UserEmail.ToString();
+                        Session["UserType"] = HOTEL_CATEGORY;
+
+                        return RedirectToAction("Index", "Hotel");
+                    }
+                    else
+                    {
+                        ViewBag.errorMsgLogin = "User not found!";
+                    }
+
+                }
             }
             return View();
         }
@@ -186,7 +268,7 @@ namespace Homiee.Controllers
 
                 User user = db.Users.Where(a => a.UserID.Equals(userId)).FirstOrDefault();
 
-                Debug.WriteLine(" Images: " + user.UserProfilePicture);
+                //    Debug.WriteLine(" Images: " + user.UserProfilePicture);
 
                 return View(user);
             }
@@ -250,7 +332,7 @@ namespace Homiee.Controllers
 
             string path = Path.Combine(Server.MapPath("~/Images/"), fileName);
 
-            Debug.WriteLine("  at image:" + user.UserFirstName + " file name:" + UserProfilePicture.FileName+ " path:"+ path);
+            Debug.WriteLine("  at image:" + user.UserFirstName + " file name:" + UserProfilePicture.FileName + " path:" + path);
 
 
             Debug.WriteLine("Extension:" + extension);
@@ -264,12 +346,12 @@ namespace Homiee.Controllers
                     Debug.WriteLine("at saveas");
                     user.UserProfilePicture = "~/Images/" + fileName;
                     UserProfilePicture.SaveAs(path);
-                     db.Entry(user).State = EntityState.Modified;
+                    db.Entry(user).State = EntityState.Modified;
                     db.SaveChanges();
                 }
             }
             ModelState.Clear();
-            return RedirectToAction("Index");
+            return RedirectToAction("Profile");
         }
     }
 }

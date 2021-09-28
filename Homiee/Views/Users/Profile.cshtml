@@ -85,14 +85,22 @@
     @Html.Partial("_navbar")
 
 
-    <div class="main-banner">
-        <div class="container">
+    <div class="main-banner header-text">
+        <div class="container ">
             <div class="row">
                 <div class="col-sm-6 ">
                     <div class="card pro-pic-card d-flex align-items-center justify-content-center">
 
+                        @if (Model.UserProfilePicture != null)
+                        {
+                            <img class="pro-pic shadow-lg p-3 mb-5 bg-white" src=@Url.Content(Model.UserProfilePicture) , alt="Profile Picture" width="50%" height="50%" />
 
-                        <img class="pro-pic shadow-lg p-3 mb-5 bg-white" src=@Url.Content(Model.UserProfilePicture), alt="Profile Picture" width="50%" height="50%" />
+                        }
+                        else
+                        {
+                            <img class="pro-pic shadow-lg p-3 mb-5 bg-white" src="~/Content/profile.png" , alt="Profile Picture" width="50%" height="50%" />
+
+                        }
 
                         <button class="change-pic-btn btn btn-primary" id="changeProPicButton" onclick="ChangeProPic()">Change Profile Picture</button>
 
@@ -105,8 +113,6 @@
                             </div>
 
                             <input class="form-control btn btn-primary picForm" type="submit" id="formSaveButton" value="Save" style="visibility:hidden">
-
-
 
                         }
                         <button style="visibility:hidden" class="picForm change-pic-btn btn btn-primary" id="formCancelButton" onclick="picFormCancel()">Cancel</button>
