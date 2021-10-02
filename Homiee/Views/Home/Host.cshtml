@@ -5,7 +5,7 @@
 
     var check = Model.Host.UserEmail;
 
-   
+
 }
 
 
@@ -162,99 +162,91 @@
                             </h2>
                             <hr />
 
-                            
+                            @Html.ValidationSummary()
+
                             <div class="form-group">
                                 <label for="UserEmail">Email</label>
                                 <div class="col-md-10">
-                                    <input type="email" name="UserEmail" class="form-control"/>
-                                    <p class="text-danger">Field is empty!</p>
+
+                                    @Html.TextBox("UserEmail", "", new { type = "email", placeholder = "example@mail.ru", @class = "form-control valid", @data_val = "true", @data_val_required = "Email Field is Invalid" })
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="UserPassword">Password</label>
                                 <div class="col-md-10">
-                                     <input type="password" name="UserPassword" class="form-control" />
-                                    <p class="text-danger">Field is empty!</p>
+                                    @Html.TextBox("UserPassword", "", new { type = "password", @class = "form-control valid", @data_val = "true", @data_val_required = "Invalid password!" })
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="UserConfirmPassword">Confirm Password</label>
                                 <div class="col-md-10">
-                                     <input type="password" name="UserConfirmPassword" class="form-control" />
-                                    <p class="text-danger">Field is empty!</p>
+                                    @Html.TextBox("UserConfirmPassword", "", new { type = "password", @class = "form-control valid", @data_val = "true", @data_val_required = "Password doesn't match" })
+                                    <p id="conPasswordErrMsgHost" class="text-danger">Password doesn't match!</p>
+
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="UserFirstName">First Name</label>
                                 <div class="col-md-10">
-                                    <input type="text" name="UserFirstName" class="form-control" />
-                                    <p class="text-danger">Field is empty!</p>
+                                    @Html.TextBox("UserFirstName", "", new { type = "text", @class = "form-control valid", @data_val = "true", @data_val_required = "First Name field is empty!" })
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="UserLastName"></label>
+                                <label for="UserLastName">Last Name</label>
                                 <div class="col-md-10">
-                                    <input type="text" name="UserLastName" class="form-control" />
-                                    <p class="text-danger">Field is empty!</p>
+                                    @Html.TextBox("UserLastName", "", new { type = "text", @class = "form-control valid", @data_val = "true", @data_val_required = "Last Name field is empty!" })
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="UserPhone">Phone</label>
                                 <div class="col-md-10">
-                                    <input type="number" name="UserPhone" class="form-control" />
-                                    <p class="text-danger">Field is empty!</p>
+                                    @Html.TextBox("UserPhone", "", new { type = "number", @class = "form-control valid", @data_val = "true", @data_val_required = "Phone field is empty!" })
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="AddressCountry">Country</label>
                                 <div class="col-md-10">
-                                      <input type="text" name="AddressCountry" class="form-control" />
-                                    <p class="text-danger">Field is empty!</p>
+                                    @Html.TextBox("AddressCountry", "", new { type = "text", @class = "form-control valid", @data_val = "true", @data_val_required = "Country field is empty!" })
                                 </div>
                             </div>
 
                             <div class="form-group">
-                               <label for="AddressDivision">Division</label>
-                               <div class="col-md-10">
-                                   <input type="text" name="AddressDivision" class="form-control" />
-                                   <p class="text-danger">Field is empty!</p>
-                               </div>
+                                <label for="AddressDivision">Division</label>
+                                <div class="col-md-10">
+                                    @Html.TextBox("AddressDivision", "", new { type = "text", @class = "form-control valid", @data_val = "true", @data_val_required = "Division field is empty!" })
+
+                                </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="AddressCity">City</label>
                                 <div class="col-md-10">
-                                    <input type="text" name="AddressCity" class="form-control" />
-                                    <p class="text-danger">Field is empty!</p>
-
+                                    @Html.TextBox("AddressCity", "", new { type = "text", @class = "form-control valid", @data_val = "true", @data_val_required = "City field is empty!" })
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="AddressArea">Area</label>
                                 <div class="col-md-10">
-                                   <input type="text" name="AddressArea" class="form-control" />
-                                    <p class="text-danger">Field is empty!</p>
-
+                                    @Html.TextBox("AddressArea", "", new { type = "text", @class = "form-control valid", @data_val = "true", @data_val_required = "Area field is empty!" })
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="AddressExtension">Extension</label>
+                                <label for="AddressExtension">Address Extension</label>
                                 <div class="col-md-10">
-                                    <input type="text" name="AddressExtension" class="form-control" />
-                                    <p class="text-danger">Field is empty!</p>
+                                    @Html.TextBox("AddressExtension", "", new { type = "text", @class = "form-control valid", @data_val = "true", @data_val_required = "Address Extension field is empty!" })
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Submit" class="btn btn-default" />
+                                <div class="col-md-2 col-md-10">
+                                    <input type="submit" value="Submit" class="btn btn-primary" />
                                 </div>
                             </div>
                         </div>
@@ -275,71 +267,62 @@
                                 Registration Form
                             </h2>
                             <hr />
-                         
+                            @Html.ValidationSummary()
                             <div class="form-group">
                                 <label for="HotelName">Hotel Name</label>
                                 <div class="col-md-10">
-                                     <input type="text" name="HotelName" class="form-control" />
-                                    <p class="text-danger">Field is empty!</p>
+                                    @Html.TextBox("HotelName", "", new { type = "text", @class = "form-control valid", @data_val = "true", @data_val_required = "Hotel Name field is empty!" })
 
                                 </div>
                             </div>
 
                             <div class="form-group">
-                               <label for="HotelManager">Hotel Manager</label>
+                                <label for="HotelManager">Hotel Manager</label>
                                 <div class="col-md-10">
-                                    <input type="text" name="HotelManager" class="form-control" />
-                                    <p class="text-danger">Field is empty!</p>
+                                    @Html.TextBox("HotelManager", "", new { type = "text", @class = "form-control valid", @data_val = "true", @data_val_required = "Hotel Manager field is empty!" })
+
                                 </div>
                             </div>
 
                             <div class="form-group">
-                               <label for="HoteManagerPhone">Manager Phone</label>
-                               <div class="col-md-10">
-                                  <input type="text" name="HoteManagerPhone" class="form-control" />
-                                   <p class="text-danger">Field is empty!</p>
-
-                               </div>
-                            </div>
-
-                            <div class="form-group">
-                               <label for="HotelEmail">Email</label>
-                               <div class="col-md-10">
-                                  <input type="text" name="HotelEmail" class="form-control" />
-                                   <p class="text-danger">Field is empty!</p>
-
-                               </div>
-                            </div>
-
-                            <div class="form-group">
-                               <label for="HotelPassword">Password</label>
-                               <div class="col-md-10">
-                                   <input type="password" name="HotelPassword" class="form-control" />
-                                   <p class="text-danger">Field is empty!</p>
-
-                               </div>
-                            </div>
-
-                            <div class="form-group">
-                               <label for="HotelConfirmPassword">Confirm Password</label>
+                                <label for="HoteManagerPhone">Manager Phone</label>
                                 <div class="col-md-10">
-                                   <input type="text" name="HotelConfirmPassword" class="form-control" />
-                                    <p class="text-danger">Field is empty!</p>
+                                    @Html.TextBox("HoteManagerPhone", "", new { type = "number", @class = "form-control valid", @data_val = "true", @data_val_required = "Hotel Manager field is empty!" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="HotelEmail">Email</label>
+                                <div class="col-md-10">
+                                    @Html.TextBox("HotelEmail", "", new { type = "email", @class = "form-control valid", @data_val = "true", @data_val_required = "Hotel Email field is empty!" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="HotelPassword">Password</label>
+                                <div class="col-md-10">
+                                    @Html.TextBox("HotelPassword", "", new { type = "password", @class = "form-control valid", @data_val = "true", @data_val_required = "Hotel Password Invalid!" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="HotelConfirmPassword">Confirm Password</label>
+                                <div class="col-md-10">
+                                    @Html.TextBox("HotelConfirmPassword", "", new { type = "password", @class = "form-control valid", @data_val = "true", @data_val_required = "Hotel Confirm Password Invalid!" })
+                                    <p id="conPasswordErrMsgHotel" class="text-danger">Password doesn't match!</p>
+
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="HotelTradeLicenseNo">Trade License No</label>
                                 <div class="col-md-10">
-                                    <input type="text" name="HotelTradeLicenseNo" class="form-control" />
-                                    <p class="text-danger">Field is empty!</p>
+                                    @Html.TextBox("HotelTradeLicenseNo", "", new { type = "text", @class = "form-control valid", @data_val = "true", @data_val_required = "Hotel Trade License No Invalid!" })
                                 </div>
                             </div>
-
-
                             <div class="form-group">
-                                <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Submit" class="btn btn-outline" />
+                                <div class="col-md-2 col-md-10">
+                                    <input type="submit" value="Submit" class="btn btn-primary" />
                                 </div>
                             </div>
                         </div>
@@ -353,7 +336,47 @@
 
         var hotelRegSection = document.getElementById("form-section-hotel");
         var hostRegSection = document.getElementById("form-section-host");
-        console.log("check");
+        var hostPassword = document.getElementById("UserPassword");
+        var hostConPassword = document.getElementById("UserConfirmPassword");
+        var validationConPassHost = document.getElementById("conPasswordErrMsgHost");
+
+        var hotelPassword = document.getElementById("HotelPassword");
+        var hotelConPassword = document.getElementById("HotelConfirmPassword");
+        var validationConPassHotel = document.getElementById("conPasswordErrMsgHotel");
+
+        validationConPassHotel.style.display = "none";
+        hotelConPassword.onkeyup = ConfirmPasswordValidationHotel;
+
+        validationConPassHost.style.display = "none";
+        hostConPassword.onkeyup = ConfirmPasswordValidationHost;
+
+        function ConfirmPasswordValidationHost() {
+            var text = new String(hostPassword.value);
+            var text1 = new String(hostConPassword.value);
+            console.log(text1 + " " + text);
+            if (text.trim() === text1.trim()) {
+                validationConPassHost.style.display = "none";
+            }
+            else {
+                validationConPassHost.style.display = "block";
+
+            }
+        }
+
+        function ConfirmPasswordValidationHotel() {
+            var text = new String(hotelPassword.value);
+            var text1 = new String(hotelConPassword.value);
+            console.log(text1 + " " + text);
+            if (text.trim() === text1.trim()) {
+                validationConPassHotel.style.display = "none";
+            }
+            else {
+                validationConPassHotel.style.display = "block";
+
+            }
+        }
+
+
 
         hostRegSection.style.display = "none";
         hotelRegSection.style.display = "none";
@@ -370,7 +393,7 @@
             hotelRegSection.scrollIntoView();
         }
 
-        
+
 
 
 
@@ -384,6 +407,8 @@
     @Html.Partial("_Footer")
 
     <script src="~/Template/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/Template/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="~/Template/assets/js/owl-carousel.js"></script>
     <script src="~/Template/assets/js/animation.js"></script>

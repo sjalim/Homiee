@@ -1,4 +1,4 @@
-﻿@{
+﻿ @{
     ViewBag.Title = "Home Page";
 
     Layout = null;
@@ -22,6 +22,15 @@
     <link rel="stylesheet" href="~/Template/assets/css/templatemo-plot-listing.css">
     <link rel="stylesheet" href="~/Template/assets/css/animated.css">
     <link rel="stylesheet" href="~/Template/assets/css/owl.css">
+    <style>
+
+        .categories-img{
+
+            margin-top:20px;
+        }
+
+
+    </style>
 </head>
 
 <body>
@@ -78,11 +87,11 @@
                 </div>
                 <div class="col-lg-10 offset-lg-1">
                     <ul class="categories">
-                        <li><a href="category.html"><span class="icon"><img src="~/Template/assets/images/search-icon-01.png" alt="Home"></span> Apartments</a></li>
-                        <li><a href="listing.html"><span class="icon"><img src="~/Template/assets/images/search-icon-02.png" alt="Food"></span> Food &amp; Life</a></li>
-                        <li><a href="#"><span class="icon"><img src="~/Template/assets/images/search-icon-03.png" alt="Vehicle"></span> Cars</a></li>
-                        <li><a href="#"><span class="icon"><img src="~/Template/assets/images/search-icon-04.png" alt="Shopping"></span> Shopping</a></li>
-                        <li><a href="#"><span class="icon"><img src="~/Template/assets/images/search-icon-05.png" alt="Travel"></span> Traveling</a></li>
+                        <li><a href="Home/Apartment"><span class="icon"><img class="categories-img" src="~/Images/home.svg" alt="Home"></span> Apartments</a></li>
+                        <li><a href="Home/Office"><span class="icon"><img class="categories-img" src="~/Images/office.svg" alt="Food"></span> Offices</a></li>
+                        <li><a href="Home/Hotel"><span class="icon"><img class="categories-img" src="~/Images/hotel.svg" alt="Vehicle"></span> Hotels</a></li>
+                        <li><a href="Home/PartyPlace"><span class="icon"><img class="categories-img" src="~/Images/party.svg" alt="Shopping"></span> Party Place</a></li>
+                        <li><a href="Home/CommunityCenter"><span class="icon"><img class="categories-img" src="~/Images/community-center.svg" alt="Travel"></span> Community Center</a></li>
                     </ul>
                 </div>
             </div>
@@ -107,32 +116,32 @@
                                     <div class="menu">
                                         <div class="first-thumb active">
                                             <div class="thumb">
-                                                <span class="icon"><img src="~/Template/assets/images/search-icon-01.png" alt=""></span>
+                                                <span class="icon"><img class="categories-img" src="~/Images/home.svg" alt=""></span>
                                                 Apartments
                                             </div>
                                         </div>
                                         <div>
                                             <div class="thumb">
-                                                <span class="icon"><img src="~/Template/assets/images/search-icon-02.png" alt=""></span>
-                                                Food &amp; Life
+                                                <span class="icon"><img class="categories-img" src="~/Images/office.svg" alt=""></span>
+                                                Offices
                                             </div>
                                         </div>
                                         <div>
                                             <div class="thumb">
-                                                <span class="icon"><img src="~/Template/assets/images/search-icon-03.png" alt=""></span>
-                                                Cars
+                                                <span class="icon"><img class="categories-img" src="~/Images/hotel.svg" alt=""></span>
+                                                Hotels
                                             </div>
                                         </div>
                                         <div>
                                             <div class="thumb">
-                                                <span class="icon"><img src="~/Template/assets/images/search-icon-04.png" alt=""></span>
-                                                Shopping
+                                                <span class="icon"><img class="categories-img" src="~/Images/party.svg" alt=""></span>
+                                                Party Place
                                             </div>
                                         </div>
                                         <div class="last-thumb">
                                             <div class="thumb">
-                                                <span class="icon"><img src="~/Template/assets/images/search-icon-05.png" alt=""></span>
-                                                Traveling
+                                                <span class="icon"><img class="categories-img" src="~/Images/community-center.svg" alt=""></span>
+                                                <p style="display:inline-block;color:white">Community<br>Center</p>
                                             </div>
                                         </div>
                                     </div>
@@ -152,7 +161,7 @@
                                                         </div>
                                                         <div class="col-lg-7 align-self-center">
                                                             <div class="right-image">
-                                                                <img src="~/Template/assets/images/tabs-image-01.jpg" alt="">
+                                                                <img class="categories-img" src="~/Template/assets/images/tabs-image-01.jpg" alt="">
                                                             </div>
                                                         </div>
                                                     </div>
