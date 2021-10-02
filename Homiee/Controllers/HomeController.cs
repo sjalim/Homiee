@@ -27,7 +27,7 @@ namespace Homiee.Controllers
             ViewBag.Message = "Your contact page.";
 
             SignInModelHosts regModel = new SignInModelHosts();
-            SigninUser Host = new SigninUser() ;
+            SigninUser Host = new SigninUser();
             SigninHotel Hotel = new SigninHotel();
 
             regModel.Host = Host;
@@ -36,5 +36,35 @@ namespace Homiee.Controllers
 
             return View(regModel);
         }
+
+        public ActionResult Apartment()
+        {
+
+            return View();
+        }
+
+        public ActionResult Office()
+        {
+
+            return View();
+        }
+
+        public ActionResult Hotel()
+        {
+            return View();
+
+        }
+
+        public ActionResult PartyPlace()
+        {
+            return View();
+        }
+        public ActionResult CommunityCenter()
+        {
+
+            return View();
+        }
+
     }
+
 }

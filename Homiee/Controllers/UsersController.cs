@@ -206,8 +206,8 @@ namespace Homiee.Controllers
                     if (logedInHotel != null)
                     {
 
-                        Session["UserID"] = logedInUser.UserID.ToString();
-                        Session["UserEmail"] = logedInUser.UserEmail.ToString();
+                        Session["UserID"] = logedInHotel.HotelID.ToString();
+                        Session["UserEmail"] = logedInHotel.HotelEmail.ToString();
                         Session["UserType"] = HOTEL_CATEGORY;
 
                         return RedirectToAction("Index", "Hotel");
