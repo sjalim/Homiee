@@ -19,8 +19,32 @@ namespace Homiee.Controllers
             return View();
         }
 
+        public ActionResult Profile()
+        {
+            return View();
+        }
 
-        public ActionResult SignUp(FormCollection hotel)
+        [HttpGet]
+        public ActionResult AddAPlace()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddAPlace(HotelInfo hotelinfo)
+        {
+            db.HotelInfoes.Add(hotelinfo);
+            db.SaveChanges();
+            return RedirectToAction("Index", "Hotel");
+        }
+
+        public ActionResult MyPlaces()
+        {
+            List<HotelInfo> hotelinfoes = db.HotelInfoes.ToList<HotelInfo>();
+            return View(hotelinfoes);
+        }
+
+            public ActionResult SignUp(FormCollection hotel)
         {
             Debug.WriteLine("check at hotel signup");
             Debug.WriteLine("check at hotel signup" +hotel["HotelName"]);

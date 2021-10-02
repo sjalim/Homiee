@@ -170,7 +170,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HostController.cs" />
-    <Compile Include="Controllers\HostLandingController.cs" />
     <Compile Include="Controllers\HotelController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -205,6 +204,30 @@
     <Compile Include="Migrations\202109280422193_BecomeHost.Designer.cs">
       <DependentUpon>202109280422193_BecomeHost.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109291049422_datatype change of Room.cs" />
+    <Compile Include="Migrations\202109291049422_datatype change of Room.Designer.cs">
+      <DependentUpon>202109291049422_datatype change of Room.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109292259287_checking.cs" />
+    <Compile Include="Migrations\202109292259287_checking.Designer.cs">
+      <DependentUpon>202109292259287_checking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109301027278_AddFile added in HostInfo database.cs" />
+    <Compile Include="Migrations\202109301027278_AddFile added in HostInfo database.Designer.cs">
+      <DependentUpon>202109301027278_AddFile added in HostInfo database.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110011609013_checkissue.cs" />
+    <Compile Include="Migrations\202110011609013_checkissue.Designer.cs">
+      <DependentUpon>202110011609013_checkissue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110012057379_HotelInfoes-database-created.cs" />
+    <Compile Include="Migrations\202110012057379_HotelInfoes-database-created.Designer.cs">
+      <DependentUpon>202110012057379_HotelInfoes-database-created.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110012111087_hotelinfodb-added.cs" />
+    <Compile Include="Migrations\202110012111087_hotelinfodb-added.Designer.cs">
+      <DependentUpon>202110012111087_hotelinfodb-added.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bank.cs" />
@@ -215,6 +238,7 @@
     <Compile Include="Models\HostsToGuestsReview.cs" />
     <Compile Include="Models\Hotel.cs" />
     <Compile Include="Models\HotelAddress.cs" />
+    <Compile Include="Models\HotelInfo.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LoginUser.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -413,6 +437,8 @@
     <Content Include="Template\Host\assets\images\custom-select.png" />
     <Content Include="Template\Host\assets\images\favicon.png" />
     <Content Include="Template\Host\assets\images\free-demo.jpg" />
+    <Content Include="Template\Host\assets\images\Homiee-dark.png" />
+    <Content Include="Template\Host\assets\images\homiee-light.png" />
     <Content Include="Template\Host\assets\images\logo-icon.png" />
     <Content Include="Template\Host\assets\images\logo-light-icon.png" />
     <Content Include="Template\Host\assets\images\logo-light-text.png" />
@@ -621,6 +647,220 @@
     <Content Include="Template\Host\dist\js\pages\dashboards\dashboard1.js" />
     <Content Include="Template\Host\dist\js\sidebarmenu.js" />
     <Content Include="Template\Host\dist\js\waves.js" />
+    <Content Include="Template\Hotel\assets\extra-libs\sparkline\sparkline.js" />
+    <Content Include="Template\Hotel\assets\images\custom-select.png" />
+    <Content Include="Template\Hotel\assets\images\favicon.png" />
+    <Content Include="Template\Hotel\assets\images\free-demo.jpg" />
+    <Content Include="Template\Hotel\assets\images\Homiee-dark.png" />
+    <Content Include="Template\Hotel\assets\images\homiee-light.png" />
+    <Content Include="Template\Hotel\assets\images\logo-icon.png" />
+    <Content Include="Template\Hotel\assets\images\logo-light-icon.png" />
+    <Content Include="Template\Hotel\assets\images\logo-light-text.png" />
+    <Content Include="Template\Hotel\assets\images\logo-text.png" />
+    <Content Include="Template\Hotel\assets\images\nice-lite-lp-img.jpg" />
+    <Content Include="Template\Hotel\assets\images\nice-pro-lp-img.jpg" />
+    <Content Include="Template\Hotel\assets\images\pro-demo.jpg" />
+    <Content Include="Template\Hotel\assets\images\users\1.jpg" />
+    <Content Include="Template\Hotel\assets\images\users\2.jpg" />
+    <Content Include="Template\Hotel\assets\images\users\4.jpg" />
+    <Content Include="Template\Hotel\assets\images\users\5.jpg" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\css\bootstrap-grid.css" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\css\bootstrap-grid.min.css" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\css\bootstrap-grid.rtl.css" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\css\bootstrap-grid.rtl.min.css" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\css\bootstrap-reboot.css" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\css\bootstrap-reboot.min.css" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\css\bootstrap-reboot.rtl.css" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\css\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\css\bootstrap-utilities.css" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\css\bootstrap-utilities.min.css" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\css\bootstrap-utilities.rtl.css" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\css\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\css\bootstrap.css" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\css\bootstrap.rtl.css" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\css\bootstrap.rtl.min.css" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\js\bootstrap.bundle.js" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\js\bootstrap.bundle.min.js" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\js\bootstrap.esm.js" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\js\bootstrap.esm.min.js" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\js\bootstrap.js" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\js\bootstrap.min.js" />
+    <Content Include="Template\Hotel\assets\libs\chartist-plugin-tooltips\dist\chartist-plugin-tooltip.css" />
+    <Content Include="Template\Hotel\assets\libs\chartist-plugin-tooltips\dist\chartist-plugin-tooltip.min.js" />
+    <Content Include="Template\Hotel\assets\libs\chartist\dist\chartist.min.css" />
+    <Content Include="Template\Hotel\assets\libs\chartist\dist\chartist.min.js" />
+    <Content Include="Template\Hotel\assets\libs\jquery\dist\core.js" />
+    <Content Include="Template\Hotel\assets\libs\jquery\dist\jquery.min.js" />
+    <Content Include="Template\Hotel\assets\libs\jquery\dist\jquery.slim.min.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\ender.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\af.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\ar-dz.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\ar-kw.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\ar-ly.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\ar-ma.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\ar-sa.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\ar-tn.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\ar.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\az.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\be.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\bg.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\bm.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\bn.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\bo.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\br.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\bs.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\ca.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\cs.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\cv.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\cy.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\da.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\de-at.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\de-ch.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\de.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\dv.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\el.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\en-au.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\en-ca.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\en-gb.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\en-ie.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\en-il.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\en-nz.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\eo.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\es-do.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\es-us.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\es.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\et.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\eu.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\fa.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\fi.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\fo.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\fr-ca.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\fr-ch.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\fr.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\fy.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\gd.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\gl.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\gom-latn.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\gu.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\he.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\hi.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\hr.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\hu.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\hy-am.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\id.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\is.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\it.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\ja.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\jv.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\ka.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\kk.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\km.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\kn.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\ko.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\ky.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\lb.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\lo.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\lt.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\lv.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\me.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\mi.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\mk.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\ml.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\mn.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\mr.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\ms-my.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\ms.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\mt.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\my.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\nb.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\ne.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\nl-be.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\nl.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\nn.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\pa-in.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\pl.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\pt-br.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\pt.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\ro.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\ru.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\sd.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\se.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\si.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\sk.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\sl.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\sq.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\sr-cyrl.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\sr.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\ss.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\sv.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\sw.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\ta.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\te.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\tet.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\tg.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\th.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\tl-ph.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\tlh.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\tr.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\tzl.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\tzm-latn.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\tzm.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\ug-cn.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\uk.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\ur.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\uz-latn.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\uz.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\vi.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\x-pseudo.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\yo.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\zh-cn.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\zh-hk.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\locale\zh-tw.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\min\locales.min.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\min\moment-with-locales.min.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\min\moment.min.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\moment.js" />
+    <Content Include="Template\Hotel\assets\libs\moment\package.js" />
+    <Content Include="Template\Hotel\assets\libs\popper.js\dist\esm\popper-utils.min.js" />
+    <Content Include="Template\Hotel\assets\libs\popper.js\dist\esm\popper.min.js" />
+    <Content Include="Template\Hotel\assets\libs\popper.js\dist\popper-utils.min.js" />
+    <Content Include="Template\Hotel\assets\libs\popper.js\dist\popper.min.js" />
+    <Content Include="Template\Hotel\assets\libs\popper.js\dist\umd\popper-utils.min.js" />
+    <Content Include="Template\Hotel\assets\libs\popper.js\dist\umd\popper.min.js" />
+    <Content Include="Template\Hotel\dist\css\icons\material-design-iconic-font\css\material-design-iconic-font.css" />
+    <Content Include="Template\Hotel\dist\css\icons\material-design-iconic-font\css\material-design-iconic-font.min.css" />
+    <Content Include="Template\Hotel\dist\css\icons\material-design-iconic-font\css\materialdesignicons.min.css" />
+    <Content Include="Template\Hotel\dist\css\icons\material-design-iconic-font\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="Template\Hotel\dist\css\icons\material-design-iconic-font\fonts\materialdesignicons-webfont.svg" />
+    <Content Include="Template\Hotel\dist\css\icons\themify-icons\fonts\themify.svg" />
+    <Content Include="Template\Hotel\dist\css\icons\themify-icons\ie7\ie7.css" />
+    <Content Include="Template\Hotel\dist\css\icons\themify-icons\ie7\ie7.js" />
+    <Content Include="Template\Hotel\dist\css\icons\themify-icons\themify-icons.css" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\css\weather-icons-core.css" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\css\weather-icons-variables.css" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\css\weather-icons-wind.css" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\css\weather-icons-wind.min.css" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\css\weather-icons.css" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\css\weather-icons.min.css" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\fonts\weathericons-regular-webfont.svg" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\css\variables-beaufort.css" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\css\variables-day.css" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\css\variables-direction.css" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\css\variables-misc.css" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\css\variables-moon.css" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\css\variables-neutral.css" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\css\variables-night.css" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\css\variables-time.css" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\css\variables-wind-names.css" />
+    <Content Include="Template\Hotel\dist\css\style.css" />
+    <Content Include="Template\Hotel\dist\css\style.min - Copy.css" />
+    <Content Include="Template\Hotel\dist\css\style.min.css" />
+    <Content Include="Template\Hotel\dist\js\custom.js" />
+    <Content Include="Template\Hotel\dist\js\custom.min.js" />
+    <Content Include="Template\Hotel\dist\js\pages\dashboards\dashboard1.js" />
+    <Content Include="Template\Hotel\dist\js\sidebarmenu.js" />
+    <Content Include="Template\Hotel\dist\js\waves.js" />
     <Content Include="Template\index.html" />
     <Content Include="Template\listing.html" />
     <Content Include="Template\SecondaryNav\css\bootstrap.min.css" />
@@ -799,6 +1039,7 @@
     <Content Include="Template\vendor\select2\select2.min.css" />
     <Content Include="Template\vendor\select2\select2.min.js" />
     <Content Include="Template\vendor\wnumb\wNumb.js" />
+    <Content Include="Views\Hotel\AddAPlace.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -858,10 +1099,6 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Host\Index.cshtml" />
     <Content Include="Views\_LayoutPage1.cshtml" />
-    <Content Include="Views\HostLanding\Index.cshtml" />
-    <Content Include="Views\HostLanding\AddPlace.cshtml" />
-    <Content Include="Views\HostLanding\Preview.cshtml" />
-    <Content Include="Views\HostLanding\Reviews.cshtml" />
     <Content Include="Views\Home\Explore.cshtml" />
     <Content Include="Template\vendor\mdi-font\fonts\Material-Design-Iconic-Font.eot" />
     <Content Include="Template\vendor\mdi-font\fonts\Material-Design-Iconic-Font.ttf" />
@@ -976,7 +1213,7 @@
     <Content Include="Template\Host\dist\css\icons\weather-icons\sass\weather-icons-wind.scss" />
     <Content Include="Template\Host\dist\css\icons\weather-icons\sass\weather-icons.min.scss" />
     <Content Include="Template\Host\dist\css\icons\weather-icons\sass\weather-icons.scss" />
-    <Content Include="Views\Hotel\Index.cshtml" />
+
     <Content Include="Views\Home\Apartment.cshtml" />
     <Content Include="Views\Home\Office.cshtml" />
     <Content Include="Views\Home\Hotel.cshtml" />
@@ -994,6 +1231,126 @@
     <Content Include="Template\SecondaryNav\fonts\icomoon\fonts\icomoon.ttf" />
     <Content Include="Template\SecondaryNav\fonts\icomoon\fonts\icomoon.woff" />
     <Content Include="Template\SecondaryNav\fonts\icomoon\selection.json" />
+
+    <Content Include="Views\Host\AddAPlace.cshtml" />
+    <Content Include="Views\Host\Profile.cshtml" />
+    <Content Include="Views\Host\MyPlaces.cshtml" />
+    <Content Include="Views\Host\Details.cshtml" />
+    <Content Include="Views\Host\Delete.cshtml" />
+    <Content Include="Views\Host\Edit.cshtml" />
+    <Content Include="Views\Host\Reviews.cshtml" />
+    <Content Include="Template\Hotel\assets\.DS_Store" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\.DS_Store" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\css\bootstrap-grid.css.map" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\css\bootstrap-grid.rtl.css.map" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\css\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\css\bootstrap-utilities.css.map" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\css\bootstrap-utilities.min.css.map" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\css\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\css\bootstrap.css.map" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\css\bootstrap.min.css.map" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\css\bootstrap.rtl.css.map" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\css\bootstrap.rtl.min.css.map" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\js\bootstrap.bundle.js.map" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\js\bootstrap.esm.js.map" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\js\bootstrap.esm.min.js.map" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\js\bootstrap.js.map" />
+    <Content Include="Template\Hotel\assets\libs\bootstrap\dist\js\bootstrap.min.js.map" />
+    <Content Include="Template\Hotel\assets\libs\chartist-plugin-tooltips\dist\chartist-plugin-tooltip.min.js.map" />
+    <Content Include="Template\Hotel\assets\libs\chartist\dist\chartist.min.js.map" />
+    <Content Include="Template\Hotel\assets\libs\popper.js\dist\umd\popper.min.js.map" />
+    <Content Include="Template\Hotel\dist\.DS_Store" />
+    <Content Include="Template\Hotel\dist\css\icons\material-design-iconic-font\fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="Template\Hotel\dist\css\icons\material-design-iconic-font\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="Template\Hotel\dist\css\icons\material-design-iconic-font\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="Template\Hotel\dist\css\icons\material-design-iconic-font\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="Template\Hotel\dist\css\icons\material-design-iconic-font\fonts\materialdesignicons-webfont.eot" />
+    <Content Include="Template\Hotel\dist\css\icons\material-design-iconic-font\fonts\materialdesignicons-webfont.ttf" />
+    <Content Include="Template\Hotel\dist\css\icons\material-design-iconic-font\fonts\materialdesignicons-webfont.woff" />
+    <Content Include="Template\Hotel\dist\css\icons\material-design-iconic-font\fonts\materialdesignicons-webfont.woff2" />
+    <Content Include="Template\Hotel\dist\css\icons\themify-icons\fonts\themify.eot" />
+    <Content Include="Template\Hotel\dist\css\icons\themify-icons\fonts\themify.ttf" />
+    <Content Include="Template\Hotel\dist\css\icons\themify-icons\fonts\themify.woff" />
+    <Content Include="Template\Hotel\dist\css\icons\themify-icons\themify-icons.less" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\fonts\weathericons-regular-webfont.eot" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\fonts\weathericons-regular-webfont.ttf" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\fonts\weathericons-regular-webfont.woff" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\fonts\weathericons-regular-webfont.woff2" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\icon-classes\classes-beaufort.less" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\icon-classes\classes-day.less" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\icon-classes\classes-direction.less" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\icon-classes\classes-misc.less" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\icon-classes\classes-moon-aliases.less" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\icon-classes\classes-moon.less" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\icon-classes\classes-neutral.less" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\icon-classes\classes-night.less" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\icon-classes\classes-time.less" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\icon-classes\classes-wind-aliases.less" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\icon-classes\classes-wind-degrees.less" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\icon-classes\classes-wind.less" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\icon-variables\variables-beaufort.less" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\icon-variables\variables-day.less" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\icon-variables\variables-direction.less" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\icon-variables\variables-misc.less" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\icon-variables\variables-moon.less" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\icon-variables\variables-neutral.less" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\icon-variables\variables-night.less" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\icon-variables\variables-time.less" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\icon-variables\variables-wind-names.less" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\mappings\wi-forecast-io.less" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\mappings\wi-owm.less" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\mappings\wi-wmo4680.less" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\mappings\wi-yahoo.less" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\weather-icons-classes.less" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\weather-icons-core.less" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\weather-icons-variables.less" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\weather-icons-wind.less" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\weather-icons-wind.min.less" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\weather-icons.less" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\less\weather-icons.min.less" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\sass\icon-classes\classes-beaufort.scss" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\sass\icon-classes\classes-day.scss" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\sass\icon-classes\classes-direction.scss" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\sass\icon-classes\classes-misc.scss" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\sass\icon-classes\classes-moon-aliases.scss" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\sass\icon-classes\classes-moon.scss" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\sass\icon-classes\classes-neutral.scss" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\sass\icon-classes\classes-night.scss" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\sass\icon-classes\classes-time.scss" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\sass\icon-classes\classes-wind-aliases.scss" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\sass\icon-classes\classes-wind-degrees.scss" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\sass\icon-classes\classes-wind.scss" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\sass\icon-variables\variables-beaufort.scss" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\sass\icon-variables\variables-day.scss" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\sass\icon-variables\variables-direction.scss" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\sass\icon-variables\variables-misc.scss" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\sass\icon-variables\variables-moon.scss" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\sass\icon-variables\variables-neutral.scss" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\sass\icon-variables\variables-night.scss" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\sass\icon-variables\variables-time.scss" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\sass\icon-variables\variables-wind-names.scss" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\sass\mappings\wi-forecast-io.scss" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\sass\mappings\wi-owm.scss" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\sass\mappings\wi-wmo4680.scss" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\sass\mappings\wi-yahoo.scss" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\sass\weather-icons-classes.scss" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\sass\weather-icons-core.scss" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\sass\weather-icons-variables.scss" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\sass\weather-icons-wind.min.scss" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\sass\weather-icons-wind.scss" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\sass\weather-icons.min.scss" />
+    <Content Include="Template\Hotel\dist\css\icons\weather-icons\sass\weather-icons.scss" />
+    <Content Include="Views\Hotel\Index.cshtml" />
+    <Content Include="Views\Hotel\Profile.cshtml" />
+    <Content Include="Views\Hotel\MyPlaces.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1032,6 +1389,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109280422193_BecomeHost.resx">
       <DependentUpon>202109280422193_BecomeHost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109291049422_datatype change of Room.resx">
+      <DependentUpon>202109291049422_datatype change of Room.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109292259287_checking.resx">
+      <DependentUpon>202109292259287_checking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109301027278_AddFile added in HostInfo database.resx">
+      <DependentUpon>202109301027278_AddFile added in HostInfo database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110011609013_checkissue.resx">
+      <DependentUpon>202110011609013_checkissue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110012057379_HotelInfoes-database-created.resx">
+      <DependentUpon>202110012057379_HotelInfoes-database-created.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110012111087_hotelinfodb-added.resx">
+      <DependentUpon>202110012111087_hotelinfodb-added.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

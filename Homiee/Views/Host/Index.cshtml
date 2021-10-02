@@ -1,21 +1,20 @@
-﻿
+﻿@*Host Index*@
 
 @{ 
-
+    ViewBag.Title = "Index";
     Layout = null;
 }
-
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords"
-          content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Nice lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Nice admin lite design, Nice admin lite dashboard bootstrap 5 dashboard template">
+          content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Nice lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Homiee lite design, Homiee lite dashboard bootstrap 5 dashboard template">
     <meta name="description"
-          content="Nice Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
+          content="Homiee Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>Nice Admin Lite Template by WrapPixel</title>
+    <title>Homiee</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/niceadmin-lite/" />
     <link href="~/Template/Host/assets/libs/chartist/dist/chartist.min.css" rel="stylesheet" />
     <link href="~/Template/Host/dist/css/style.min.css" rel="stylesheet" />
@@ -33,9 +32,7 @@
 
     <div id="main-wrapper" data-navbarbg="skin6" data-theme="light" data-layout="vertical" data-sidebartype="full"
          data-boxed-layout="full">
-        <!-- ============================================================== -->
-        <!-- Topbar header - style you can find in pages.scss -->
-        <!-- ============================================================== -->
+        
         <header class="topbar" data-navbarbg="skin6">
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
                 <div class="navbar-header" data-logobg="skin5">
@@ -43,48 +40,38 @@
                     <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)">
                         <i class="ti-menu ti-close"></i>
                     </a>
-                    <!-- ============================================================== -->
-                    <!-- Logo -->
-                    <!-- ============================================================== -->
+                    
                     <div class="navbar-brand">
-                        <a href="index.html" class="logo">
+                        <a href="Index" class="logo">
                             <!-- Logo icon -->
-                            <b class="logo-icon">
-                                <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                                <!-- Dark Logo icon -->
-                                <img src="~/Template/Host/assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
-                                <!-- Light Logo icon -->
-                                <img src="~/Template/Host/assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
-                            </b>
+                            <!--<b class="logo-icon">-->
+                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                            <!-- Dark Logo icon -->
+                            <!--<img src="~/Template/Host/assets/images/logo-icon.png" alt="homepage" class="dark-logo" />-->
+                            <!-- Light Logo icon -->
+                            <!--<img src="~/Template/Host/assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+    </b>-->
                             <!--End Logo icon -->
                             <!-- Logo text -->
                             <span class="logo-text">
                                 <!-- dark Logo text -->
                                 <img src="~/Template/Host/assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+
                                 <!-- Light Logo text -->
-                                <img src="~/Template/Host/assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
+
+                                <img src="~/Template/Host/assets/images/homiee-light.png" class="light-logo" alt="homepage" />
+
                             </span>
                         </a>
                     </div>
-                    <!-- ============================================================== -->
-                    <!-- End Logo -->
-                    <!-- ============================================================== -->
-                    <!-- ============================================================== -->
-                    <!-- Toggle which is visible on mobile only -->
-                    <!-- ============================================================== -->
+                    
 
                 </div>
-                <!-- ============================================================== -->
-                <!-- End Logo -->
-                <!-- ============================================================== -->
+                
                 <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin6">
-                    <!-- ============================================================== -->
-                    <!-- toggle and nav items -->
-                    <!-- ============================================================== -->
+                    
                     <ul class="navbar-nav float-start me-auto">
-                        <!-- ============================================================== -->
-                        <!-- Search -->
-                        <!-- ============================================================== -->
+                        
                         <li class="nav-item search-box">
                             <a class="nav-link waves-effect waves-dark" href="javascript:void(0)">
                                 <div class="d-flex align-items-center">
@@ -144,54 +131,41 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="Index"
                                aria-expanded="false">
                                 <i class="mdi mdi-av-timer"></i>
                                 <span class="hide-menu">Dashboard</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="pages-profile.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="Profile"
                                aria-expanded="false">
                                 <i class="mdi mdi-account-network"></i>
                                 <span class="hide-menu">Profile</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="form-basic.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="AddAPlace"
                                aria-expanded="false">
                                 <i class="mdi mdi-arrange-bring-forward"></i>
-                                <span class="hide-menu">Form Basic</span>
+                                <span class="hide-menu">Add A Place</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="table-basic.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="MyPlaces"
                                aria-expanded="false">
                                 <i class="mdi mdi-border-none"></i>
-                                <span class="hide-menu">Table</span>
+                                <span class="hide-menu">My Places</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="icon-material.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="Reviews"
                                aria-expanded="false">
                                 <i class="mdi mdi-face"></i>
-                                <span class="hide-menu">Icon</span>
+                                <span class="hide-menu">Reviews</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="starter-kit.html"
-                               aria-expanded="false">
-                                <i class="mdi mdi-file"></i>
-                                <span class="hide-menu">Blank</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="error-404.html"
-                               aria-expanded="false">
-                                <i class="mdi mdi-alert-outline"></i>
-                                <span class="hide-menu">404</span>
-                            </a>
-                        </li>
+                    
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -536,8 +510,8 @@
                 </div>
             </div>
             <footer class="footer text-center">
-                All Rights Reserved by Nice admin. Designed and Developed by
-                <a href="https://www.wrappixel.com">WrapPixel</a>.
+                All Rights Reserved by Homiee.
+                
             </footer>
 
         </div>
