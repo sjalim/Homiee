@@ -11,8 +11,17 @@ namespace Homiee.Models
 
         [Key]
         public int ReviewID { get; set; }
+
+        [Required(ErrorMessage = "Reviewer ID required")]
+        [Display(Name = "Reviewer ID")]
         public int ReviewerID { get; set; }
+
+        [Required(ErrorMessage = "Reviewed ID required")]
+        [Display(Name = "Reviewed ID")]
         public int ReviewedID { get; set; }
+
+        [Required(ErrorMessage = "Review Description required")]
+        [Display(Name = "Review Description")]
         public string ReviewDescription { get; set; }
 
         public virtual User User { get; set; }

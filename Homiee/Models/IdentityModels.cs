@@ -35,7 +35,9 @@ namespace Homiee.Models
         public DbSet<Chat> Chats { get; set; }
         public DbSet<Bank> Banks { get; set; }
 
-        public DbSet<HostInfo> HostInfos { get; set; }
+        public DbSet<HostInfo> HostInfoes { get; set; }
+
+        public DbSet<HotelInfo> HotelInfoes { get; set; }
 
         public DbSet<HotelAddress> HotelAddresses { get; set; }
 
@@ -47,5 +49,7 @@ namespace Homiee.Models
         {
             return new ApplicationDbContext();
         }
+
+        /*public System.Data.Entity.DbSet<Homiee.Models.HostingInfo> HostingInfoes { get; set; }*/
     }
 }

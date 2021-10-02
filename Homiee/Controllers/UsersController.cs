@@ -78,6 +78,7 @@ namespace Homiee.Controllers
 
             return View();
         }
+
         [HttpPost]
         public ActionResult SignUp(SigninUser user)
         {

@@ -17,7 +17,7 @@ namespace Homiee.Controllers
         // GET: HostingInfoes
         public ActionResult Index()
         {
-            return View(db.hostinginfo.ToList());
+            return View(db.HostingInfoes.ToList());
         }
 
         // GET: HostingInfoes/Details/5
@@ -27,7 +27,7 @@ namespace Homiee.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HostingInfo hostingInfo = db.hostinginfo.Find(id);
+            HostingInfo hostingInfo = db.HostingInfoes.Find(id);
             if (hostingInfo == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace Homiee.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.hostinginfo.Add(hostingInfo);
+                db.HostingInfoes.Add(hostingInfo);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +65,7 @@ namespace Homiee.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HostingInfo hostingInfo = db.hostinginfo.Find(id);
+            HostingInfo hostingInfo = db.HostingInfoes.Find(id);
             if (hostingInfo == null)
             {
                 return HttpNotFound();
@@ -96,7 +96,7 @@ namespace Homiee.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HostingInfo hostingInfo = db.hostinginfo.Find(id);
+            HostingInfo hostingInfo = db.HostingInfoes.Find(id);
             if (hostingInfo == null)
             {
                 return HttpNotFound();
@@ -109,8 +109,8 @@ namespace Homiee.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            HostingInfo hostingInfo = db.hostinginfo.Find(id);
-            db.hostinginfo.Remove(hostingInfo);
+            HostingInfo hostingInfo = db.HostingInfoes.Find(id);
+            db.HostingInfoes.Remove(hostingInfo);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
