@@ -1,0 +1,130 @@
+﻿@model IEnumerable<Homiee.Models.HostingInfo>
+
+@{
+    ViewBag.Title = "Index";
+    //Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Rooms)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberRooms)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberKitchens)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberWashrooms)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberBalconys)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AdditionalFeaturess)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CountryNames)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StreetNames)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CityNames)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StateNames)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostalCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HostingRules)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MinimumStay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaximumStay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prices)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Offers)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoomsCaption)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rooms)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberRooms)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberKitchens)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberWashrooms)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberBalconys)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdditionalFeaturess)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CountryNames)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StreetNames)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CityNames)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StateNames)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostalCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HostingRules)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MinimumStay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaximumStay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prices)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Offers)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoomsCaption)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.HostingInfoID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.HostingInfoID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.HostingInfoID })
+        </td>
+    </tr>
+}
+
+</table>
