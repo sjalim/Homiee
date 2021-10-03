@@ -1,7 +1,7 @@
-﻿@model Homiee.Models.HostInfo
+﻿@model Homiee.Models.HostPostInfo
 
 @{
-    ViewBag.Title = "Details";
+    //ViewBag.Title = "Details";
     Layout = null;
 }
 
@@ -405,8 +405,8 @@
                     </div>
 
                             <p>
-                                @Html.ActionLink("Edit", "Edit", new { id = Model.HostInfoID }, new { @class = "btn btn-success text-white" }) |
-                                @Html.ActionLink("Back to My Places", "MyPlaces", new { id = Model.HostInfoID }, new { @class = "btn btn-primary text-white" })
+                                @Html.ActionLink("Edit", "Edit", new { id = Model.HostPostInfoID }, new { @class = "btn btn-success text-white" }) |
+                                @Html.ActionLink("Back to My Places", "MyPlaces","/", new { @class = "btn btn-primary text-white" })
                             </p>
                             <!-- ============================================================== -->
                             <!-- End PAge Content -->

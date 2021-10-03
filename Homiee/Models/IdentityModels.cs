@@ -35,7 +35,7 @@ namespace Homiee.Models
         public DbSet<Chat> Chats { get; set; }
         public DbSet<Bank> Banks { get; set; }
 
-        public DbSet<HostInfo> HostInfoes { get; set; }
+        public DbSet<HostPostInfo> HostPostInfoes { get; set; }
 
         public DbSet<HotelInfo> HotelInfoes { get; set; }
 
