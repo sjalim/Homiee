@@ -299,7 +299,6 @@ namespace Homiee.Controllers
                     user.AddressExtension = data["AddressExtension"];
 
 
-
                     Debug.WriteLine("first name=" + user.UserFirstName);
                     Debug.WriteLine("last name=" + user.UserLastName);
 
