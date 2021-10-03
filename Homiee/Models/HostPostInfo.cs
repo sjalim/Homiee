@@ -7,10 +7,10 @@ using System.Web;
 
 namespace Homiee.Models
 {
-    public class HostInfo
+    public class HostPostInfo
     {
         [Key]
-        public int HostInfoID { get; set; }
+        public int HostPostInfoID { get; set; }
 
         [Required(ErrorMessage = "Selecting Room type required")]
         [Display(Name = "Rental Type")]

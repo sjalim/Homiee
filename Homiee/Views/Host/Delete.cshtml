@@ -1,7 +1,7 @@
-﻿@model Homiee.Models.HostInfo
+﻿@model Homiee.Models.HostPostInfo
 
 @{
-    ViewBag.Title = "Delete";
+    //ViewBag.Title = "Delete";
     Layout = null;
 }
 
@@ -406,7 +406,7 @@
 
                             <div class="form-actions no-color">
                                 <input type="submit" value="Delete" class="btn btn-danger text-white" /> |
-                                @Html.ActionLink("Back to My Places", "MyPlaces", new { id = Model.HostInfoID }, new { @class = "btn btn-primary text-white" })
+                                @Html.ActionLink("Back to My Places", "MyPlaces", "/", new { @class = "btn btn-primary text-white" })
                             </div>
                                 }
                             </div>
