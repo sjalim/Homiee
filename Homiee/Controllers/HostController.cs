@@ -27,12 +27,12 @@ namespace Homiee.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HostInfo hostinfo = db.HostInfoes.Find(id);
-            if(hostinfo==null)
+            HostPostInfo hostpostinfo = db.HostPostInfoes.Find(id);
+            if(hostpostinfo==null)
             {
                 return HttpNotFound();
             }
-            return View(hostinfo);
+            return View(hostpostinfo);
         }
 
         [HttpGet]
@@ -43,32 +43,32 @@ namespace Homiee.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddAPlace(HostInfo hostinfo)
+        public ActionResult AddAPlace(HostPostInfo hostpostinfo)
         {
-            HostInfo newHostInfo = new HostInfo();
-            Debug.WriteLine("" + hostinfo.Room + "room");
+            HostPostInfo newHostPostInfo = new HostPostInfo();
+            Debug.WriteLine("" + hostpostinfo.Room + "room");
             if (ModelState.IsValid)
             {
-                newHostInfo.Room = hostinfo.Room;
-                newHostInfo.NumRooms = hostinfo.NumRooms;
-                newHostInfo.NumKitchens = hostinfo.NumKitchens;
-                newHostInfo.NumWash = hostinfo.NumWash;
-                newHostInfo.NumBalconys = hostinfo.NumBalconys;
-                newHostInfo.AdditionalFeatures = hostinfo.AdditionalFeatures;
-                newHostInfo.CountryName = hostinfo.CountryName;
-                newHostInfo.StreetName = hostinfo.StreetName;
-                newHostInfo.CityName = hostinfo.CityName;
-                newHostInfo.StateName = hostinfo.StateName;
-                newHostInfo.PostCode = hostinfo.PostCode;
-                newHostInfo.HostRules = hostinfo.HostRules;
-                newHostInfo.MinStay = hostinfo.MinStay;
-                newHostInfo.MaxStay = hostinfo.MaxStay;
-                newHostInfo.Price = hostinfo.Price;
-                newHostInfo.Offer = hostinfo.Offer;
-                newHostInfo.RoomCaption = hostinfo.RoomCaption;
-                newHostInfo.AddFile = hostinfo.AddFile;
+                newHostPostInfo.Room = hostpostinfo.Room;
+                newHostPostInfo.NumRooms = hostpostinfo.NumRooms;
+                newHostPostInfo.NumKitchens = hostpostinfo.NumKitchens;
+                newHostPostInfo.NumWash = hostpostinfo.NumWash;
+                newHostPostInfo.NumBalconys = hostpostinfo.NumBalconys;
+                newHostPostInfo.AdditionalFeatures = hostpostinfo.AdditionalFeatures;
+                newHostPostInfo.CountryName = hostpostinfo.CountryName;
+                newHostPostInfo.StreetName = hostpostinfo.StreetName;
+                newHostPostInfo.CityName = hostpostinfo.CityName;
+                newHostPostInfo.StateName = hostpostinfo.StateName;
+                newHostPostInfo.PostCode = hostpostinfo.PostCode;
+                newHostPostInfo.HostRules = hostpostinfo.HostRules;
+                newHostPostInfo.MinStay = hostpostinfo.MinStay;
+                newHostPostInfo.MaxStay = hostpostinfo.MaxStay;
+                newHostPostInfo.Price = hostpostinfo.Price;
+                newHostPostInfo.Offer = hostpostinfo.Offer;
+                newHostPostInfo.RoomCaption = hostpostinfo.RoomCaption;
+                newHostPostInfo.AddFile = hostpostinfo.AddFile;
 
-                db.HostInfoes.Add(newHostInfo);
+                db.HostPostInfoes.Add(newHostPostInfo);
                 db.SaveChanges();
                 return RedirectToAction("Index","Host");
             }
@@ -91,8 +91,8 @@ namespace Homiee.Controllers
             obj.MyPlacesModelObject = new List<HostInfo>();
             return View(obj);*/
             //return View();
-            List<HostInfo> hostinfoes = db.HostInfoes.ToList<HostInfo>();
-            return View(hostinfoes);
+            List<HostPostInfo> hostpostinfoes = db.HostPostInfoes.ToList<HostPostInfo>();
+            return View(hostpostinfoes);
         }
 
         public ActionResult Reviews()
@@ -107,25 +107,25 @@ namespace Homiee.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HostInfo hostinfo = db.HostInfoes.Find(id);
-            if (hostinfo == null)
+            HostPostInfo hostpostinfo = db.HostPostInfoes.Find(id);
+            if (hostpostinfo == null)
             {
                 return HttpNotFound();
             }
-            return View(hostinfo);
+            return View(hostpostinfo);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "HostInfoID,Room,NumRooms,NumKitchens,NumWash,NumBalconys,AdditionalFeatures,CountryName,StreetName,CityName,StateName,PostCode,HostRules,MinStay,MaxStay,Price,Offer,RoomCaption,AddFile")] HostInfo hostinfo)
+        public ActionResult Edit([Bind(Include = "HostPostInfoID,Room,NumRooms,NumKitchens,NumWash,NumBalconys,AdditionalFeatures,CountryName,StreetName,CityName,StateName,PostCode,HostRules,MinStay,MaxStay,Price,Offer,RoomCaption,AddFile")] HostPostInfo hostpostinfo)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(hostinfo).State = EntityState.Modified;
+                db.Entry(hostpostinfo).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("MyPlaces");
             }
-            return View(hostinfo);
+            return View(hostpostinfo);
         }
 
         [HttpPost]
@@ -164,20 +164,20 @@ namespace Homiee.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HostInfo hostinfo = db.HostInfoes.Find(id);
-            if (hostinfo == null)
+            HostPostInfo hostpostinfo = db.HostPostInfoes.Find(id);
+            if (hostpostinfo == null)
             {
                 return HttpNotFound();
             }
-            return View(hostinfo);
+            return View(hostpostinfo);
         }
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            HostInfo hostinfo = db.HostInfoes.Find(id);
-            db.HostInfoes.Remove(hostinfo);
+            HostPostInfo hostpostinfo = db.HostPostInfoes.Find(id);
+            db.HostPostInfoes.Remove(hostpostinfo);
             db.SaveChanges();
             return RedirectToAction("MyPlaces");
         }

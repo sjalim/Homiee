@@ -228,13 +228,17 @@
     <Compile Include="Migrations\202110012111087_hotelinfodb-added.Designer.cs">
       <DependentUpon>202110012111087_hotelinfodb-added.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110031101410_hostinfomodelchange.cs" />
+    <Compile Include="Migrations\202110031101410_hostinfomodelchange.Designer.cs">
+      <DependentUpon>202110031101410_hostinfomodelchange.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bank.cs" />
     <Compile Include="Models\Chat.cs" />
     <Compile Include="Models\GuestsToHostsReview.cs" />
     <Compile Include="Models\GuestsToHotelsReview.cs" />
-    <Compile Include="Models\HostInfo.cs" />
+    <Compile Include="Models\HostPostInfo.cs" />
     <Compile Include="Models\HostsToGuestsReview.cs" />
     <Compile Include="Models\Hotel.cs" />
     <Compile Include="Models\HotelAddress.cs" />
@@ -1213,7 +1217,6 @@
     <Content Include="Template\Host\dist\css\icons\weather-icons\sass\weather-icons-wind.scss" />
     <Content Include="Template\Host\dist\css\icons\weather-icons\sass\weather-icons.min.scss" />
     <Content Include="Template\Host\dist\css\icons\weather-icons\sass\weather-icons.scss" />
-
     <Content Include="Views\Home\Apartment.cshtml" />
     <Content Include="Views\Home\Office.cshtml" />
     <Content Include="Views\Home\Hotel.cshtml" />
@@ -1231,7 +1234,6 @@
     <Content Include="Template\SecondaryNav\fonts\icomoon\fonts\icomoon.ttf" />
     <Content Include="Template\SecondaryNav\fonts\icomoon\fonts\icomoon.woff" />
     <Content Include="Template\SecondaryNav\fonts\icomoon\selection.json" />
-
     <Content Include="Views\Host\AddAPlace.cshtml" />
     <Content Include="Views\Host\Profile.cshtml" />
     <Content Include="Views\Host\MyPlaces.cshtml" />
@@ -1350,7 +1352,10 @@
     <Content Include="Views\Hotel\Index.cshtml" />
     <Content Include="Views\Hotel\Profile.cshtml" />
     <Content Include="Views\Hotel\MyPlaces.cshtml" />
-
+    <Content Include="Views\Hotel\Reviews.cshtml" />
+    <Content Include="Views\Hotel\Details.cshtml" />
+    <Content Include="Views\Hotel\Delete.cshtml" />
+    <Content Include="Views\Hotel\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1407,6 +1412,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110012111087_hotelinfodb-added.resx">
       <DependentUpon>202110012111087_hotelinfodb-added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110031101410_hostinfomodelchange.resx">
+      <DependentUpon>202110031101410_hostinfomodelchange.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
