@@ -296,9 +296,13 @@
     <Content Include="Images\hostBG.jpg" />
     <Content Include="Images\hotel.svg" />
     <Content Include="Images\hotelBG.jpg" />
+    <Content Include="Images\info.svg" />
     <Content Include="Images\menu.png" />
     <Content Include="Images\office.svg" />
     <Content Include="Images\party.svg" />
+    <Content Include="Images\rating.svg" />
+    <Content Include="Images\review.svg" />
+    <Content Include="Images\transaction.svg" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\jquery-3.3.1.min.js" />
     <Content Include="js\jquery.countup.js" />
@@ -867,6 +871,28 @@
     <Content Include="Template\Hotel\dist\js\waves.js" />
     <Content Include="Template\index.html" />
     <Content Include="Template\listing.html" />
+    <Content Include="Template\Reviews\css\theme-1.css" />
+    <Content Include="Template\Reviews\images\blog-post-thumb-2.jpg" />
+    <Content Include="Template\SecodaryNavProfle\css\bootstrap.min.css" />
+    <Content Include="Template\SecodaryNavProfle\css\bootstrap\bootstrap-grid.css" />
+    <Content Include="Template\SecodaryNavProfle\css\owl.carousel.min.css" />
+    <Content Include="Template\SecodaryNavProfle\css\style.css" />
+    <Content Include="Template\SecodaryNavProfle\fonts\icomoon\demo-files\demo.css" />
+    <Content Include="Template\SecodaryNavProfle\fonts\icomoon\demo-files\demo.js" />
+    <Content Include="Template\SecodaryNavProfle\fonts\icomoon\demo.html" />
+    <Content Include="Template\SecodaryNavProfle\fonts\icomoon\fonts\icomoon.svg" />
+    <Content Include="Template\SecodaryNavProfle\fonts\icomoon\Read Me.txt" />
+    <Content Include="Template\SecodaryNavProfle\fonts\icomoon\style.css" />
+    <Content Include="Template\SecodaryNavProfle\images\img_1.jpg" />
+    <Content Include="Template\SecodaryNavProfle\images\person_1.jpg" />
+    <Content Include="Template\SecodaryNavProfle\images\person_2.jpg" />
+    <Content Include="Template\SecodaryNavProfle\images\person_3.jpg" />
+    <Content Include="Template\SecodaryNavProfle\images\person_4.jpg" />
+    <Content Include="Template\SecodaryNavProfle\js\bootstrap.min.js" />
+    <Content Include="Template\SecodaryNavProfle\js\jquery-3.3.1.min.js" />
+    <Content Include="Template\SecodaryNavProfle\js\main.js" />
+    <Content Include="Template\SecodaryNavProfle\js\owl.carousel.min.js" />
+    <Content Include="Template\SecodaryNavProfle\js\popper.min.js" />
     <Content Include="Template\SecondaryNav\css\bootstrap.min.css" />
     <Content Include="Template\SecondaryNav\css\bootstrap\mixins\_box-shadow.css" />
     <Content Include="Template\SecondaryNav\css\bootstrap\_media.css" />
@@ -895,6 +921,8 @@
     <Content Include="Template\SidePanel\js\jquery.min.js" />
     <Content Include="Template\SidePanel\js\main.js" />
     <Content Include="Template\SidePanel\js\popper.js" />
+    <Content Include="Template\SimpleGauge\simpleGauge.css" />
+    <Content Include="Template\SimpleGauge\simpleGauge.js" />
     <Content Include="Template\vendor\bootstrap\css\bootstrap.min.css" />
     <Content Include="Template\vendor\bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="Template\vendor\bootstrap\js\bootstrap.min.js" />
@@ -1352,10 +1380,21 @@
     <Content Include="Views\Hotel\Index.cshtml" />
     <Content Include="Views\Hotel\Profile.cshtml" />
     <Content Include="Views\Hotel\MyPlaces.cshtml" />
+
+    <Content Include="Template\SecodaryNavProfle\css\.DS_Store" />
+    <Content Include="Template\SecodaryNavProfle\css\bootstrap.min.css.map" />
+    <Content Include="Template\SecodaryNavProfle\images\.DS_Store" />
+    <Content Include="Template\SecodaryNavProfle\fonts\.DS_Store" />
+    <Content Include="Template\SecodaryNavProfle\fonts\icomoon\fonts\icomoon.eot" />
+    <Content Include="Template\SecodaryNavProfle\fonts\icomoon\fonts\icomoon.ttf" />
+    <Content Include="Template\SecodaryNavProfle\fonts\icomoon\fonts\icomoon.woff" />
+    <Content Include="Template\SecodaryNavProfle\fonts\icomoon\selection.json" />
+
     <Content Include="Views\Hotel\Reviews.cshtml" />
     <Content Include="Views\Hotel\Details.cshtml" />
     <Content Include="Views\Hotel\Delete.cshtml" />
     <Content Include="Views\Hotel\Edit.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
