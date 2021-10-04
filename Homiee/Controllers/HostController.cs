@@ -307,10 +307,16 @@ namespace Homiee.Controllers
 
             AllPostViewModel viewModel = new AllPostViewModel();
             var userId = Convert.ToInt32(Session["UserID"]);
-            //viewModel.hostPostInfos = (List<HostPostInfo>) db.HostPostInfoes.Select(t => t.User.UserID == userId).ToList();
-            //viewModel.hostOfficePosts = (List<HostOfficePost>) db.HostOfficePosts.Select(t => t.User.UserID == userId).ToList();
+            viewModel.hostPostInfos = (List<HostPostInfo>)db.HostPostInfoes.Select(t => t).Where(a => a.User.UserID == userId).ToList();
+            viewModel.hostOfficePosts = (List<HostOfficePost>)db.HostOfficePosts.Select(t => t).Where(a => a.User.UserID == userId).ToList();
 
-           
+            Debug.WriteLine("User ID :" + userId);
+
+            foreach(var x in viewModel.hostPostInfos)
+            {
+                Debug.WriteLine(x.Title);
+            }
+
 
             return View(viewModel);
         }

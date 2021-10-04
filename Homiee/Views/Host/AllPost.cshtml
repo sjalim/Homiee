@@ -1,9 +1,10 @@
-﻿@{
+﻿@model Homiee.Models.AllPostViewModel
+
+@{
 
     Layout = null;
 
-    //var hostPostInfos = ViewData["HostPostInfos"];
-    //IEnumerable<HostOf> hostOfficePosts = ViewData["HostOfficePosts"];
+
 }
 <head>
     <meta charset="utf-8">
@@ -40,11 +41,13 @@
         .section-allpost {
             margin-left: 300px;
         }
+
         .post-img {
             width: 200px;
             display: inline-block;
         }
-        .post-content{
+
+        .post-content {
             display: inline-block;
         }
     </style>
@@ -62,23 +65,35 @@
         <h4>Post</h4>
 
         <section class="section-allpost">
-           @for(int i = 0;i<6;i++)
+            @foreach (var x in Model.hostPostInfos.ToList())
             {
                 <div class="card w-75">
                     <div class="card-body">
-                        
                         <div class="post-img">
-                            <a href="#"><img src="~/Template/assets/images/listing-01.jpg" alt=""></a>
-
+                            <a href="#"><img src=@Url.Content(x.AddFile) alt=""></a>
                         </div>
                         <div class="post-content">
-                            <h4>Title</h4>
-                            <p>Price</p>
-                            <span>Street Name,</span><span>City Name</span><span>Country</span>
-                            
+                            <h4>@x.Title</h4>
+                            <p>@x.Price</p>
+                            <span>@x.StreetName,</span><span>@x.CityName,</span><span>@x.CountryName.</span>
                         </div>
                     </div>
+                </div>
+            }
 
+            @foreach (var x in Model.hostOfficePosts.ToList())
+            {
+                <div class="card w-75">
+                    <div class="card-body">
+                        <div class="post-img">
+                            <a href="#"><img src=@Url.Content(x.AddFile) alt=""></a>
+                        </div>
+                        <div class="post-content">
+                            <h4>@x.Title</h4>
+                            <p>@x.Price</p>
+                            @*<span>@x.StreetName,</span><span>@x.CityName,</span><span>@x.CountryName.</span>*@
+                        </div>
+                    </div>
                 </div>
             }
         </section>
