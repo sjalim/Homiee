@@ -39,11 +39,10 @@ namespace Homiee.Models
 
         public DbSet<HotelInfo> HotelInfoes { get; set; }
 
-        public DbSet<ParticularHostRoomReview> ParticularHostRoomReviews { get; set; }
-
         public DbSet<HotelAddress> HotelAddresses { get; set; }
 
         public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<HostOfficePost> HostOfficePosts { get; set; }
 
         public ApplicationDbContext()
             : base("DBConnection", throwIfV1Schema: false)

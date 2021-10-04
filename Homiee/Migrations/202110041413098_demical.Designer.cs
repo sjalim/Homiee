@@ -7,13 +7,13 @@ namespace Homiee.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class particularreviewadded : IMigrationMetadata
+    public sealed partial class demical : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(particularreviewadded));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(demical));
         
         string IMigrationMetadata.Id
         {
-            get { return "202110031621258_particularreviewadded"; }
+            get { return "202110041413098_demical"; }
         }
         
         string IMigrationMetadata.Source

@@ -1,0 +1,167 @@
+﻿@{
+
+
+    Layout = null;
+}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords"
+          content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Nice lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Nice admin lite design, Nice admin lite dashboard bootstrap 5 dashboard template">
+    <meta name="description"
+          content="Nice Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Homiee</title>
+    <link rel="canonical" href="https://www.wrappixel.com/templates/niceadmin-lite/" />
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Template/Host/assets/images/favicon.png">
+    <!-- Custom CSS -->
+    <link href="~/Template/Host/dist/css/style.min.css" rel="stylesheet" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <style>
+        .section-post {
+            margin-left: 250px;
+        }
+
+        .sub-section {
+            display: inline-block;
+        }
+
+        .text-box {
+            border: 2px solid black;
+        }
+
+        body {
+            font-size: 20px;
+            color: black;
+        }
+
+        .add-more-btn {
+            width: 190px;
+            float: left;
+            margin-left: 1100px;
+            margin-top: -40px;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div id="main-wrapper" data-navbarbg="skin6" data-theme="light" data-layout="vertical" data-sidebartype="full"
+         data-boxed-layout="full">
+
+        @Html.Partial("_HostSideBar")
+        <section class="section-post">
+            <div class="container ">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card card-body">
+                            <h4 class="card-title">General Info</h4>
+                            <h5 class="card-subtitle"><input class="form-control" type="text" placeholder="Add general informations about your place" readonly></h5>
+
+
+                            @using (Html.BeginForm("OfficePostData", "Host", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                        <div id="office-form">
+
+                            @Html.ValidationSummary()
+
+
+                            <div class="form-group">
+                                <label for="Title"><span class="help">Title</span></label>
+                                @Html.TextBox("Title", "", new { type = "number", @class = "form-control valid text-box", @data_val = "true", @data_val_required = "Title Field is Invalid text-box" })
+                            </div>
+
+                            <div class="form-group">
+                                <label for="SpaceSize"><span class="help">Space Size(Sq feet)</span></label>
+                                @Html.TextBox("SpaceSize", "", new { type = "number", @class = "form-control valid text-box", @data_val = "true", @data_val_required = "Space Size Field is Invalid text-box" })
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label for="Price"><span class="help">Price</span></label>
+                                @Html.TextBox("Price", "", new { type = "number", @class = "form-control valid text-box", @data_val = "true", @data_val_required = "Price Field is Invalid text-box" })
+
+
+                            </div>
+                            <div class="form-control">
+                                <label for="PaymentType">Payment Type</label>
+
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="valid form-check-input" name="PaymentType" id="PaymentType" data_val="true" , data_val_required="Price Field is Invalid text-box" value=0 />
+
+                                    <label class="form-check-label" for="inlineCheckbox1">Per day</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="valid form-check-input" name="PaymentType" id="PaymentType" data_val="true" , data_val_required="Price Field is Invalid text-box" value=1 />
+
+                                    <label class="form-check-label" for="PaymentType">Per month</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="Offer"><span class="help">Offer</span></label>
+                                @Html.TextBox("Offer", "", new { type = "text", @class = "form-control valid text-box", @data_val = "true", @data_val_required = "Offer Field is Invalid text-box" })
+                            </div>
+                            <h4 class="card-title">Posts & Caption</h4>
+                            <h5 class="card-subtitle"><input class="form-control" type="text" placeholder="Add some images of your property and write a caption" readonly></h5>
+
+                            <div id="image-section">
+                                <div class="form-group">
+                                    <label>Upload property images</label>
+                                    <input type="file" class="form-control text-box" multiple name="AddFile" id="AddFile">
+                                </div>
+                                <div class="form-group">
+                                    <label for="RoomCaption"><span class="help">Room Caption</span></label>
+                                    @Html.TextBox("RoomCaption", "", new { type = "text", @class = "form-control valid text-box", @data_val = "true", @data_val_required = "Room Caption Field is Invalid text-box" })
+                                    <span class="help-block">
+                                        <small>
+                                            Thanks for joinig with us. Click on Submit button to proceed.
+                                        </small>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Submit" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </div>
+
+                            }
+                        </div>
+                    </div>
+
+                    @*<button class="add-more-btn" onclick="AddImage()">Add more image</button>*@
+                </div>
+            </div>
+
+        </section>
+
+        @Html.Partial("_HostFooter")
+
+    </div>
+    <script src="~/Template/Host/assets/libs/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="~/Template/Host/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="~/Template/Host/assets/extra-libs/sparkline/sparkline.js"></script>
+
+    <!--Wave Effects -->
+    <script src="~/Template/Host/dist/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="~/Template/Host/dist/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="~/Template/Host/dist/js/custom.min.js"></script>
+</body>

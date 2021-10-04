@@ -7,13 +7,13 @@ namespace Homiee.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class datatypechange : IMigrationMetadata
+    public sealed partial class titleAdd : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(datatypechange));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(titleAdd));
         
         string IMigrationMetadata.Id
         {
-            get { return "202110031316406_datatypechange"; }
+            get { return "202110041714297_titleAdd"; }
         }
         
         string IMigrationMetadata.Source
