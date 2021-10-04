@@ -1,4 +1,5 @@
 ﻿@{
+
     Layout = null;
 }
 <head>
@@ -23,6 +24,27 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!-- Bootstrap core CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link href="~/Template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="~/Template/assets/css/templatemo-plot-listing.css" rel="stylesheet" />
+    <link href="~/Template/assets/css/owl.css" rel="stylesheet" />
+    <link href="~/Template/assets/css/fontawesome.css" rel="stylesheet" />
+    <link href="~/Template/assets/css/animated.css" rel="stylesheet" />
+    <style>
+        .section-allpost {
+            margin-left: 300px;
+        }
+        .post-img {
+            width: 200px;
+            display: inline-block;
+        }
+        .post-content{
+            display: inline-block;
+        }
+    </style>
 </head>
 
 
@@ -34,7 +56,28 @@
         @Html.Partial("_HostSideBar")
 
 
-        <h4>Reviews</h4>
+        <h4>Post</h4>
+
+        <section class="section-allpost">
+           @for(int i =0;i<6;i++)
+            {
+                <div class="card w-75">
+                    <div class="card-body">
+                        
+                        <div class="post-img">
+                            <a href="#"><img src="~/Template/assets/images/listing-01.jpg" alt=""></a>
+
+                        </div>
+                        <div class="post-content">
+
+                            <p>Content</p>
+                        </div>
+                    </div>
+
+                </div>
+            }
+        </section>
+
         @Html.Partial("_HostFooter")
 
     </div>
@@ -51,5 +94,5 @@
     <!--Menu sidebar -->
     <script src="~/Template/Host/dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
-    <script src="~/Template/Host/dist/js/custom.min.js"></script>
+
 </body>

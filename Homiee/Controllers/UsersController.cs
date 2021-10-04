@@ -27,7 +27,7 @@ namespace Homiee.Controllers
         // GET: Users
         public ActionResult Index()
         {
-            return View(db.Users.ToList());
+            return View("Index","Home");
         }
 
 
@@ -169,7 +169,8 @@ namespace Homiee.Controllers
                             {
 
                                 Session["UserType"] = HOST_CATEGORY;
-                                return RedirectToAction("Index", "Host");
+                                Debug.WriteLine("user passed data:" + logedInUser.UserEmail);
+                                return RedirectToAction("Init", "Host", logedInUser );
                             }
                             else
                             {
@@ -339,7 +340,6 @@ namespace Homiee.Controllers
             Debug.WriteLine("Extension:" + extension);
             if (extension.ToLower() == ".jpg" || extension.ToLower() == ".jpeg" || extension.ToLower() == ".png")
             {
-
                 Debug.WriteLine("at jpg");
                 if (UserProfilePicture.ContentLength <= 4194304)
                 {

@@ -236,12 +236,25 @@
     <Compile Include="Migrations\202110031137506_transaction-table.Designer.cs">
       <DependentUpon>202110031137506_transaction-table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110041100391_HostPosts.cs" />
+    <Compile Include="Migrations\202110041100391_HostPosts.Designer.cs">
+      <DependentUpon>202110041100391_HostPosts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110041413098_demical.cs" />
+    <Compile Include="Migrations\202110041413098_demical.Designer.cs">
+      <DependentUpon>202110041413098_demical.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110041442430_update-.cs" />
+    <Compile Include="Migrations\202110041442430_update-.Designer.cs">
+      <DependentUpon>202110041442430_update-.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bank.cs" />
     <Compile Include="Models\Chat.cs" />
     <Compile Include="Models\GuestsToHostsReview.cs" />
     <Compile Include="Models\GuestsToHotelsReview.cs" />
+    <Compile Include="Models\HostOfficePost.cs" />
     <Compile Include="Models\HostPostInfo.cs" />
     <Compile Include="Models\HostsToGuestsReview.cs" />
     <Compile Include="Models\Hotel.cs" />
@@ -1273,7 +1286,6 @@
     <Content Include="Views\Host\Details.cshtml" />
     <Content Include="Views\Host\Delete.cshtml" />
     <Content Include="Views\Host\Edit.cshtml" />
-    <Content Include="Views\Host\Reviews.cshtml" />
     <Content Include="Template\Hotel\assets\.DS_Store" />
     <Content Include="Template\Hotel\assets\libs\bootstrap\dist\.DS_Store" />
     <Content Include="Template\Hotel\assets\libs\bootstrap\dist\css\bootstrap-grid.css.map" />
@@ -1398,6 +1410,16 @@
     <Content Include="Views\Hotel\Delete.cshtml" />
     <Content Include="Views\Hotel\Edit.cshtml" />
     <Content Include="Views\Home\ApartmentDetails.cshtml" />
+    <Content Include="Views\Host\Reviews.cshtml" />
+    <Content Include="Views\Host\AllPost.cshtml" />
+    <Content Include="Views\Host\GuestPost.cshtml" />
+    <Content Include="Views\Shared\_HostTopBar.cshtml" />
+    <Content Include="Views\Shared\_HostSideBar.cshtml" />
+    <Content Include="Views\Host\Transaction.cshtml" />
+    <Content Include="Views\Host\Notification.cshtml" />
+    <Content Include="Views\Shared\_HostFooter.cshtml" />
+    <Content Include="Views\Host\ApartmentPost.cshtml" />
+    <Content Include="Views\Host\OfficePost.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1460,6 +1482,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110031137506_transaction-table.resx">
       <DependentUpon>202110031137506_transaction-table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110041100391_HostPosts.resx">
+      <DependentUpon>202110041100391_HostPosts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110041413098_demical.resx">
+      <DependentUpon>202110041413098_demical.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110041442430_update-.resx">
+      <DependentUpon>202110041442430_update-.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

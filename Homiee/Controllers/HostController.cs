@@ -3,8 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -15,12 +17,28 @@ namespace Homiee.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         public static int HOST_CATEGORY = 1;
-        public ActionResult Index()
+
+        User user;
+        public ActionResult Init(User user)
         {
-            return View();
+            if (Session["UserId"] != null)
+            {
+                this.user = user;
+                Debug.WriteLine("user passed data:" + user.UserEmail);
+                return RedirectToAction("Index", "Host");
+            }
+            return RedirectToAction("Index", "Home");
         }
 
-        
+        public ActionResult Index()
+        {
+            if (Session["UserId"] != null)
+            {
+
+                return View();
+            }
+            return RedirectToAction("Index", "Home");
+        }
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -28,7 +46,7 @@ namespace Homiee.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             HostPostInfo hostpostinfo = db.HostPostInfoes.Find(id);
-            if(hostpostinfo==null)
+            if (hostpostinfo == null)
             {
                 return HttpNotFound();
             }
@@ -45,6 +63,8 @@ namespace Homiee.Controllers
         [HttpPost]
         public ActionResult AddAPlace(HostPostInfo hostpostinfo)
         {
+
+
             HostPostInfo newHostPostInfo = new HostPostInfo();
             Debug.WriteLine("" + hostpostinfo.Room + "room");
             if (ModelState.IsValid)
@@ -67,18 +87,229 @@ namespace Homiee.Controllers
                 newHostPostInfo.Offer = hostpostinfo.Offer;
                 newHostPostInfo.RoomCaption = hostpostinfo.RoomCaption;
                 newHostPostInfo.AddFile = hostpostinfo.AddFile;
+                newHostPostInfo.User = this.user;
 
                 db.HostPostInfoes.Add(newHostPostInfo);
                 db.SaveChanges();
-                return RedirectToAction("Index","Host");
+                return RedirectToAction("Index", "Host");
             }
 
             return View();
-            /*db.HostInfoes.Add(hostinfo);
-            db.SaveChanges();
-            return RedirectToAction("Index", "Host");*/
+
 
         }
+
+        public ActionResult GuestPost()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult GuestPostData(FormCollection data, HttpPostedFileBase AddFile)
+        {
+
+
+            var userId = Convert.ToInt32(Session["UserID"]);
+            User user = db.Users.Where(a => a.UserID == userId).FirstOrDefault();
+            HostPostInfo newHostPostInfo = new HostPostInfo();
+            if (data != null)
+            {
+                if (ModelState.IsValid)
+                {
+
+                    newHostPostInfo.Room = 0;
+                    newHostPostInfo.NumRooms = Convert.ToInt32(data["NumRooms"]);
+                    newHostPostInfo.NumKitchens = Convert.ToInt32(data["NumKitchens"]);
+                    newHostPostInfo.NumWash = Convert.ToInt32(data["NumWash"]);
+                    newHostPostInfo.NumBalconys = Convert.ToInt32(data["NumBalconys"]);
+                    newHostPostInfo.AdditionalFeatures = data["AdditionalFeatures"];
+                    newHostPostInfo.CountryName = data["CountryName"];
+                    newHostPostInfo.StreetName = data["StreetName"];
+                    newHostPostInfo.StateName = data["StateName"];
+                    newHostPostInfo.CityName = data["CityName"];
+                    newHostPostInfo.PostCode = Convert.ToInt32(data["PostCode"]);
+                    newHostPostInfo.HostRules = data["HostRules"];
+                    newHostPostInfo.MinStay = Convert.ToInt32(data["MinStay"]);
+                    newHostPostInfo.MaxStay = Convert.ToInt32(data["MaxStay"]);
+                    newHostPostInfo.Price = Convert.ToDecimal(data["Price"]);
+                    newHostPostInfo.PaymentType = Convert.ToInt32(data["PaymentType"]);
+                    newHostPostInfo.Offer = data["Offer"];
+                    newHostPostInfo.RoomCaption = data["RoomCaption"];
+                    newHostPostInfo.User = user;
+
+                    string extension = Path.GetExtension(AddFile.FileName);
+
+                    string fileName = DateTime.Now.ToString("yymmssfff") + "guestPost" + extension;
+
+                    string path = Path.Combine(Server.MapPath("~/Images/Host/Post/Guest/"), fileName);
+
+
+                    Debug.WriteLine("Extension:" + extension);
+                    if (extension.ToLower() == ".jpg" || extension.ToLower() == ".jpeg" || extension.ToLower() == ".png")
+                    {
+                        Debug.WriteLine("at jpg");
+                        if (AddFile.ContentLength <= 4194304)
+                        {
+
+                            Debug.WriteLine("at saveas");
+                            newHostPostInfo.AddFile = "~/Images/Host/Post/Guest/" + fileName;
+                            AddFile.SaveAs(path);
+
+                        }
+                    }
+
+                    db.HostPostInfoes.Add(newHostPostInfo);
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+                    {
+                        Exception raise = dbEx;
+                        foreach (var validationErrors in dbEx.EntityValidationErrors)
+                        {
+                            foreach (var validationError in validationErrors.ValidationErrors)
+                            {
+                                string message = string.Format("{0}:{1}",
+                                    validationErrors.Entry.Entity.ToString(),
+                                    validationError.ErrorMessage);
+                                raise = new InvalidOperationException(message, raise);
+                            }
+                        }
+                        throw raise;
+                    }
+                   
+                }
+            }
+            return RedirectToAction("Index");
+        }
+        public ActionResult ApartmentPost()
+        {
+            return View();
+        }
+        public ActionResult ApartmentPostData(FormCollection data, HttpPostedFileBase AddFile)
+        {
+
+            HostPostInfo newHostPostInfo = new HostPostInfo();
+            if (data != null)
+            {
+                if (ModelState.IsValid)
+                {
+
+                    newHostPostInfo.Room = 1;
+                    newHostPostInfo.NumRooms = Convert.ToInt32(data["NumRooms"]);
+                    newHostPostInfo.NumKitchens = Convert.ToInt32(data["NumKitchens"]);
+                    newHostPostInfo.NumWash = Convert.ToInt32(data["NumWash"]);
+                    newHostPostInfo.NumBalconys = Convert.ToInt32(data["NumBalconys"]);
+                    newHostPostInfo.AdditionalFeatures = data["AdditionalFeatures"];
+                    newHostPostInfo.CountryName = data["CountryName"];
+                    newHostPostInfo.StreetName = data["StreetName"];
+                    newHostPostInfo.StateName = data["StateName"];
+                    newHostPostInfo.CityName = data["CityName"];
+                    newHostPostInfo.PostCode = Convert.ToInt32(data["PostCode"]);
+                    newHostPostInfo.HostRules = data["HostRules"];
+                    newHostPostInfo.MinStay = Convert.ToInt32(data["MinStay"]);
+                    newHostPostInfo.MaxStay = Convert.ToInt32(data["MaxStay"]);
+                    newHostPostInfo.Price = Convert.ToInt32(data["Price"]);
+                    newHostPostInfo.PaymentType = Convert.ToInt32(data["PaymentType"]);
+                    newHostPostInfo.Offer = data["Offer"];
+                    newHostPostInfo.RoomCaption = data["RoomCaption"];
+                    newHostPostInfo.User = this.user;
+                    string extension = Path.GetExtension(AddFile.FileName);
+
+                    string fileName = DateTime.Now.ToString("yymmssfff") + "apartmentPost" + extension;
+
+                    string path = Path.Combine(Server.MapPath("~/Images/Host/Post/Apartment/"), fileName);
+
+
+                    Debug.WriteLine("Extension:" + extension);
+                    if (extension.ToLower() == ".jpg" || extension.ToLower() == ".jpeg" || extension.ToLower() == ".png")
+                    {
+                        Debug.WriteLine("at jpg");
+                        if (AddFile.ContentLength <= 4194304)
+                        {
+
+                            Debug.WriteLine("at saveas");
+                            newHostPostInfo.AddFile = "~/Images/Host/Post/Apartment/" + fileName;
+                            AddFile.SaveAs(path);
+
+                        }
+                    }
+                    ModelState.Clear();
+                    db.HostPostInfoes.Add(newHostPostInfo);
+                    db.SaveChanges();
+                }
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult OfficePost()
+        {
+            return View();
+        }
+
+        public ActionResult OfficePostData(FormCollection data, HttpPostedFileBase AddFile)
+        {
+
+            HostOfficePost hostOfficePost = new HostOfficePost();
+            if (data != null)
+            {
+                if (ModelState.IsValid)
+                {
+                    hostOfficePost.SpaceSize = Convert.ToDouble(data["SpaceSize"]);
+                    hostOfficePost.Price = Convert.ToInt32(data["Price"]);
+                    hostOfficePost.PaymentType = Convert.ToInt32(data["PaymentType"]);
+                    hostOfficePost.Offer = data["Offer"];
+                    hostOfficePost.RoomCaption = data["RoomCaption"];
+                    hostOfficePost.User = this.user;
+        
+
+                    string extension = Path.GetExtension(AddFile.FileName);
+                    string fileName = DateTime.Now.ToString("yymmssfff") + "officePost" + extension;
+
+                    string path = Path.Combine(Server.MapPath("~/Images/Host/Post/Office/"), fileName);
+
+
+                    Debug.WriteLine("Extension:" + extension);
+                    if (extension.ToLower() == ".jpg" || extension.ToLower() == ".jpeg" || extension.ToLower() == ".png")
+                    {
+                        Debug.WriteLine("at jpg");
+                        if (AddFile.ContentLength <= 4194304)
+                        {
+
+                            Debug.WriteLine("at saveas");
+                            hostOfficePost.AddFile = "~/Images/Host/Post/Office/" + fileName;
+                            AddFile.SaveAs(path);
+                        }
+                    }
+                    ModelState.Clear();
+                    db.HostOfficePosts.Add(hostOfficePost);
+                    db.SaveChanges();
+                }
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult AllPost()
+        {
+            return View();
+        }
+
+
+        public ActionResult Transaction()
+        {
+            return View();
+
+        }
+
+        public ActionResult Notification()
+        {
+            return View();
+        }
+
+
 
         public ActionResult Profile()
         {
@@ -136,7 +367,7 @@ namespace Homiee.Controllers
             Debug.WriteLine("check the host " + chek);
             User newUser = new User();
 
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
 
                 Debug.WriteLine("check the host data entry");
@@ -155,7 +386,7 @@ namespace Homiee.Controllers
                 db.Users.Add(newUser);
                 db.SaveChanges();
             }
-           return RedirectToAction("Login","Users");
+            return RedirectToAction("Login", "Users");
         }
 
         public ActionResult Delete(int? id)
