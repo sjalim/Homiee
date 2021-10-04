@@ -261,39 +261,49 @@
                                 <h6 class="card-title mt-5">
                                     All Reviews
                                 </h6>
-                                @foreach (var item in Model)
-                                {
+                               @*@foreach (var item in Model)
+                               {*@
                                     <div class="table-responsive mt-3">
                                         <table class="table table-bordered table-responsive-lg">
                                             <thead>
                                                 <tr>
 
                                                     <th scope="col">@Html.DisplayNameFor(model => model.ReviewerID)</th>
-                                                    <th scope="col">@Html.DisplayNameFor(model => model.ReviewedID)</th>
+                                                    <th scope="col">Reviewer Name</th>
+                                                    @*<th scope="col">@Html.DisplayNameFor(model => model.ReviewedID)</th>*@
                                                     <th scope="col">@Html.DisplayNameFor(model => model.ReviewDescription)</th>
-                                                
+
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                                <tbody>
 
-                                                <tr>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.ReviewerID)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.ReviewedID)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.ReviewDescription)
-                                                    </td>
+                                                    <tr>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.ReviewerID)
+                                                        </td>
 
-                                                </tr>
-                                            </tbody>
+                                                        <td>
+                                                            
+                                                        </td>
+
+                                                        @*<td>
+                                                            @Html.DisplayFor(modelItem => item.ReviewedID)
+                                                        </td>*@
+
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.ReviewDescription)
+                                                        </td>
+
+                                                    </tr>
+                                                </tbody>
+                                            }
                                         </table>
 
                                     </div>
                                     
-                                }
+                                @*}*@
 
                             </div>
 
