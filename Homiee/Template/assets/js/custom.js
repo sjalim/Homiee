@@ -8,6 +8,7 @@
     var box = $('.header-text').height();
     var header = $('header').height();
 
+	  console.log(scroll);
     if (scroll >= box - header) {
       $("header").addClass("background-header");
     } else {

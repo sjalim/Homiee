@@ -43,6 +43,8 @@ namespace Homiee.Models
 
         public DbSet<HotelAddress> HotelAddresses { get; set; }
 
+        public DbSet<Transaction> Transactions { get; set; }
+
         public ApplicationDbContext()
             : base("DBConnection", throwIfV1Schema: false)
         {
