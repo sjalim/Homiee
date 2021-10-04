@@ -39,6 +39,8 @@ namespace Homiee.Models
 
         public DbSet<HotelInfo> HotelInfoes { get; set; }
 
+        public DbSet<ParticularHostRoomReview> ParticularHostRoomReviews { get; set; }
+
         public DbSet<HotelAddress> HotelAddresses { get; set; }
 
         public ApplicationDbContext()

@@ -50,6 +50,35 @@ namespace Homiee.Controllers
             if (ModelState.IsValid)
             {
                 newHostPostInfo.Room = hostpostinfo.Room;
+
+
+                int roomcheck;
+
+                if(hostpostinfo.Room == "1")
+                {
+                    newHostPostInfo.Room = "Apartment";
+                }
+
+                else if (hostpostinfo.Room == "2")
+                {
+                    newHostPostInfo.Room = "Office";
+                }
+
+                else if (hostpostinfo.Room == "3")
+                {
+                    newHostPostInfo.Room = "Party Place";
+                }
+
+                else if (hostpostinfo.Room == "4")
+                {
+                    newHostPostInfo.Room = "Community Center";
+                }
+
+                else if (hostpostinfo.Room == "5")
+                {
+                    newHostPostInfo.Room = "Guest";
+                }
+
                 newHostPostInfo.NumRooms = hostpostinfo.NumRooms;
                 newHostPostInfo.NumKitchens = hostpostinfo.NumKitchens;
                 newHostPostInfo.NumWash = hostpostinfo.NumWash;
@@ -99,6 +128,26 @@ namespace Homiee.Controllers
         {
             List<GuestsToHostsReview> gueststohostsreview = db.GuestsToHostsReviews.ToList<GuestsToHostsReview>();
             return View(gueststohostsreview);
+        }
+
+        public ActionResult ParticularReviews(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            /*HostPostInfo hostpostinfo = db.HostPostInfoes.Find(id);
+            if (hostpostinfo == null)
+            {
+                return HttpNotFound();
+            }
+            return View(hostpostinfo);*/
+            ParticularHostRoomReview phrr = db.ParticularHostRoomReviews.Find(id);
+            if(phrr==null)
+            {
+                return HttpNotFound();
+            }
+            return View(phrr);
         }
 
         public ActionResult Edit(int? id)

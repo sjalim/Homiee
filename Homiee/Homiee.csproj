@@ -232,6 +232,10 @@
     <Compile Include="Migrations\202110031101410_hostinfomodelchange.Designer.cs">
       <DependentUpon>202110031101410_hostinfomodelchange.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110031621258_particularreviewadded.cs" />
+    <Compile Include="Migrations\202110031621258_particularreviewadded.Designer.cs">
+      <DependentUpon>202110031621258_particularreviewadded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Bank.cs" />
@@ -247,6 +251,7 @@
     <Compile Include="Models\LoginUser.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MobileBanking.cs" />
+    <Compile Include="Models\ParticularHostRoomReview.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\PostComment.cs" />
     <Compile Include="Models\Rating.cs" />
@@ -1356,6 +1361,7 @@
     <Content Include="Views\Hotel\Details.cshtml" />
     <Content Include="Views\Hotel\Delete.cshtml" />
     <Content Include="Views\Hotel\Edit.cshtml" />
+    <Content Include="Views\Host\ParticularReviews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1415,6 +1421,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110031101410_hostinfomodelchange.resx">
       <DependentUpon>202110031101410_hostinfomodelchange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110031621258_particularreviewadded.resx">
+      <DependentUpon>202110031621258_particularreviewadded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
