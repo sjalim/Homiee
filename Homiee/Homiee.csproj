@@ -233,9 +233,6 @@
       <DependentUpon>202110031101410_hostinfomodelchange.cs</DependentUpon>
     </Compile>
 
-    <Compile Include="Migrations\202110031621258_particularreviewadded.cs" />
-    <Compile Include="Migrations\202110031621258_particularreviewadded.Designer.cs">
-      <DependentUpon>202110031621258_particularreviewadded.cs</DependentUpon>
 
     <Compile Include="Migrations\202110031137506_transaction-table.cs" />
     <Compile Include="Migrations\202110031137506_transaction-table.Designer.cs">
