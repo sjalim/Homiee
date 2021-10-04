@@ -39,9 +39,21 @@ namespace Homiee.Controllers
 
         public ActionResult Apartment()
         {
-
+           
             return View();
         }
+
+        public ActionResult ApartmentDetails(int? id)
+        {
+
+            if (id != null)
+            {
+                return View();
+            }
+            return View();
+        }
+
+
 
         public ActionResult Office()
         {

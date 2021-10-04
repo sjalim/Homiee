@@ -1,8 +1,6 @@
-﻿
-
-@{
+﻿@{
     Layout = null;
-    var id = 5;
+
 }
 
 <head>
@@ -22,20 +20,24 @@
 
 
     <div class="wrapper d-flex align-items-stretch">
-        @Html.Partial("_SidePanel");
+        @Html.Partial("_SidePanel")
         <!-- Page Content  -->
         <div id="content" class="p-4 p-md-5 pt-5">
             <h2 class="mb-4">Apartments</h2>
             <div class="row">
                 @for (int i = 0; i < 20; i++)
                 {
+
+                    using (Html.BeginForm("Apartment", "Home",
+                       new { id =5 }, FormMethod.Get, null))
+                    {
                         <div class="col-md-3">
                             <img src="~/Images/hostBG.jpg" width="280px" height="280px" />
-                            <h5 style="display:inline-block">
-                                Title </h5>
-                                <span>$100/day</span>
-                                <p>Short Address</p>
+                            <h5>Title</h5><span style="display:inline-block">$100/day</span>
+                            <p>Short Address</p>
                         </div>
+
+                    }
                 }
             </div>
 
