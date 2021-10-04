@@ -1,7 +1,8 @@
-﻿@model Homiee.Models.HostPostInfo
+﻿@model IEnumerable<Homiee.Models.ParticularHostRoomReview>
+
 
 @{
-    //ViewBag.Title = "AddAPlace";
+    //ViewBag.Title = "Reviews";
     Layout = null;
 }
 
@@ -18,20 +19,29 @@
     <meta name="robots" content="noindex,nofollow">
     <title>Homiee</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/niceadmin-lite/" />
+
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="~/Template/Host/assets/images/favicon.png">
-
-
     <!-- Custom CSS -->
     <link href="~/Template/Host/dist/css/style.min.css" rel="stylesheet" />
-
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .edrd {
+            padding-left: 74%;
+        }
+    </style>
 </head>
 
 <body>
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
-    @* <div class="preloader">
+    @*<div class="preloader">
             <div class="lds-ripple">
                 <div class="lds-pos"></div>
                 <div class="lds-pos"></div>
@@ -64,7 +74,7 @@
                             <!--<img src="~/Template/Host/assets/images/logo-icon.png" alt="homepage" class="dark-logo" />-->
                             <!-- Light Logo icon -->
                             <!--<img src="~/Template/Host/assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
-    </b>-->
+                            </b>-->
                             <!--End Logo icon -->
                             <!-- Logo text -->
                             <span class="logo-text">
@@ -121,7 +131,6 @@
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
-
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="~/Template/Host/assets/images/users/2.jpg" alt="user" class="rounded-circle" width="31">
@@ -215,7 +224,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h4 class="page-title">Place Information</h4>
+                        <h4 class="page-title">Reviews</h4>
                     </div>
                     <div class="col-7 align-self-center">
                         <div class="d-flex align-items-center justify-content-end">
@@ -224,7 +233,7 @@
                                     <li class="breadcrumb-item">
                                         <a href="#">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Place Information</li>
+                                    <li class="breadcrumb-item active" aria-current="page">My Places > Reviews</li>
                                 </ol>
                             </nav>
                         </div>
@@ -242,177 +251,65 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    @using (Html.BeginForm("AddAPlace", "Host", FormMethod.Post))
-                    {
-                        @Html.AntiForgeryToken()
-                        <div class="col-12">
-                            <div class="card card-body">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">List of Reviews</h4>
+                                <h6 class="card-subtitle">
+                                    Here, you can find all the reviews from your clients about all of your Apartments/Rooms
+                                </h6>
+                                <h6 class="card-title mt-5">
+                                    All Reviews
+                                </h6>
+                                @*@foreach (var item in Model)
+                                    {*@
+                                <div class="table-responsive mt-3">
+                                    <table class="table table-bordered table-responsive-lg">
+                                        <thead>
+                                            <tr>
 
-                                <form class="form-horizontal mt-4">
-                                    <h4 class="card-title">General Info</h4>
-                                    <h5 class="card-subtitle"><input class="form-control" type="text" placeholder="Add general informations about your place" readonly></h5>
+                                                <th scope="col">@Html.DisplayNameFor(model => model.ReviewerID)</th>
+                                                <th scope="col">Reviewer Name</th>
+                                                @*<th scope="col">@Html.DisplayNameFor(model => model.ReviewedID)</th>*@
+                                                <th scope="col">@Html.DisplayNameFor(model => model.ReviewDescription)</th>
 
-                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                <div class="form-group">
-                                    @*@Html.LabelFor(model => model.Room, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                                    <label>Rental Type</label>
-                                    @*@Html.EditorFor(model => model.Room, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Room, "", new { @class = "text-danger" })*@
-                                <select class="form-select shadow-none col-12" name="Room" id="room">
-                                    <option selected>Choose...</option>
-                                    <option value="1">Apartment</option>
-                                    <option value="2">Office</option>
-                                    <option value="3">Party Place</option>
-                                    <option value="4">Community Center</option>
-                                    <option value="5">Guest</option>
-                                </select>
-                                </div>
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.NumRooms, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    @*<label><span class="help">Number of Rooms</span></label>*@
-                                    @Html.EditorFor(model => model.NumRooms, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.NumRooms, "", new { @class = "text-danger" })
-                                    @*<input type="number" class="form-control" value="" name="NumRooms" id="rooms">*@
-                                </div>
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.NumKitchens, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    @*<label><span class="help">Number of Kitchens</span></label>*@
-                                    @Html.EditorFor(model => model.NumKitchens, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.NumKitchens, "", new { @class = "text-danger" })
-                                    @*<input type="number" class="form-control" value="" name="NumKitchens" id="kitchens">*@
-                                </div>
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.NumWash, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    @*<label><span class="help">Number of Washrooms</span></label>*@
-                                    @Html.EditorFor(model => model.NumWash, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.NumWash, "", new { @class = "text-danger" })
-                                    @*<input type="number" class="form-control" value="" name="NumWash" id="washrooms">*@
-                                </div>
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.NumBalconys, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    @*<label><span class="help">Number of Balconys</span></label>*@
-                                    @Html.EditorFor(model => model.NumBalconys, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.NumBalconys, "", new { @class = "text-danger" })
-                                    @*<input type="number" class="form-control" value="" name="NumBalconys" id="balconys">*@
-                                </div>
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.AdditionalFeatures, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    @*<label><span class="help">Additional Features</span></label>*@
-                                    @Html.EditorFor(model => model.AdditionalFeatures, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.AdditionalFeatures, "", new { @class = "text-danger" })
-                                    @*<input type="text" class="form-control" value="" name="AdditionalFeatures" id="additionalfeatures">*@
+                                            </tr>
+                                        </thead>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tbody>
+
+                                                <tr>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.ReviewerID)
+                                                    </td>
+
+                                                    <td>
+                                                    </td>
+
+                                                    @*<td>
+                                                            @Html.DisplayFor(modelItem => item.ReviewedID)
+                                                        </td>*@
+
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.ReviewDescription)
+                                                    </td>
+
+                                                </tr>
+                                            </tbody>
+                                        }
+                                    </table>
+
                                 </div>
 
-                                    @*Adress*@
-                                    <h4 class="card-title">Address Info</h4>
-                                    <h5 class="card-subtitle"><input class="form-control" type="text" placeholder="Add address informations of your place" readonly></h5>
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.CountryName, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        @*<label><span class="help">Country</span></label>*@
-                                        @Html.EditorFor(model => model.CountryName, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.CountryName, "", new { @class = "text-danger" })
-                                        @*<input type="text" class="form-control" value="" name="CountryName" id="countryname">*@
-                                    </div>
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.StreetName, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        @*<label><span class="help">Street Address</span></label>*@
-                                        @Html.EditorFor(model => model.StreetName, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.StreetName, "", new { @class = "text-danger" })
-                                        @*<input type="text" class="form-control" value="" name="StreetName" id="streetname">*@
-                                    </div>
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.CityName, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        @*<label><span class="help">City</span></label>*@
-                                        @Html.EditorFor(model => model.CityName, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.CityName, "", new { @class = "text-danger" })
-                                        @*<input type="text" class="form-control" value="" name="CityName" id="cityname">*@
-                                    </div>
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.StateName, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        @*<label><span class="help">State</span></label>*@
-                                        @Html.EditorFor(model => model.StateName, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.StateName, "", new { @class = "text-danger" })
-                                        @*<input type="text" class="form-control" value="" name="StateName" id="statename">*@
-                                    </div>
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.PostCode, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        @*<label><span class="help">Postal Code</span></label>*@
-                                        @Html.EditorFor(model => model.PostCode, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.PostCode, "", new { @class = "text-danger" })
-                                        @*<input type="text" class="form-control" value="" name="PostCode" id="postcode">*@
-                                    </div>
+                                @*}*@
 
-                                    @*Rules & pricing*@
-                                    <h4 class="card-title">Rental Rules and Pricing</h4>
-                                    <h5 class="card-subtitle"><input class="form-control" type="text" placeholder="Add your rental rules & pricing" readonly></h5>
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.HostRules, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        @*<label><span class="help">Host Rules</span></label>*@
-                                        @Html.EditorFor(model => model.HostRules, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.HostRules, "", new { @class = "text-danger" })
-                                        @*<input type="text" class="form-control" value="" name="HostRules" id="hostrules">*@
-                                    </div>
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.MinStay, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        @*<label><span class="help">Stay Minimum</span></label>*@
-                                        @Html.EditorFor(model => model.MinStay, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.MinStay, "", new { @class = "text-danger" })
-                                        @*<input type="number" class="form-control" value="1" name="MinStay" id="minstay">*@
-                                    </div>
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.MaxStay, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        @*<label><span class="help">Stay Maximum</span></label>*@
-                                        @Html.EditorFor(model => model.MaxStay, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.MaxStay, "", new { @class = "text-danger" })
-                                        @*<input type="number" class="form-control" value="30" name="MaxStay" id="maxstay">*@
-                                    </div>
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        @*<label><span class="help">Cost Per Day (BDT)</span></label>*@
-                                        @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
-                                        @*<input type="number" class="form-control" value="" name="Price" id="price">*@
-                                    </div>
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.Offer, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        @*<label><span class="help">Offer</span></label>*@
-                                        @Html.EditorFor(model => model.Offer, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Offer, "", new { @class = "text-danger" })
-                                        @*<input type="text" class="form-control" value="" name="Offer" id="offer">*@
-                                    </div>
-
-
-                                    <h4 class="card-title">Posts & Caption</h4>
-                                    <h5 class="card-subtitle"><input class="form-control" type="text" placeholder="Add some images of your property and write a caption" readonly></h5>
-                                    <div class="form-group">
-                                        <label>Upload property images</label>
-                                        <input type="file" class="form-control" multiple name="AddFile" id="addfile">
-                                    </div>
-
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.RoomCaption, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        @*<label>Add Caption</label>*@
-                                        @Html.EditorFor(model => model.RoomCaption, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.RoomCaption, "", new { @class = "text-danger" })
-
-                                        @*<input type="text" class="form-control" placeholder="Write something about your property here..." name="RoomCaption" id="roomcaption">*@
-                                        <span class="help-block">
-                                            <small>
-                                                Thanks for joinig with us. Click on Submit button to proceed.
-                                            </small>
-                                        </span>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-md-offset-2 col-md-10">
-                                            <input type="submit" value="Submit" class="btn btn-default" />
-                                        </div>
-                                    </div>
-                                </form>
                             </div>
+
                         </div>
-                        }
                     </div>
+
+                </div>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
@@ -432,7 +329,6 @@
             <!-- ============================================================== -->
             <footer class="footer text-center">
                 All Rights Reserved by Homiee.
-
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
@@ -462,3 +358,5 @@
     <!--Custom JavaScript -->
     <script src="~/Template/Host/dist/js/custom.min.js"></script>
 </body>
+
+
