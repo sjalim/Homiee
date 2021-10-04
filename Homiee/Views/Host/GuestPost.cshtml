@@ -74,6 +74,13 @@
 
                                     <div>
                                         @Html.ValidationSummary()
+
+
+                                        <div class="form-group sub-section">
+                                            <label for="Title"><span class="help">Title</span></label>
+                                            @Html.TextBox("Title", "", new { type = "number", @class = "form-control valid  text-box", @data_val = "true", @data_val_required = "Title Field is Invalid text-box" })
+
+                                        </div>
                                         <div class="form-group sub-section">
                                             <label for="NumRooms"><span class="help">Number of Rooms</span></label>
                                             @Html.TextBox("NumRooms", "", new { type = "number", @class = "form-control valid  text-box", @data_val = "true", @data_val_required = "NumRooms Field is Invalid text-box" })

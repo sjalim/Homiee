@@ -12,6 +12,7 @@ namespace Homiee.Models
         [Key]
         public int HostPostInfoID { get; set; }
         public int Room { get; set; }
+        public string Title { get; set; }
         public int NumRooms { get; set; }
         public int NumKitchens { get; set; }
         public int NumWash { get; set; }

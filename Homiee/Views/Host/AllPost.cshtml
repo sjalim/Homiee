@@ -1,6 +1,9 @@
 ﻿@{
 
     Layout = null;
+
+    //var hostPostInfos = ViewData["HostPostInfos"];
+    //IEnumerable<HostOf> hostOfficePosts = ViewData["HostOfficePosts"];
 }
 <head>
     <meta charset="utf-8">
@@ -59,7 +62,7 @@
         <h4>Post</h4>
 
         <section class="section-allpost">
-           @for(int i =0;i<6;i++)
+           @for(int i = 0;i<6;i++)
             {
                 <div class="card w-75">
                     <div class="card-body">
@@ -69,8 +72,10 @@
 
                         </div>
                         <div class="post-content">
-
-                            <p>Content</p>
+                            <h4>Title</h4>
+                            <p>Price</p>
+                            <span>Street Name,</span><span>City Name</span><span>Country</span>
+                            
                         </div>
                     </div>
 

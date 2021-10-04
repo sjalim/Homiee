@@ -118,6 +118,7 @@ namespace Homiee.Controllers
                 {
 
                     newHostPostInfo.Room = 0;
+                    newHostPostInfo.Title = data["Title"];
                     newHostPostInfo.NumRooms = Convert.ToInt32(data["NumRooms"]);
                     newHostPostInfo.NumKitchens = Convert.ToInt32(data["NumKitchens"]);
                     newHostPostInfo.NumWash = Convert.ToInt32(data["NumWash"]);
@@ -190,6 +191,10 @@ namespace Homiee.Controllers
         public ActionResult ApartmentPostData(FormCollection data, HttpPostedFileBase AddFile)
         {
 
+
+            var userId = Convert.ToInt32(Session["UserID"]);
+            User user = db.Users.Where(a => a.UserID == userId).FirstOrDefault();
+
             HostPostInfo newHostPostInfo = new HostPostInfo();
             if (data != null)
             {
@@ -197,6 +202,7 @@ namespace Homiee.Controllers
                 {
 
                     newHostPostInfo.Room = 1;
+                    newHostPostInfo.Title = data["Title"];
                     newHostPostInfo.NumRooms = Convert.ToInt32(data["NumRooms"]);
                     newHostPostInfo.NumKitchens = Convert.ToInt32(data["NumKitchens"]);
                     newHostPostInfo.NumWash = Convert.ToInt32(data["NumWash"]);
@@ -214,7 +220,7 @@ namespace Homiee.Controllers
                     newHostPostInfo.PaymentType = Convert.ToInt32(data["PaymentType"]);
                     newHostPostInfo.Offer = data["Offer"];
                     newHostPostInfo.RoomCaption = data["RoomCaption"];
-                    newHostPostInfo.User = this.user;
+                    newHostPostInfo.User = user;
                     string extension = Path.GetExtension(AddFile.FileName);
 
                     string fileName = DateTime.Now.ToString("yymmssfff") + "apartmentPost" + extension;
@@ -249,20 +255,24 @@ namespace Homiee.Controllers
             return View();
         }
 
+        [HttpPost]
         public ActionResult OfficePostData(FormCollection data, HttpPostedFileBase AddFile)
         {
 
+            var userId = Convert.ToInt32(Session["UserID"]);
+            User user = db.Users.Where(a => a.UserID == userId).FirstOrDefault();
             HostOfficePost hostOfficePost = new HostOfficePost();
             if (data != null)
             {
                 if (ModelState.IsValid)
                 {
+                    hostOfficePost.Title = data["Title"];
                     hostOfficePost.SpaceSize = Convert.ToDouble(data["SpaceSize"]);
                     hostOfficePost.Price = Convert.ToInt32(data["Price"]);
                     hostOfficePost.PaymentType = Convert.ToInt32(data["PaymentType"]);
                     hostOfficePost.Offer = data["Offer"];
                     hostOfficePost.RoomCaption = data["RoomCaption"];
-                    hostOfficePost.User = this.user;
+                    hostOfficePost.User = user;
         
 
                     string extension = Path.GetExtension(AddFile.FileName);
@@ -294,7 +304,15 @@ namespace Homiee.Controllers
 
         public ActionResult AllPost()
         {
-            return View();
+
+            AllPostViewModel viewModel = new AllPostViewModel();
+            var userId = Convert.ToInt32(Session["UserID"]);
+            //viewModel.hostPostInfos = (List<HostPostInfo>) db.HostPostInfoes.Select(t => t.User.UserID == userId).ToList();
+            //viewModel.hostOfficePosts = (List<HostOfficePost>) db.HostOfficePosts.Select(t => t.User.UserID == userId).ToList();
+
+           
+
+            return View(viewModel);
         }
 
 

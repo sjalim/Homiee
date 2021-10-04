@@ -10,7 +10,7 @@ namespace Homiee.Models
 
         public int HostOfficePostID { get; set; }
 
-
+        public string Title { get; set; }
         public double SpaceSize { get; set; }
 
         public double Price { get; set; }

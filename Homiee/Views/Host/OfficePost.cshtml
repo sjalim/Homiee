@@ -72,65 +72,72 @@
 
                             @using (Html.BeginForm("OfficePostData", "Host", FormMethod.Post, new { enctype = "multipart/form-data" }))
                             {
-                                <div id="office-form">
+                        <div id="office-form">
 
-                                    @Html.ValidationSummary()
-                                    <div class="form-group">
-                                        <label for="SpaceSize"><span class="help">Space Size(Sq feet)</span></label>
-                                        @Html.TextBox("SpaceSize", "", new { type = "number", @class = "form-control valid text-box", @data_val = "true", @data_val_required = "Space Size Field is Invalid text-box" })
-
-                                    </div>
-
-                                    <div class="form-group">
-
-                                        <label for="Price"><span class="help">Price</span></label>
-                                        @Html.TextBox("Price", "", new { type = "number", @class = "form-control valid text-box", @data_val = "true", @data_val_required = "Price Field is Invalid text-box" })
+                            @Html.ValidationSummary()
 
 
-                                    </div>
-                                    <div class="form-control">
-                                        <label for="PaymentType">Payment Type</label>
+                            <div class="form-group">
+                                <label for="Title"><span class="help">Title</span></label>
+                                @Html.TextBox("Title", "", new { type = "number", @class = "form-control valid text-box", @data_val = "true", @data_val_required = "Title Field is Invalid text-box" })
+                            </div>
 
-                                        <div class="form-check form-check-inline">
-                                            <input type="radio" class="valid form-check-input" name="PaymentType" id="PaymentType" data_val="true" , data_val_required="Price Field is Invalid text-box" value=0 />
+                            <div class="form-group">
+                                <label for="SpaceSize"><span class="help">Space Size(Sq feet)</span></label>
+                                @Html.TextBox("SpaceSize", "", new { type = "number", @class = "form-control valid text-box", @data_val = "true", @data_val_required = "Space Size Field is Invalid text-box" })
 
-                                            <label class="form-check-label" for="inlineCheckbox1">Per day</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input type="radio" class="valid form-check-input" name="PaymentType" id="PaymentType" data_val="true" , data_val_required="Price Field is Invalid text-box" value=1 />
+                            </div>
 
-                                            <label class="form-check-label" for="PaymentType">Per month</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="Offer"><span class="help">Offer</span></label>
-                                        @Html.TextBox("Offer", "", new { type = "text", @class = "form-control valid text-box", @data_val = "true", @data_val_required = "Offer Field is Invalid text-box" })
-                                    </div>
-                                    <h4 class="card-title">Posts & Caption</h4>
-                                    <h5 class="card-subtitle"><input class="form-control" type="text" placeholder="Add some images of your property and write a caption" readonly></h5>
+                            <div class="form-group">
 
-                                    <div id="image-section">
-                                        <div class="form-group">
-                                            <label>Upload property images</label>
-                                            <input type="file" class="form-control text-box" multiple name="AddFile" id="AddFile">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="RoomCaption"><span class="help">Room Caption</span></label>
-                                            @Html.TextBox("RoomCaption", "", new { type = "text", @class = "form-control valid text-box", @data_val = "true", @data_val_required = "Room Caption Field is Invalid text-box" })
-                                            <span class="help-block">
-                                                <small>
-                                                    Thanks for joinig with us. Click on Submit button to proceed.
-                                                </small>
-                                            </span>
-                                        </div>
-                                    </div>
+                                <label for="Price"><span class="help">Price</span></label>
+                                @Html.TextBox("Price", "", new { type = "number", @class = "form-control valid text-box", @data_val = "true", @data_val_required = "Price Field is Invalid text-box" })
 
-                                    <div class="form-group">
-                                        <div class="col-md-offset-2 col-md-10">
-                                            <input type="submit" value="Submit" class="btn btn-default" />
-                                        </div>
-                                    </div>
+
+                            </div>
+                            <div class="form-control">
+                                <label for="PaymentType">Payment Type</label>
+
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="valid form-check-input" name="PaymentType" id="PaymentType" data_val="true" , data_val_required="Price Field is Invalid text-box" value=0 />
+
+                                    <label class="form-check-label" for="inlineCheckbox1">Per day</label>
                                 </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="valid form-check-input" name="PaymentType" id="PaymentType" data_val="true" , data_val_required="Price Field is Invalid text-box" value=1 />
+
+                                    <label class="form-check-label" for="PaymentType">Per month</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="Offer"><span class="help">Offer</span></label>
+                                @Html.TextBox("Offer", "", new { type = "text", @class = "form-control valid text-box", @data_val = "true", @data_val_required = "Offer Field is Invalid text-box" })
+                            </div>
+                            <h4 class="card-title">Posts & Caption</h4>
+                            <h5 class="card-subtitle"><input class="form-control" type="text" placeholder="Add some images of your property and write a caption" readonly></h5>
+
+                            <div id="image-section">
+                                <div class="form-group">
+                                    <label>Upload property images</label>
+                                    <input type="file" class="form-control text-box" multiple name="AddFile" id="AddFile">
+                                </div>
+                                <div class="form-group">
+                                    <label for="RoomCaption"><span class="help">Room Caption</span></label>
+                                    @Html.TextBox("RoomCaption", "", new { type = "text", @class = "form-control valid text-box", @data_val = "true", @data_val_required = "Room Caption Field is Invalid text-box" })
+                                    <span class="help-block">
+                                        <small>
+                                            Thanks for joinig with us. Click on Submit button to proceed.
+                                        </small>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Submit" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </div>
 
                             }
                         </div>
