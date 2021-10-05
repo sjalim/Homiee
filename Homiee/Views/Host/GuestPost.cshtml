@@ -1,4 +1,4 @@
-﻿@model Homiee.Models.HostPostInfo
+﻿@model Homiee.Models.NewNotification
 @{
     Layout = null;
 }
@@ -59,7 +59,7 @@
     <div id="main-wrapper" data-navbarbg="skin6" data-theme="light" data-layout="vertical" data-sidebartype="full"
          data-boxed-layout="full">
 
-        @Html.Partial("_HostSideBar")
+        @Html.Partial("_HostSideBar",Model)
         <section class="section-post">
             <div class="container ">
                 <div class="row">
@@ -210,7 +210,7 @@
                                     <div id="image-section">
                                         <div class="form-group">
                                             <label>Upload property images</label>
-                                            <input type="file" class="form-control text-box" name="AddFile" id="AddFile"/>
+                                            <input type="file" class="form-control text-box" name="AddFile" id="AddFile" />
                                         </div>
                                         <div class="form-group">
                                             <label for="RoomCaption"><span class="help">Room Caption</span></label>
@@ -245,37 +245,37 @@
 
     @*<script>
 
-        var guestForm = document.getElementById("guest-form");
-        var apartmentForm = document.getElementById("apartment-form");
-        var officeForm = document.getElementById("office-form");
+            var guestForm = document.getElementById("guest-form");
+            var apartmentForm = document.getElementById("apartment-form");
+            var officeForm = document.getElementById("office-form");
 
-        guestForm.style.display = "block";
-        apartmentForm.style.display = "none";
-        officeForm.style.display = "none";
+            guestForm.style.display = "block";
+            apartmentForm.style.display = "none";
+            officeForm.style.display = "none";
 
 
-        function RentalTypeSelect() {
-            var x = document.getElementById("RoomType").value;
+            function RentalTypeSelect() {
+                var x = document.getElementById("RoomType").value;
 
-            if (x == 0) {
-                guestForm.style.display = "block";
-                apartmentForm.style.display = "none";
-                officeForm.style.display = "none";
+                if (x == 0) {
+                    guestForm.style.display = "block";
+                    apartmentForm.style.display = "none";
+                    officeForm.style.display = "none";
+                }
+                else if (x == 1) {
+                    guestForm.style.display = "none";
+                    apartmentForm.style.display = "block";
+                    officeForm.style.display = "none";
+                }
+                else if (x == 2) {
+                    guestForm.style.display = "none";
+                    apartmentForm.style.display = "none";
+                    officeForm.style.display = "block";
+                }
             }
-            else if (x == 1) {
-                guestForm.style.display = "none";
-                apartmentForm.style.display = "block";
-                officeForm.style.display = "none";
-            }
-            else if (x == 2) {
-                guestForm.style.display = "none";
-                apartmentForm.style.display = "none";
-                officeForm.style.display = "block";
-            }
-        }
 
 
-    </script>*@
+        </script>*@
 
 
     <script src="~/Template/Host/assets/libs/jquery/dist/jquery.min.js"></script>

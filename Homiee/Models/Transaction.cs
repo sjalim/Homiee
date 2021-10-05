@@ -15,6 +15,7 @@ namespace Homiee.Models
 
         public int SenderID { get; set; }
         public int ReceiverID { get; set; }
+        public DateTime TransactionTime { get;set; }
         public string SenderAccountNumber { get; set; }
         public string ReceiverAccountNumber { get; set; }
         public string TxID { get; set; }

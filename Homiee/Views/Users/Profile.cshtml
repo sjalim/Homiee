@@ -1,12 +1,9 @@
-﻿@model Homiee.Models.User
+﻿@model Homiee.Models.ProfileViewModel
 
 @{
     ViewBag.Title = "Profile";
 
-    var userName = Model.UserFirstName.ToString() + " " + Model.UserLastName.ToString();
     Layout = null;
-
-    var lastName = Model.UserLastName.ToString();
 
 
 
@@ -282,14 +279,52 @@
             display: block;
             width: 100px;
         }
+
         .sectin-transaction {
             background: #323138;
-            padding-bottom:50px;
+            padding-bottom: 50px;
         }
+
         .card-section-transaction {
             width: 90%;
             height: 15%;
-            margin: 0  auto 5px auto;
+            margin: 0 auto 5px auto;
+        }
+
+        .bell {
+            width: 70px;
+            height: 70px;
+            position: absolute;
+            right: 50px;
+            top: 105px;
+            background: white;
+            padding: 20px;
+            border-radius: 100%;
+        }
+
+            .bell:hover {
+                cursor: pointer;
+            }
+
+        .section-notification {
+            margin: 0;
+            padding-top: 20px;
+            border: 0;
+            background-color: white;
+            padding: 50px;
+        }
+
+        .notification-content {
+            display: inline-block;
+        }
+
+        .notification-button {
+            display: inline-block;
+            float: right;
+        }
+
+        .notification-card {
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
         }
     </style>
 
@@ -335,13 +370,19 @@
     <div class="main-banner">
         <div class="container-fluid section-profile">
             <h4 class="section-title" style="color: #323138;">Profile</h4>
+
+
+            <div>
+                <img class="bell" src="~/Images/bell.png" alt="bell" width="50px" height="50px" onclick="BellClicked()" />
+            </div>
+
             <div class="row">
                 <div class="col-sm-6 ">
                     <div class="card pro-pic-card d-flex align-items-center justify-content-center">
 
-                        @if (Model.UserProfilePicture != null)
+                        @if (Model.User.UserProfilePicture != null)
                         {
-                            <img class="pro-pic shadow-lg p-3 mb-5 bg-white" src=@Url.Content(Model.UserProfilePicture) , alt="Profile Picture" width="50%" height="50%" />
+                            <img class="pro-pic shadow-lg p-3 mb-5 bg-white" src=@Url.Content(Model.User.UserProfilePicture) , alt="Profile Picture" width="50%" height="50%" />
 
                         }
                         else
@@ -373,56 +414,56 @@
 
                         @using (Html.BeginForm("Profile", "Users", FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
-                        <div class="form-group">
                             <div class="form-group">
-                                <label for="UserFirstName">First Name</label>
-                                <input type="text" name="UserFirstName" id="UserFirstName" value="@(Model.UserFirstName)" class="form-control text-field" readonly="readonly" />
-                            </div>
+                                <div class="form-group">
+                                    <label for="UserFirstName">First Name</label>
+                                    <input type="text" name="UserFirstName" id="UserFirstName" value="@(Model.User.UserFirstName)" class="form-control text-field" readonly="readonly" />
+                                </div>
 
-                            <div class="form-group">
-                                <label for="UserLastName">Last Name</label>
-                                <input type="text" name="UserLastName" id="UserLastName" value="@(Model.UserLastName)" class="form-control" readonly />
-                            </div>
+                                <div class="form-group">
+                                    <label for="UserLastName">Last Name</label>
+                                    <input type="text" name="UserLastName" id="UserLastName" value="@(Model.User.UserLastName)" class="form-control" readonly />
+                                </div>
 
-                            <div class="form-group">
-                                <label for="UserEmail">Email</label>
-                                <input type="text" name="UserEmail" id="UserEmail" value="@(Model.UserEmail)" class="form-control" readonly />
-                            </div>
+                                <div class="form-group">
+                                    <label for="UserEmail">Email</label>
+                                    <input type="text" name="UserEmail" id="UserEmail" value="@(Model.User.UserEmail)" class="form-control" readonly />
+                                </div>
 
-                            <div class="form-group">
-                                <label for="UserPhone">Phone</label>
-                                <input type="text" name="UserPhone" id="UserPhone" value="@(Model.UserPhone)" class="form-control" readonly />
-                            </div>
+                                <div class="form-group">
+                                    <label for="UserPhone">Phone</label>
+                                    <input type="text" name="UserPhone" id="UserPhone" value="@(Model.User.UserPhone)" class="form-control" readonly />
+                                </div>
 
-                            <div class="form-group">
-                                <label for="AddressCountry">Country</label>
-                                <input type="text" name="AddressCountry" id="AddressCountry" value="@(Model.AddressCountry)" class="form-control" readonly />
-                            </div>
+                                <div class="form-group">
+                                    <label for="AddressCountry">Country</label>
+                                    <input type="text" name="AddressCountry" id="AddressCountry" value="@(Model.User.AddressCountry)" class="form-control" readonly />
+                                </div>
 
-                            <div class="form-group">
-                                <label for="AddressDivision">Division</label>
-                                <input type="text" name="AddressDivision" id="AddressDivision" value="@(Model.AddressDivision)" class="form-control" readonly />
-                            </div>
+                                <div class="form-group">
+                                    <label for="AddressDivision">Division</label>
+                                    <input type="text" name="AddressDivision" id="AddressDivision" value="@(Model.User.AddressDivision)" class="form-control" readonly />
+                                </div>
 
-                            <div class="form-group">
-                                <label for="AddressCity">City</label>
-                                <input type="text" name="AddressCity" id="AddressCity" value="@(Model.AddressCity)" class="form-control" readonly />
-                            </div>
+                                <div class="form-group">
+                                    <label for="AddressCity">City</label>
+                                    <input type="text" name="AddressCity" id="AddressCity" value="@(Model.User.AddressCity)" class="form-control" readonly />
+                                </div>
 
-                            <div class="form-group">
-                                <label for="AddressArea">Area</label>
-                                <input type="text" name="AddressArea" id="AddressArea" value="@(Model.AddressArea)" class="form-control" readonly />
-                            </div>
-                            <div class="form-group">
-                                <label for="AddressExtension">Address Extension</label>
-                                <input type="text" name="AddressExtension" id="AddressExtension" value="@(Model.AddressExtension)" class="form-control" readonly />
-                            </div>
+                                <div class="form-group">
+                                    <label for="AddressArea">Area</label>
+                                    <input type="text" name="AddressArea" id="AddressArea" value="@(Model.User.AddressArea)" class="form-control" readonly />
+                                </div>
+                                <div class="form-group">
+                                    <label for="AddressExtension">Address Extension</label>
+                                    <input type="text" name="AddressExtension" id="AddressExtension" value="@(Model.User.AddressExtension)" class="form-control" readonly />
+                                </div>
 
-                            <div class="form-group text-left edit-mode-btn">
-                                <input type="submit" class="btn btn-primary m-2" value="Save" onclick="SubmitButton();" id="submitButton" style="visibility:hidden" />
-                                <label class="btn btn-primary m-2" onclick="CancelButton()" style="visibility:hidden" id="cancelButton">Cancel</label>
+                                <div class="form-group text-left edit-mode-btn">
+                                    <input type="submit" class="btn btn-primary m-2" value="Save" onclick="SubmitButton();" id="submitButton" style="visibility:hidden" />
+                                    <label class="btn btn-primary m-2" onclick="CancelButton()" style="visibility:hidden" id="cancelButton">Cancel</label>
+                                </div>
                             </div>
-                        </div>
                         }
                         <button class="button-edit btn btn-outline-primary" onclick="EditButton()" id="editButton"><img src="~/Content/edit.png" width="20px" height="20px" />Edit</button>
                     </div>
@@ -431,7 +472,115 @@
             </div>
         </div>
 
-        <section class="section-rating container-fluid">
+
+        <section class="section-transaction" id="sectionTransaction">
+            <h4 class="section-title">Transactions</h4>
+            <div class="card card-section-transaction">
+                <div class="card-body">
+                    <div class="row">
+
+                        <div class="col-md-2">
+
+                            <h6>TransactionID</h6>
+                        </div>
+                        <div class="col-md-2">
+
+                            <h6>SenderID</h6>
+                        </div>
+                        <div class="col-md-2">
+
+                            <h6>ReceiverAccountNumber</h6>
+                        </div>
+                        <div class="col-md-2">
+                            <h6>SenderAccountNumber</h6>
+                        </div>
+                        <div class="col-md-2">
+                            <h6>Date Time</h6>
+                        </div>
+                        <div class="col-md-2">
+                            <h6>TxId</h6>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div style="overflow-y:auto; height:500px;">
+
+                @foreach (var x in Model.transactions)
+                {
+
+                    <div class="card card-section-transaction">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <h6>@x.TransactionID</h6>
+                                </div>
+                                <div class="col-md-2">
+
+                                    <h6>@x.SenderID</h6>
+                                </div>
+                                <div class="col-md-2">
+
+                                    <h6>@x.ReceiverAccountNumber</h6>
+                                </div>
+                                <div class="col-md-2">
+
+                                    <h6>@x.SenderAccountNumber</h6>
+                                </div>
+                                <div class="col-md-2">
+                                    <h6>@x.TransactionTime</h6>
+                                </div>
+                                <div class="col-md-2">
+                                    <h6>@x.TxID</h6>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                }
+
+
+
+            </div>
+        </section>
+
+        <section class="section-notification" id="sectionNotification">
+            <h4 class="section-title" style="color: #323138;">Notification</h4>
+            <div style="overflow-y:auto; height:500px;">
+
+                @foreach (var x in Model.GetNotifications)
+                {
+                    <div class="card notification-card">
+                        <div class="card-body">
+                            <div class="notification-content">
+                                <p>@x.Post.Title</p>
+                                <p>@x.NotifyTime</p>
+                                <p>@x.NotifyText</p>
+                                <p>Check In: <span>@x.Reservation.CheckIn</span></p>
+                                <p>Check Out: <span>@x.Reservation.CheckOut</span></p>
+                            </div>
+                            <div class="notification-button">
+
+                                <div>
+                                    @if (x.Reservation.Status != 0)
+                                    {
+                                        <span class="label label-success" style="float:right">Approved</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="label label-danger">No Approved</span>
+                                    }
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </section>
+
+        <section class="section-rating container-fluid" id="sectionRating">
             <h4 class="section-title">Rating</h4>
             <div class="row">
                 <div class="col-md-4 text-center">
@@ -481,7 +630,7 @@
             </div>
         </section>
 
-        <section>
+        <section id="sectionReview">
             <div class="section-reviews recent-listing ">
                 <h4 class="section-title" style="color: #323138;">Reviews</h4>
                 <div class="container">
@@ -492,7 +641,7 @@
                                 {
                                     <div class="item">
                                         <div class="row">
-                                            @for (int j = 0; j < 3;j++)
+                                            @for (int j = 0; j < 3; j++)
                                             {
                                                 <div class="col-lg-12">
                                                     <div class="listing-item">
@@ -511,57 +660,16 @@
                                                     </div>
                                                 </div>
                                             }
-                                            </div>
+                                        </div>
                                     </div>
                                 }
-                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="sectin-transaction">
-            <div style="overflow-y:auto; height:500px;">
-                <h4 class="section-title">Transactions</h4>
-                @for (int k = 0; k < 10; k++)
-                {
 
-                   <div class="card card-section-transaction">
-                       <div class="card-body">
-                           <div class="row">
-                               <div class="col-md-2">
-
-                                   <h6>Name</h6>
-                               </div>
-                               <div class="col-md-2">
-
-                                   <h6>Name</h6>
-                               </div> 
-                               <div class="col-md-2">
-
-                                   <h6>Name</h6>
-                               </div> 
-                               <div class="col-md-2">
-
-                                   <h6>Name</h6>
-                               </div> 
-                               <div class="col-md-2">
-                                   <h6>Name</h6>
-                               </div> 
-                               <div class="col-md-2">
-                                   <h6>Name</h6>
-                               </div>
-
-                           </div>
-                       </div>
-                   </div>
-                  
-                }
-
-
-
-            </div>
-        </section>
 
         @Html.Partial("_Footer")
 
@@ -587,6 +695,10 @@
             var formCancelButton = document.getElementById("formCancelButton");
             var formSaveButton = document.getElementById("formSaveButton");
             var formFile = document.getElementById("UserProfilePicture");
+            var notificationSection = document.getElementById("sectionTransaction");
+            var transactionSection = document.getElementById("sectionTransaction");
+            var 
+
 
             function picFormCancel() {
                 formSaveButton.style.visibility = "hidden";
@@ -679,6 +791,10 @@
             }
             function RatingClicked() {
 
+            }
+            function BellClicked() {
+                console.log("bell check");
+                notificationSection.scrollIntoView();
             }
 
 

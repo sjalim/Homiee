@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Homiee.Models.ApartmentDetailsViewModel
+
+@{
     Layout = null;
 }
 
@@ -28,8 +30,37 @@
             padding: 10px;
             border-radius: 25px;
         }
-        .recent-listing .item .listing-item{
-            width:auto;
+
+        .recent-listing .item .listing-item {
+            width: auto;
+        }
+
+        .reserve-card {
+            position: absolute;
+            top: 1000px;
+            right: 100px;
+            width: 400px;
+            height: 350px;
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+            z-index: 5;
+        }
+        .payment-card {
+            position: absolute;
+            top: 1000px;
+            right: 100px;
+            width: 400px;
+            height: 420px;
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+            z-index: 5;
+        }
+
+        .id-text {
+            visibility: hidden;
+        }
+        .hidden-text-box{
+            visibility: hidden;
         }
     </style>
 
@@ -38,39 +69,139 @@
 
 
 <body>
-
-
-
     <section>
-        <div class="section-reviews recent-listing ">
-            <h4 class="section-title" style="color: #323138;">Reviews</h4>
+        <div class="recent-listing ">
+
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="owl-carousel owl-listing">
-                            @for (int i = 0; i < 6; i++)
-                            {
-                                <div class="item">
-                                    <div class="row">
 
-                                        <div class="col-lg-12">
-                                            <div class="listing-item">
-                                                <div class=" mb-5">
-                                                    <div class="reviews-section-card">
-                                                        <img class="reviews-section-img mr-3 img-fluid post-thumb d-none d-md-flex" src="~/Template/Reviews/images/blog-post-thumb-2.jpg" alt="image">
-                                                       
-                                                    </div>
+                            <div class="item">
+                                <div class="row">
+
+                                    <div class="col-lg-12">
+                                        <div class="listing-item">
+                                            <div class=" mb-5">
+                                                <div class="reviews-section-card">
+                                                    <img class="reviews-section-img mr-3 img-fluid post-thumb d-none d-md-flex" src=@Url.Content(Model.GetHostPostInfo.AddFile) alt="image">
                                                 </div>
-
                                             </div>
-                                        </div>
 
+                                        </div>
                                     </div>
+
                                 </div>
-                            }
+                            </div>
+
                         </div>
                     </div>
                 </div>
+                @if (Model.GetReservation == null)
+                {
+
+
+                    <div class="card reserve-card">
+                        <div class="card-body">
+
+                            @using (Html.BeginForm("ReserveRequestApartment", "Home", FormMethod.Post))
+                            {
+
+                                @Html.TextBox("Id", "", new { type = "number", @class = "form-control id-text valid", @value = Model.GetHostPostInfo.HostPostInfoID })
+
+                                <div class="form-group">
+                                    <label for="CheckIn" class="form-inline">Check In</label>
+                                    @Html.TextBox("CheckIn", "", new { type = "datetime-local", @class = "form-control valid", @data_val = "true", @data_val_required = "Check in is Invalid " })
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="CheckOut" class="form-inline">Check Out</label>
+                                    @Html.TextBox("CheckOut", "", new { type = "datetime-local", @class = "form-control valid", @data_val = "true", @data_val_required = "Check out is Invalid" })
+
+                                </div>
+                                <input type="submit" class="btn btn-primary mt-5 w-100" value="Reserve" />
+
+                            }
+
+                        </div>
+                    </div>
+                }
+                else
+                {
+
+
+
+
+                    <div class="card payment-card">
+                        <div class="card-body">
+
+                            @using (Html.BeginForm("PaymentRequest", "Home",null, FormMethod.Post))
+                            {
+                                <label for="Type">Type</label>
+                                <select class="form-select" name="Type">
+                                    <option value=0>Bkash</option>
+                                    <option value=1>Nogod</option>
+                                </select>
+
+                                <input name="ReceiverID" value=@Model.GetReservation.Renter.UserID class="hidden-text-box" />
+                                <input name="SenderID" value=@Model.GetReservation.Reserver.UserID class="hidden-text-box" />
+                                <input name="PostID" value=@Model.GetReservation.Post.HostPostInfoID class="hidden-text-box" />
+                                <input name="ReservationId" value=@Model.GetReservation.ReservationID class="hidden-text-box" />
+
+                                <div class="form-group">
+                                    <label for="AccountNumberFrom">Sent From</label>
+
+                                    @Html.TextBox("AccountNumberFrom", "", new { type = "text", @class = "form-control valid", @data_val = "true", @placeholder = "Account Number", @data_val_required = "Account Number is Invalid" })
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="AccountNumberTo">Sent To</label>
+                                    @Html.TextBox("AccountNumberTo", "", new { type = "text", @class = "form-control valid", @data_val = "true", @placeholder = "Account Number", @data_val_required = "Account Number is Invalid" })
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="TxId">Sent To</label>
+                                    @Html.TextBox("TxId", "", new { type = "text", @class = "form-control valid", @data_val = "true", @placeholder = "TxId", @data_val_required = "Account Number is Invalid" })
+
+                                </div>
+
+                                <p>*Your request has been accepted</p>
+                                <input type="submit" class="btn btn-primary mt-5 w-100" value="Make Payment" />
+                            }
+
+                        </div>
+                    </div>
+                }
+                <h1>@Model.GetHostPostInfo.Title</h1>
+                <h4>Rent Type </h4>
+
+                <p>
+                    @if (Model.GetHostPostInfo.Room == 0)
+                    {<span>Guest</span>}
+                    else
+                    { <span>Apartment</span>}
+                </p>
+
+                <p>@Model.GetHostPostInfo.NumRooms Rooms,@Model.GetHostPostInfo.NumKitchens kitchens, @Model.GetHostPostInfo.NumWash Washrooms</p>
+                <p>@Model.GetHostPostInfo.NumBalconys Balconys</p>
+                <br />
+                <p>Price:</p>
+                <p>
+                    @Model.GetHostPostInfo.Price @if (Model.GetHostPostInfo.PaymentType == 0)
+                    {<span>Per day</span>}
+                    else
+                    {<span>Per month</span>}
+                </p>
+                <br />
+                <br />
+                <hr>
+
+                <p>Renter Info</p>
+                <p>Name:</p>
+                <p>@Model.GetHostPostInfo.User.UserFirstName @Model.GetHostPostInfo.User.UserLastName</p>
+                <p>Email:</p>
+                <p>@Model.GetHostPostInfo.User.UserEmail</p>
+
             </div>
         </div>
     </section>

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Homiee.Models.NewNotification
+
+@{
 
 
     Layout = null;
@@ -60,7 +62,7 @@
     <div id="main-wrapper" data-navbarbg="skin6" data-theme="light" data-layout="vertical" data-sidebartype="full"
          data-boxed-layout="full">
 
-        @Html.Partial("_HostSideBar")
+        @Html.Partial("_HostSideBar", Model )
         <section class="section-post">
             <div class="container ">
                 <div class="row">

@@ -12,7 +12,7 @@ namespace Homiee.Models
         public int MobileBankingID { get; set; }
         public int MobileBankingAccountHolderID { get; set; }
         public string MobileBankingAccountNumber { get; set; }
-        public string MobileBankingAccountType { get; set; }
+        public int MobileBankingAccountType { get; set; }
 
         public virtual User User { get; set; }
     }
