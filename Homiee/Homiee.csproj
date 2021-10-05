@@ -252,6 +252,14 @@
     <Compile Include="Migrations\202110041714297_titleAdd.Designer.cs">
       <DependentUpon>202110041714297_titleAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110042011415_hostofficepostchanged.cs" />
+    <Compile Include="Migrations\202110042011415_hostofficepostchanged.Designer.cs">
+      <DependentUpon>202110042011415_hostofficepostchanged.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110042210170_reviewtimeadded.cs" />
+    <Compile Include="Migrations\202110042210170_reviewtimeadded.Designer.cs">
+      <DependentUpon>202110042210170_reviewtimeadded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AllPostViewModel.cs" />
@@ -1499,6 +1507,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110041714297_titleAdd.resx">
       <DependentUpon>202110041714297_titleAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110042011415_hostofficepostchanged.resx">
+      <DependentUpon>202110042011415_hostofficepostchanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110042210170_reviewtimeadded.resx">
+      <DependentUpon>202110042210170_reviewtimeadded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

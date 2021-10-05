@@ -268,6 +268,18 @@ namespace Homiee.Controllers
                 {
                     hostOfficePost.Title = data["Title"];
                     hostOfficePost.SpaceSize = Convert.ToDouble(data["SpaceSize"]);
+                    hostOfficePost.NumRooms = Convert.ToInt32(data["NumRooms"]);
+                    
+                    hostOfficePost.NumWash = Convert.ToInt32(data["NumWash"]);
+                    hostOfficePost.NumBalconys = Convert.ToInt32(data["NumBalconys"]);
+                    hostOfficePost.AdditionalFeatures = data["AdditionalFeatures"];
+                    hostOfficePost.CountryName = data["CountryName"];
+                    hostOfficePost.StreetName = data["StreetName"];
+                    hostOfficePost.StateName = data["StateName"];
+                    hostOfficePost.CityName = data["CityName"];
+                    hostOfficePost.PostCode = Convert.ToInt32(data["PostCode"]);
+                    hostOfficePost.HostRules = data["HostRules"];
+              
                     hostOfficePost.Price = Convert.ToInt32(data["Price"]);
                     hostOfficePost.PaymentType = Convert.ToInt32(data["PaymentType"]);
                     hostOfficePost.Offer = data["Offer"];

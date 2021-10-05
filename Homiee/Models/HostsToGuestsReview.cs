@@ -14,6 +14,8 @@ namespace Homiee.Models
         public int ReviewedID { get; set; }
         public string ReviewDescription { get; set; }
 
+        public Nullable<System.DateTime> ReviewTime { get; set; }
+
         public virtual User User { get; set; }
         public virtual User User1 { get; set; }
     }
