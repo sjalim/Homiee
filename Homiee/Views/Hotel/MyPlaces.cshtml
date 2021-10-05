@@ -1,14 +1,15 @@
 ﻿@*Hotel MyPlaces*@
 
-@model IEnumerable<Homiee.Models.HotelInfo>
+@*@model IEnumerable<Homiee.Models.HotelInfo>*@
 
+@model Homiee.Models.HotelPostViewModel
 
 @{
-    //ViewBag.Title = "MyPlaces";
+
     Layout = null;
+
+
 }
-
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,7 +22,6 @@
     <meta name="robots" content="noindex,nofollow">
     <title>Homiee</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/niceadmin-lite/" />
-
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="~/Template/Hotel/assets/images/favicon.png">
     <!-- Custom CSS -->
@@ -32,378 +32,113 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!-- Bootstrap core CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link href="~/Template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="~/Template/assets/css/templatemo-plot-listing.css" rel="stylesheet" />
+    <link href="~/Template/assets/css/owl.css" rel="stylesheet" />
+    <link href="~/Template/assets/css/fontawesome.css" rel="stylesheet" />
+    <link href="~/Template/assets/css/animated.css" rel="stylesheet" />
     <style>
-        .edrd{
-            padding-left:74%;
+        .section-allpost {
+            margin-left: 300px;
+        }
+
+        .post-img {
+            width: 200px;
+            display: inline-block;
+        }
+
+        .post-content {
+            display: inline-block;
         }
     </style>
 </head>
 
+
 <body>
-    <!-- ============================================================== -->
-    <!-- Preloader - style you can find in spinners.css -->
-    <!-- ============================================================== -->
-    @*<div class="preloader">
-            <div class="lds-ripple">
-                <div class="lds-pos"></div>
-                <div class="lds-pos"></div>
-            </div>
-        </div>*@
-    <!-- ============================================================== -->
-    <!-- Main wrapper - style you can find in pages.scss -->
-    <!-- ============================================================== -->
+
     <div id="main-wrapper" data-navbarbg="skin6" data-theme="light" data-layout="vertical" data-sidebartype="full"
          data-boxed-layout="full">
-        <!-- ============================================================== -->
-        <!-- Topbar header - style you can find in pages.scss -->
-        <!-- ============================================================== -->
-        <header class="topbar" data-navbarbg="skin6">
-            <nav class="navbar top-navbar navbar-expand-md navbar-light">
-                <div class="navbar-header" data-logobg="skin5">
-                    <!-- This is for the sidebar toggle which is visible on mobile only -->
-                    <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)">
-                        <i class="ti-menu ti-close"></i>
-                    </a>
-                    <!-- ============================================================== -->
-                    <!-- Logo -->
-                    <!-- ============================================================== -->
-                    <div class="navbar-brand">
-                        <a href="../Hotel/Index" class="logo">
-                            <!-- Logo icon -->
-                            <!--<b class="logo-icon">-->
-                                <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                                <!-- Dark Logo icon -->
-                                <!--<img src="~/Template/Hotel/assets/images/logo-icon.png" alt="homepage" class="dark-logo" />-->
 
-                                <!-- Light Logo icon -->
-                                <!--<img src="~/Template/Hotel/assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
-                            </b>-->
-                            <!--End Logo icon -->
-                            <!-- Logo text -->
-                            <span class="logo-text">
-                                <!-- dark Logo text -->
-                                <img src="~/Template/Hotel/assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+        @Html.Partial("_HotelSideBar")
 
-                                <!-- Light Logo text -->
 
-                                <img src="~/Template/Hotel/assets/images/homiee-light.png" class="light-logo" alt="homepage" />
-                                
-                            </span>
-                        </a>
-                    </div>
-                    <!-- ============================================================== -->
-                    <!-- End Logo -->
-                    <!-- ============================================================== -->
-                    <!-- ============================================================== -->
-                    <!-- Toggle which is visible on mobile only -->
-                    <!-- ============================================================== -->
+        <h4>Post</h4>
 
-                </div>
-                <!-- ============================================================== -->
-                <!-- End Logo -->
-                <!-- ============================================================== -->
-                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin6">
-                    <!-- ============================================================== -->
-                    <!-- toggle and nav items -->
-                    <!-- ============================================================== -->
-                    <ul class="navbar-nav float-start me-auto">
-                        <!-- ============================================================== -->
-                        <!-- Search -->
-                        <!-- ============================================================== -->
-                        <li class="nav-item search-box">
-                            <a class="nav-link waves-effect waves-dark" href="javascript:void(0)">
-                                <div class="d-flex align-items-center">
-                                    <i class="mdi mdi-magnify font-20 me-1"></i>
-                                    <div class="ms-1 d-none d-sm-block">
-                                        <span>Search</span>
-                                    </div>
-                                </div>
-                            </a>
-                            <form class="app-search position-absolute">
-                                <input type="text" class="form-control" placeholder="Search &amp; enter">
-                                <a class="srh-btn">
-                                    <i class="ti-close"></i>
-                                </a>
-                            </form>
-                        </li>
-                    </ul>
-                    <!-- ============================================================== -->
-                    <!-- Right side toggle and nav items -->
-                    <!-- ============================================================== -->
-                    <ul class="navbar-nav float-end">
-                        <!-- ============================================================== -->
-                        <!-- User profile and search -->
-                        <!-- ============================================================== -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="~/Template/Hotel/assets/images/users/2.jpg" alt="user" class="rounded-circle" width="31">
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="javascript:void(0)">
-                                    <i class="ti-user me-1 ms-1"></i>
-                                    My Profile
-                                </a>
-                                <a class="dropdown-item" href="javascript:void(0)">
-                                    <i class="ti-wallet me-1 ms-1"></i>
-                                    My Balance
-                                </a>
-                                <a class="dropdown-item" href="javascript:void(0)">
-                                    <i class="ti-email me-1 ms-1"></i>
-                                    Inbox
-                                </a>
-                            </ul>
-                        </li>
-                        <!-- ============================================================== -->
-                        <!-- User profile and search -->
-                        <!-- ============================================================== -->
-                    </ul>
-                </div>
-            </nav>
-        </header>
-        <!-- ============================================================== -->
-        <!-- End Topbar header -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <aside class="left-sidebar" data-sidebarbg="skin6">
-            <!-- Sidebar scroll-->
-            <div class="scroll-sidebar">
-                <!-- Sidebar navigation-->
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Hotel/Index"
-                               aria-expanded="false">
-                                <i class="mdi mdi-av-timer"></i>
-                                <span class="hide-menu">Dashboard</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Hotel/Profile"
-                               aria-expanded="false">
-                                <i class="mdi mdi-account-network"></i>
-                                <span class="hide-menu">Profile</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Hotel/AddAPlace"
-                               aria-expanded="false">
-                                <i class="mdi mdi-arrange-bring-forward"></i>
-                                <span class="hide-menu">Add Your Hotel Room</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Hotel/MyPlaces"
-                               aria-expanded="false">
-                                <i class="mdi mdi-border-none"></i>
-                                <span class="hide-menu">My Hotel Rooms</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Hotel/Reviews"
-                               aria-expanded="false">
-                                <i class="mdi mdi-face"></i>
-                                <span class="hide-menu">Reviews</span>
-                            </a>
-                        </li>
-
-                    </ul>
-                </nav>
-                <!-- End Sidebar navigation -->
-            </div>
-            <!-- End Sidebar scroll-->
-        </aside>
-        <!-- ============================================================== -->
-        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Page wrapper  -->
-        <!-- ============================================================== -->
-        <div class="page-wrapper">
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <div class="page-breadcrumb">
-                <div class="row">
-                    <div class="col-5 align-self-center">
-                        <h4 class="page-title">My Places</h4>
-                    </div>
-                    <div class="col-7 align-self-center">
-                        <div class="d-flex align-items-center justify-content-end">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item">
-                                        <a href="#">Home</a>
-                                    </li>
-                                    <li class="breadcrumb-item active" aria-current="page">My Places</li>
-                                </ol>
-                            </nav>
+        <section class="section-allpost">
+            @foreach (var x in Model.HotelInfoes.ToList())
+            {
+                <div class="card w-75">
+                    <div class="card-body d-flex align-items-center">
+                        <div class="post-img" style="margin-right:100px">
+                            <a href="#"><img src=@Url.Content(x.AddFile) alt=""></a>
+                        </div>
+                        <div class="post-content">
+                            <h4># @x.HotelName</h4>
+                            @*<p>Price: @x.Price (@x.PaymentType)</p>*@
+                            @*@if (x.PaymentType == 0)
+                            {
+                                <p>Price: @x.Price (Per Day)</p>
+                            }
+                            @if (x.PaymentType == 1)
+                            {
+                                <p>Price: @x.Price (Per Month)</p>
+                            }*@
+                            <span>@x.StreetName,</span><span>@x.CityName,</span><span>@x.CountryName.</span>
+                            <p>Offer: @x.Offer</p>
+                            <p>Caption: @x.HotelRoomCaption</p>
+                            <p>Rules: @x.HotelRules</p>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Container fluid  -->
-            <!-- ============================================================== -->
-            <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Start Page Content -->
-                <!-- ============================================================== -->
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">List of My Places</h4>
-                                <h6 class="card-subtitle">
-                                    My Place section contains the places you added here. You can edit or delete any places as your will. You can also see the detailed view of any added place
-                                </h6>
-                                <h6 class="card-title mt-5">
-                                    Table View of your places
-                                </h6>
-                                @foreach (var item in Model)
-                                {
-                                    <div class="table-responsive mt-3">
-                                        <table class="table table-bordered table-responsive-lg">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">@Html.DisplayNameFor(model => model.HotelName)</th>
-                                                    <th scope="col">@Html.DisplayNameFor(model => model.HotelTradeLicence)</th>
-                                                    <th scope="col">@Html.DisplayNameFor(model => model.HotelRoomType)</th>
-                                                    <th scope="col">@Html.DisplayNameFor(model => model.NumBed)</th>
-                                                    <th scope="col">@Html.DisplayNameFor(model => model.NumWash)</th>
-                                                    <th scope="col">@Html.DisplayNameFor(model => model.AdditionalFeatures)</th>
-                                                    <th scope="col">@Html.DisplayNameFor(model => model.CountryName)</th>
-                                                    <th scope="col">@Html.DisplayNameFor(model => model.StreetName)</th>
-                                                    <th scope="col">@Html.DisplayNameFor(model => model.CityName)</th>
-                                                    <th scope="col">@Html.DisplayNameFor(model => model.StateName)</th>
-                                                    <th scope="col">@Html.DisplayNameFor(model => model.PostCode)</th>
-                                                    <th scope="col">@Html.DisplayNameFor(model => model.HotelRules)</th>
-                                                    <th scope="col">@Html.DisplayNameFor(model => model.Cost)</th>
-                                                    <th scope="col">@Html.DisplayNameFor(model => model.Offer)</th>
-                                                    <th scope="col">@Html.DisplayNameFor(model => model.AddFile)</th>
-                                                    <th scope="col">@Html.DisplayNameFor(model => model.HotelRoomCaption)</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
+            }
 
-                                                <tr>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.HotelName)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.HotelTradeLicence)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.HotelRoomType)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.NumBed)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.NumWash)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.AdditionalFeatures)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.CountryName)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.StreetName)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.CityName)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.StateName)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.PostCode)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.HotelRules)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.Cost)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.Offer)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.AddFile)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.HotelRoomCaption)
-                                                    </td>
-             
-                                                </tr>
-                                            </tbody>
-                                        </table>
-
-                                    </div>
-                                    <div class="edrd">
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.HotelInfoID }, new { @class = "btn btn-success text-white" }) |
-                                        @Html.ActionLink("Details", "Details", new { id = item.HotelInfoID }, new { @class = "btn btn-primary text-white" }) |
-                                        @Html.ActionLink("Reviews", "Reviews", new { id = item.HotelInfoID }, new { @class = "btn btn-dark text-white" }) |
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.HotelInfoID }, new { @class = "btn btn-danger text-white" })
-                                    </div>
-                                }
-                                
-                            </div>
-                          
+            @foreach (var x in Model.HotelInfoes.ToList())
+            {
+                <div class="card w-75">
+                    <div class="card-body d-flex align-items-center">
+                        <div class="post-img" style="margin-right:100px">
+                            <a href="#"><img src=@Url.Content(x.AddFile) alt=""></a>
+                        </div>
+                        <div class="post-content">
+                            <h4># @x.HotelName</h4>
+                            @*<p>Price: @x.Price (@x.PaymentType)</p>*@
+                            @*@if (x.PaymentType == 0)
+        {
+            <p>Price: @x.Price (Per Day)</p>
+        }
+        @if (x.PaymentType == 1)
+        {
+            <p>Price: @x.Price (Per Month)</p>
+        }*@
+                            <span>@x.StreetName,</span><span>@x.CityName,</span><span>@x.CountryName.</span>
+                            <p>Offer: @x.Offer</p>
+                            <p>Caption: @x.HotelRoomCaption</p>
+                            <p>Rules: @x.HotelRules</p>
                         </div>
                     </div>
-    
                 </div>
-                <!-- ============================================================== -->
-                <!-- End PAge Content -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Right sidebar -->
-                <!-- ============================================================== -->
-                <!-- .right-sidebar -->
-                <!-- ============================================================== -->
-                <!-- End Right sidebar -->
-                <!-- ============================================================== -->
-            </div>
-            <!-- ============================================================== -->
-            <!-- End Container fluid  -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- footer -->
-            <!-- ============================================================== -->
-            <footer class="footer text-center">
-                All Rights Reserved by Homiee.
-            </footer>
-            <!-- ============================================================== -->
-            <!-- End footer -->
-            <!-- ============================================================== -->
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
-        <!-- ============================================================== -->
+            }
+        </section>
+
+        @Html.Partial("_HotelFooter")
+
     </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
+
 
     <script src="~/Template/Hotel/assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="~/Template/Hotel/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <!-- slimscrollbar scrollbar JavaScript -->
-
     <script src="~/Template/Hotel/assets/extra-libs/sparkline/sparkline.js"></script>
+
     <!--Wave Effects -->
     <script src="~/Template/Hotel/dist/js/waves.js"></script>
     <!--Menu sidebar -->
     <script src="~/Template/Hotel/dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
-    <script src="~/Template/Hotel/dist/js/custom.min.js"></script>
+
 </body>
