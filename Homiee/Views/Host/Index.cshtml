@@ -1,4 +1,4 @@
-﻿@*Host Index*@
+﻿@model Homiee.Models.NewNotification
 
 @{
     ViewBag.Title = "Index";
@@ -28,7 +28,7 @@
          data-boxed-layout="full">
 
         @*@Html.Partial("_HostTopBar")*@
-        @Html.Partial("_HostSideBar")
+        @Html.Partial("_HostSideBar",Model)
 
 
         <div class="page-wrapper">

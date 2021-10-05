@@ -35,7 +35,10 @@ namespace Homiee.Controllers
             if (Session["UserId"] != null)
             {
 
-                return View();
+                NewNotification newNotification = new NewNotification();
+                newNotification.active = true;
+
+                return View(newNotification);
             }
             return RedirectToAction("Index", "Home");
         }
@@ -115,7 +118,10 @@ namespace Homiee.Controllers
 
         public ActionResult GuestPost()
         {
-            return View();
+            NewNotification newNotification = new NewNotification();
+            newNotification.active = true;
+
+            return View(newNotification);
         }
 
         [HttpPost]
@@ -193,14 +199,17 @@ namespace Homiee.Controllers
                         }
                         throw raise;
                     }
-                   
+
                 }
             }
             return RedirectToAction("Index");
         }
         public ActionResult ApartmentPost()
         {
-            return View();
+            NewNotification newNotification = new NewNotification();
+            newNotification.active = true;
+
+            return View(newNotification);
         }
         public ActionResult ApartmentPostData(FormCollection data, HttpPostedFileBase AddFile)
         {
@@ -266,7 +275,10 @@ namespace Homiee.Controllers
 
         public ActionResult OfficePost()
         {
-            return View();
+            NewNotification newNotification = new NewNotification();
+            newNotification.active = true;
+
+            return View(newNotification);
         }
 
         [HttpPost]
@@ -299,7 +311,7 @@ namespace Homiee.Controllers
                     hostOfficePost.Offer = data["Offer"];
                     hostOfficePost.RoomCaption = data["RoomCaption"];
                     hostOfficePost.User = user;
-        
+
 
                     string extension = Path.GetExtension(AddFile.FileName);
                     string fileName = DateTime.Now.ToString("yymmssfff") + "officePost" + extension;
@@ -335,10 +347,13 @@ namespace Homiee.Controllers
             var userId = Convert.ToInt32(Session["UserID"]);
             viewModel.hostPostInfos = (List<HostPostInfo>)db.HostPostInfoes.Select(t => t).Where(a => a.User.UserID == userId).ToList();
             viewModel.hostOfficePosts = (List<HostOfficePost>)db.HostOfficePosts.Select(t => t).Where(a => a.User.UserID == userId).ToList();
-
+            viewModel.GetNewNotification = new NewNotification()
+            {
+                active = false
+            };
             Debug.WriteLine("User ID :" + userId);
 
-            foreach(var x in viewModel.hostPostInfos)
+            foreach (var x in viewModel.hostPostInfos)
             {
                 Debug.WriteLine(x.Title);
             }
@@ -350,20 +365,46 @@ namespace Homiee.Controllers
 
         public ActionResult Transaction()
         {
-            return View();
+            NewNotification newNotification = new NewNotification();
+            newNotification.active = true;
+
+            return View(newNotification);
 
         }
 
         public ActionResult Notification()
         {
-            return View();
+            var userId = Convert.ToInt32(Session["UserID"]);
+
+            NotificationViewModel viewModel = new NotificationViewModel();
+
+            viewModel.GetNotifications = db.Notifications.Select(t => t).Where(a => a.Renter.UserID == userId).Where(b => b.NotificationType == HomeController.USER_NOTIFY_HOST).ToList();
+
+            viewModel.GetNewNotification = new NewNotification()
+            {
+                active = true
+            };
+
+            return View(viewModel);
         }
+
+
 
 
 
         public ActionResult Profile()
         {
-            return View();
+            var userId = Convert.ToInt32(Session["UserID"]);
+            HostProfileViewModel viewModel = new HostProfileViewModel();
+
+
+            viewModel.mobileBankings = db.MobileBankings.Select(t => t).Where(a => a.MobileBankingAccountHolderID == userId).ToList();
+            viewModel.GetNewNotification = new NewNotification()
+            {
+                active = false
+            };
+
+            return View(viewModel);
         }
 
         public ActionResult MyPlaces()
@@ -378,8 +419,18 @@ namespace Homiee.Controllers
 
         public ActionResult Reviews()
         {
-            List<GuestsToHostsReview> gueststohostsreview = db.GuestsToHostsReviews.ToList<GuestsToHostsReview>();
-            return View(gueststohostsreview);
+            HostReviewsViewModel viewModel = new HostReviewsViewModel();
+
+
+
+            viewModel.guestsToHostsReviews = db.GuestsToHostsReviews.ToList<GuestsToHostsReview>();
+
+            viewModel.GetNewNotification = new NewNotification()
+            {
+                active = false
+            };
+
+            return View(viewModel);
         }
 
         public ActionResult Edit(int? id)
@@ -438,6 +489,85 @@ namespace Homiee.Controllers
             }
             return RedirectToAction("Login", "Users");
         }
+
+        [HttpPost]
+        public ActionResult MobileBanking(FormCollection data)
+        {
+
+            MobileBanking newAccount = new MobileBanking();
+
+            var userId = Convert.ToInt32(Session["UserID"]);
+
+            User user = db.Users.Where(a => a.UserID == userId).FirstOrDefault();
+
+
+            if (data != null)
+            {
+                newAccount.MobileBankingAccountHolderID = userId;
+                newAccount.MobileBankingAccountNumber = data["AccountNumber"];
+                newAccount.MobileBankingAccountType = Convert.ToInt32(data["Type"]);
+                newAccount.User = user;
+
+                db.MobileBankings.Add(newAccount);
+                db.SaveChanges();
+            }
+
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult ReservationAccept(int? id)
+        {
+
+            Debug.WriteLine("Notificaition id: " + id);
+            Notification newNotification = new Notification();
+            if (id != null)
+            {
+                var notification = db.Notifications.Select(t => t).Where(a => a.NotificaitonID == id).FirstOrDefault();
+
+                notification.Reservation.Status = HomeController.RESERVATION_APPROVED;
+
+                newNotification.NotifyText = "Your reservation has been Accept";
+                newNotification.NotifyTime = DateTime.Now;
+                newNotification.Post = notification.Post;
+                newNotification.SeenStatus = HomeController.NOTIFICATION_UNSEEN;
+                newNotification.Reserver = notification.Reserver;
+                newNotification.Renter = notification.Renter;
+                newNotification.Reservation = notification.Reservation;
+                newNotification.NotificationType = HomeController.HOST_NOTIFY_USER;
+
+                db.Entry(notification).State = EntityState.Modified;
+                db.Notifications.Add(newNotification);
+                db.SaveChanges();
+
+            }
+            return RedirectToAction("Notification");
+        }
+
+        public ActionResult ReservationCancel(int? id)
+        {
+            Debug.WriteLine("Notificaition id: " + id);
+
+
+            if (id != null)
+            {
+                var notification = db.Notifications.Select(t => t).Where(a => a.NotificaitonID == id).FirstOrDefault();
+
+                if (notification.Reservation.Status != HomeController.RESERVATION_UNAPPROVED)
+                {
+                    notification.Reservation.Status = HomeController.RESERVATION_UNAPPROVED;
+
+                     
+                }
+
+                db.Entry(notification).State = EntityState.Modified;
+                db.SaveChanges();
+
+            }
+            return RedirectToAction("Notification");
+        }
+
 
         public ActionResult Delete(int? id)
         {

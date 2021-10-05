@@ -1,4 +1,4 @@
-﻿
+﻿@model Homiee.Models.NotificationViewModel
 @{
     Layout = null;
 }
@@ -24,6 +24,54 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+
+    <style>
+        .notification-section {
+            margin-left: 300px;
+            font-size: 20px;
+        }
+
+        .notification-card {
+            width: 90%;
+            height: 280px;
+            margin: 0 auto 5px auto;
+            box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+        }
+
+        .notification-content {
+            display: inline-block;
+        }
+
+        .notification-button {
+            display: inline-block;
+            float: right;
+        }
+
+        .notification-button-yes {
+            background: url("../../Images/ok.png");
+            width: 35px;
+            height: 35px;
+            border: 0;
+            background-repeat: no-repeat;
+            display: inline-block;
+            margin: 20px;
+        }
+
+        .notification-button-no {
+            background: url("../../Images/no.png");
+            width: 35px;
+            height: 35px;
+            border: 0;
+            background-repeat: no-repeat;
+            display: inline-block;
+            margin: 20px;
+        }
+
+        form {
+            display: inline-block;
+        }
+    </style>
 </head>
 
 
@@ -32,13 +80,57 @@
     <div id="main-wrapper" data-navbarbg="skin6" data-theme="light" data-layout="vertical" data-sidebartype="full"
          data-boxed-layout="full">
 
-        @Html.Partial("_HostSideBar")
+        @Html.Partial("_HostSideBar", Model.GetNewNotification)
 
 
-        <h4>Notification</h4>
+
+
+        <section class="notification-section">
+
+           @foreach(var x in Model.GetNotifications)
+           { 
+                <div class="card notification-card">
+                    <div class="card-body">
+                        <div class="notification-content">
+                            <p>@x.Post.Title</p>
+                            <p>@x.NotifyTime</p>
+                            <p>@x.NotifyText</p>
+                            <p>Check In: <span>@x.Reservation.CheckIn</span></p>
+                            <p>Check Out: <span>@x.Reservation.CheckOut</span></p>
+                        </div>
+                        <div class="notification-button">
+                            @using (Html.BeginForm("ReservationAccept","Host", new { id = x.NotificaitonID }, FormMethod.Post) )
+                            {
+                                <input class="notification-button-yes" type="submit" name="ApproveButtonYes" value="" />
+                            }
+                            @using (Html.BeginForm("ReservationCancel","Host", new { id = x.NotificaitonID }, FormMethod.Post))
+                            {
+                                <input class="notification-button-no" type="submit" name="ApproveButtonNo" value="" />
+                            }
+                            <div>
+                                @if (x.Reservation.Status!=0)
+                                {
+                                    <span class="label label-success" style="float:right">Approved</span>
+                                }
+                                else
+                                {
+                                    <span class="label label-danger">No Approved</span>
+                                }
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </section>
+
+
+
         @Html.Partial("_HostFooter")
 
     </div>
+
 
 
     <script src="~/Template/Host/assets/libs/jquery/dist/jquery.min.js"></script>

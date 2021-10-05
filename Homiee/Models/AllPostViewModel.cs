@@ -11,5 +11,7 @@ namespace Homiee.Models
         public List<HostOfficePost> hostOfficePosts { get; set; }
 
         public List<HostPostInfo> hostPostInfos { get; set; }
+
+        public NewNotification GetNewNotification { get; set; }
     }
 }

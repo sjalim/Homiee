@@ -1,5 +1,4 @@
-﻿
-@*Host Profile*@
+﻿@model Homiee.Models.HostProfileViewModel
 
 @{
     //ViewBag.Title = "Profile";
@@ -27,6 +26,14 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+
+    <style>
+        .mobileBanking {
+            padding: 150px;
+            font-size: 20px;
+        }
+    </style>
 </head>
 
 <body>
@@ -34,7 +41,7 @@
     <div id="main-wrapper" data-navbarbg="skin6" data-theme="light" data-layout="vertical" data-sidebartype="full"
          data-boxed-layout="full">
 
-        @Html.Partial("_HostSideBar")
+        @Html.Partial("_HostSideBar",Model.GetNewNotification)
 
 
         <div class="page-wrapper">
@@ -208,19 +215,66 @@
                 </div>
 
             </div>
-     
-        @Html.Partial("_HostFooter")
+
+
+            <section class="mobileBanking">
+
+
+                @if (Model != null)
+                {
+
+                    foreach (var x in Model.mobileBankings)
+                    {
+                        <label>Type:</label>
+                        <p>
+                            @if (x.MobileBankingAccountType == 0)
+                            {<span>Bkash</span> }
+                            else
+                            {<span>Nogod</span>}
+                        </p>
+                        <label>Account Number</label>
+                        <p>@x.MobileBankingAccountNumber</p>
+                    }
+
+                }
+
+            </section>
+            <section class="mobileBanking">
+                <h4>Mobile Banking</h4>
+
+                @using (Html.BeginForm("MobileBanking", "Host", FormMethod.Post))
+                {
+
+                    <div class="form-group">
+                        <label for="Type" class="form-label">Account Type</label>
+                        <select class="form-control" name="Type">
+                            <option value=0 selected>Bkash</option>
+                            <option value=1>Nogod</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="AccountNumber" class="form-label">Account Number</label>
+                        <input class="form-control" type="number" name="AccountNumber" />
+                    </div>
+
+                    <input type="submit" value="Add" class="btn btn-primary" />
+                }
+            </section>
+
+
+
+            @Html.Partial("_HostFooter")
         </div>
 
     </div>
 
-    
+
     <script src="~/Template/Host/assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="~/Template/Host/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <!-- slimscrollbar scrollbar JavaScript -->
     <script src="~/Template/Host/assets/extra-libs/sparkline/sparkline.js"></script>
- 
+
     <!--Wave Effects -->
     <script src="~/Template/Host/dist/js/waves.js"></script>
     <!--Menu sidebar -->

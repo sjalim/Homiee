@@ -223,7 +223,7 @@ namespace Homiee.Controllers
             return View();
         }
 
-        [HttpPost]
+     
         public ActionResult LogOut()
         {
 
@@ -262,17 +262,20 @@ namespace Homiee.Controllers
         {
 
             int userId = Convert.ToInt32(Session["UserID"]);
-
+            ProfileViewModel viewModel = new ProfileViewModel();
             //Debug.WriteLine("check the id:" + userId);
             if (userId != null)
             {
 
-
-                User user = db.Users.Where(a => a.UserID.Equals(userId)).FirstOrDefault();
-
                 //    Debug.WriteLine(" Images: " + user.UserProfilePicture);
 
-                return View(user);
+                viewModel.User = db.Users.Where(a => a.UserID.Equals(userId)).FirstOrDefault();
+                viewModel.GetNotifications = db.Notifications.Select(t => t)
+                    .Where(a => a.Reserver.UserID == userId)
+                    .Where(b => b.NotificationType == HomeController.HOST_NOTIFY_USER).ToList();
+                viewModel.transactions = db.Transactions.Select(t => t).Where(a => a.SenderID == userId).ToList();
+
+                return View(viewModel);
             }
             return RedirectToAction("Index", "Home");
         }

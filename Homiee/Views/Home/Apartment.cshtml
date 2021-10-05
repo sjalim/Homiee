@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<Homiee.Models.HostPostInfo>
+
+@{
     Layout = null;
 
 }
@@ -13,6 +15,75 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link href="~/Template/SidePanel/css/style.css" rel="stylesheet" />
+
+    <style>
+
+
+        #sidebar {
+            min-width: 270px;
+            max-width: 270px;
+            width: 270px;
+            background: #393D54;
+            color: #fff;
+            -webkit-transition: all 0.3s;
+            -o-transition: all 0.3s;
+            transition: all 0.3s;
+            position: fixed;
+            height: 100%;
+            width: 160px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            padding-top: 20px;
+        }
+
+        .button-27 {
+            appearance: none;
+            background-color: #000000;
+            border: 2px solid #1A1A1A;
+            border-radius: 15px;
+            box-sizing: border-box;
+            color: #FFFFFF;
+            cursor: pointer;
+            display: inline-block;
+            font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+            font-size: 16px;
+            font-weight: 600;
+            line-height: normal;
+            margin-top: 20px;
+            min-height: 60px;
+            min-width: 0;
+            outline: none;
+            padding: 16px 24px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            width: 100%;
+            will-change: transform;
+        }
+
+            .button-27:disabled {
+                pointer-events: none;
+            }
+
+            .button-27:hover {
+                box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+                transform: translateY(-2px);
+            }
+
+            .button-27:active {
+                box-shadow: none;
+                transform: translateY(0);
+            }
+
+        input {
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
 
@@ -25,19 +96,15 @@
         <div id="content" class="p-4 p-md-5 pt-5">
             <h2 class="mb-4">Apartments</h2>
             <div class="row">
-                @for (int i = 0; i < 20; i++)
+                @foreach (var x in Model.ToList())
                 {
+                <div class="col-md-3">
+                    <img src=@Url.Content(x.AddFile) width="280px" height="280px" />
+                    <h5>@x.Title</h5><span style="display:inline-block">$@x.Price/ @if (x.PaymentType == 1) {<span>Per Day</span> } else {<span>Per Month</span>}</span>
+                    <p>@x.StreetName, @x.CityName, @x.StateName </p>
+                    @Html.ActionLink("Rent", "ApartmentDetails", "Home", new { id = x.HostPostInfoID}, new { @class = "btn btn-primary" })
 
-                    using (Html.BeginForm("Apartment", "Home",
-                       new { id =5 }, FormMethod.Get, null))
-                    {
-                        <div class="col-md-3">
-                            <img src="~/Images/hostBG.jpg" width="280px" height="280px" />
-                            <h5>Title</h5><span style="display:inline-block">$100/day</span>
-                            <p>Short Address</p>
-                        </div>
-
-                    }
+                </div>
                 }
             </div>
 

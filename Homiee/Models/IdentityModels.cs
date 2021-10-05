@@ -44,6 +44,9 @@ namespace Homiee.Models
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<HostOfficePost> HostOfficePosts { get; set; }
 
+        public DbSet<Reservation> Reservations { get; set; }
+
+        public DbSet<Notification> Notifications { get; set; }
         public ApplicationDbContext()
             : base("DBConnection", throwIfV1Schema: false)
         {

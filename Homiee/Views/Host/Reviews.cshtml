@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Homiee.Models.HostReviewsViewModel
+
+@{
     Layout = null;
 }
 <head>
@@ -31,7 +33,7 @@
     <div id="main-wrapper" data-navbarbg="skin6" data-theme="light" data-layout="vertical" data-sidebartype="full"
          data-boxed-layout="full">
 
-        @Html.Partial("_HostSideBar")
+        @Html.Partial("_HostSideBar",Model.GetNewNotification)
 
 
         <h4>Reviews</h4>

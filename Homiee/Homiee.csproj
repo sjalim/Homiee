@@ -258,6 +258,63 @@
     <Compile Include="Migrations\202110041714297_titleAdd.Designer.cs">
       <DependentUpon>202110041714297_titleAdd.cs</DependentUpon>
     </Compile>
+
+    <Compile Include="Migrations\202110050358197_mobileBankingType.cs" />
+    <Compile Include="Migrations\202110050358197_mobileBankingType.Designer.cs">
+      <DependentUpon>202110050358197_mobileBankingType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110050439066_reservation.cs" />
+    <Compile Include="Migrations\202110050439066_reservation.Designer.cs">
+      <DependentUpon>202110050439066_reservation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110050441248_reservation1.cs" />
+    <Compile Include="Migrations\202110050441248_reservation1.Designer.cs">
+      <DependentUpon>202110050441248_reservation1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110050642411_reservation_status.cs" />
+    <Compile Include="Migrations\202110050642411_reservation_status.Designer.cs">
+      <DependentUpon>202110050642411_reservation_status.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110050648136_notificaition.cs" />
+    <Compile Include="Migrations\202110050648136_notificaition.Designer.cs">
+      <DependentUpon>202110050648136_notificaition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110050649399_notificaition1.cs" />
+    <Compile Include="Migrations\202110050649399_notificaition1.Designer.cs">
+      <DependentUpon>202110050649399_notificaition1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110050656576_notification_update.cs" />
+    <Compile Include="Migrations\202110050656576_notification_update.Designer.cs">
+      <DependentUpon>202110050656576_notification_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110050739461_datatime_update.cs" />
+    <Compile Include="Migrations\202110050739461_datatime_update.Designer.cs">
+      <DependentUpon>202110050739461_datatime_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110050918161_notification_status.cs" />
+    <Compile Include="Migrations\202110050918161_notification_status.Designer.cs">
+      <DependentUpon>202110050918161_notification_status.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110051118299_notification_reservation.cs" />
+    <Compile Include="Migrations\202110051118299_notification_reservation.Designer.cs">
+      <DependentUpon>202110051118299_notification_reservation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110051501114_NotificationType.cs" />
+    <Compile Include="Migrations\202110051501114_NotificationType.Designer.cs">
+      <DependentUpon>202110051501114_NotificationType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110051816582_transaction_time.cs" />
+    <Compile Include="Migrations\202110051816582_transaction_time.Designer.cs">
+      <DependentUpon>202110051816582_transaction_time.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110051830134_transaction_sender_receiver.cs" />
+    <Compile Include="Migrations\202110051830134_transaction_sender_receiver.Designer.cs">
+      <DependentUpon>202110051830134_transaction_sender_receiver.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110051839379_transaction_undo.cs" />
+    <Compile Include="Migrations\202110051839379_transaction_undo.Designer.cs">
+      <DependentUpon>202110051839379_transaction_undo.cs</DependentUpon>
+
     <Compile Include="Migrations\202110042011415_hostofficepostchanged.cs" />
     <Compile Include="Migrations\202110042011415_hostofficepostchanged.Designer.cs">
       <DependentUpon>202110042011415_hostofficepostchanged.cs</DependentUpon>
@@ -265,16 +322,20 @@
     <Compile Include="Migrations\202110042210170_reviewtimeadded.cs" />
     <Compile Include="Migrations\202110042210170_reviewtimeadded.Designer.cs">
       <DependentUpon>202110042210170_reviewtimeadded.cs</DependentUpon>
+
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AllPostViewModel.cs" />
+    <Compile Include="Models\ApartmentDetailsViewModel.cs" />
     <Compile Include="Models\Bank.cs" />
     <Compile Include="Models\Chat.cs" />
     <Compile Include="Models\GuestsToHostsReview.cs" />
     <Compile Include="Models\GuestsToHotelsReview.cs" />
     <Compile Include="Models\HostOfficePost.cs" />
     <Compile Include="Models\HostPostInfo.cs" />
+    <Compile Include="Models\HostProfileViewModel.cs" />
+    <Compile Include="Models\HostReviewsViewModel.cs" />
     <Compile Include="Models\HostsToGuestsReview.cs" />
     <Compile Include="Models\Hotel.cs" />
     <Compile Include="Models\HotelAddress.cs" />
@@ -284,9 +345,14 @@
     <Compile Include="Models\LoginUser.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MobileBanking.cs" />
+    <Compile Include="Models\NewNotification.cs" />
+    <Compile Include="Models\Notification.cs" />
+    <Compile Include="Models\NotificationViewModel.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\PostComment.cs" />
+    <Compile Include="Models\ProfileViewModel.cs" />
     <Compile Include="Models\Rating.cs" />
+    <Compile Include="Models\Reservation.cs" />
     <Compile Include="Models\SigninHotel.cs" />
     <Compile Include="Models\SignInModelHosts.cs" />
     <Compile Include="Models\SigninUser.cs" />
@@ -330,6 +396,7 @@
     <Content Include="fonts\slick.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\bell.png" />
     <Content Include="Images\community-center.svg" />
     <Content Include="Images\home.svg" />
     <Content Include="Images\hostBG.jpg" />
@@ -337,7 +404,10 @@
     <Content Include="Images\hotelBG.jpg" />
     <Content Include="Images\info.svg" />
     <Content Include="Images\menu.png" />
+    <Content Include="Images\no.png" />
+    <Content Include="Images\bellColor.png" />
     <Content Include="Images\office.svg" />
+    <Content Include="Images\ok.png" />
     <Content Include="Images\party.svg" />
     <Content Include="Images\rating.svg" />
     <Content Include="Images\review.svg" />
@@ -1520,11 +1590,55 @@
     <EmbeddedResource Include="Migrations\202110041714297_titleAdd.resx">
       <DependentUpon>202110041714297_titleAdd.cs</DependentUpon>
     </EmbeddedResource>
+
+    <EmbeddedResource Include="Migrations\202110050358197_mobileBankingType.resx">
+      <DependentUpon>202110050358197_mobileBankingType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110050439066_reservation.resx">
+      <DependentUpon>202110050439066_reservation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110050441248_reservation1.resx">
+      <DependentUpon>202110050441248_reservation1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110050642411_reservation_status.resx">
+      <DependentUpon>202110050642411_reservation_status.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110050648136_notificaition.resx">
+      <DependentUpon>202110050648136_notificaition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110050649399_notificaition1.resx">
+      <DependentUpon>202110050649399_notificaition1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110050656576_notification_update.resx">
+      <DependentUpon>202110050656576_notification_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110050739461_datatime_update.resx">
+      <DependentUpon>202110050739461_datatime_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110050918161_notification_status.resx">
+      <DependentUpon>202110050918161_notification_status.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110051118299_notification_reservation.resx">
+      <DependentUpon>202110051118299_notification_reservation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110051501114_NotificationType.resx">
+      <DependentUpon>202110051501114_NotificationType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110051816582_transaction_time.resx">
+      <DependentUpon>202110051816582_transaction_time.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110051830134_transaction_sender_receiver.resx">
+      <DependentUpon>202110051830134_transaction_sender_receiver.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110051839379_transaction_undo.resx">
+      <DependentUpon>202110051839379_transaction_undo.cs</DependentUpon>
+
     <EmbeddedResource Include="Migrations\202110042011415_hostofficepostchanged.resx">
       <DependentUpon>202110042011415_hostofficepostchanged.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110042210170_reviewtimeadded.resx">
       <DependentUpon>202110042210170_reviewtimeadded.cs</DependentUpon>
+
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
