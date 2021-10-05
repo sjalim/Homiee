@@ -22,6 +22,10 @@ namespace Homiee.Controllers
             return View();
         }
 
+        public ActionResult Chat()
+        {
+            return View();
+        }
         public ActionResult Host()
         {
             ViewBag.Message = "Your contact page.";

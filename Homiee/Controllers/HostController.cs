@@ -53,6 +53,20 @@ namespace Homiee.Controllers
             return View(hostpostinfo);
         }
 
+        public ActionResult DetailsOffice(int ? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            HostOfficePost hostofficepost = db.HostOfficePosts.Find(id);
+            if(hostofficepost == null)
+            {
+                return HttpNotFound();
+            }
+            return View(hostofficepost);
+        }
+
         [HttpGet]
         public ActionResult AddAPlace()
         {

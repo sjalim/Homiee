@@ -50,6 +50,12 @@
         .post-content {
             display: inline-block;
         }
+
+       
+        .edrd {
+            padding-left: 70%;
+        }
+
     </style>
 </head>
 
@@ -67,56 +73,70 @@
         <section class="section-allpost">
             @foreach (var x in Model.hostPostInfos.ToList())
             {
-                <div class="card w-75">
-                    <div class="card-body d-flex align-items-center">
-                        <div class="post-img" style="margin-right:100px">
-                            <a href="#"><img src=@Url.Content(x.AddFile) alt=""></a>
-                        </div>
-                        <div class="post-content">
-                            <h4># @x.Title</h4>
-                            @*<p>Price: @x.Price (@x.PaymentType)</p>*@
-                            @if (x.PaymentType == 0)
-                            {
-                                <p>Price: @x.Price (Per Day)</p>
-                            }
-                            @if (x.PaymentType == 1)
-                            {
-                                <p>Price: @x.Price (Per Month)</p>
-                            }
-                            <span>@x.StreetName,</span><span>@x.CityName,</span><span>@x.CountryName.</span>
-                            <p>Offer: @x.Offer</p>
-                            <p>Caption: @x.RoomCaption</p>
-                            <p>Rules: @x.HostRules</p>
-                        </div>
+            <div class="card w-75">
+                <div class="card-body d-flex align-items-center">
+                    <div class="post-img" style="margin-right:100px">
+                        <a href="#"><img src=@Url.Content(x.AddFile) alt=""></a>
+                    </div>
+                    <div class="post-content">
+                        <h4># @x.Title</h4>
+                        @*<p>Price: @x.Price (@x.PaymentType)</p>*@
+                        @if (x.PaymentType == 0)
+                        {
+                            <p>Price: @x.Price (Per Day)</p>
+                        }
+                        @if (x.PaymentType == 1)
+                        {
+                            <p>Price: @x.Price (Per Month)</p>
+                        }
+                        <span>@x.StreetName,</span><span>@x.CityName,</span><span>@x.CountryName.</span>
+                        <p>Offer: @x.Offer</p>
+                        <p>Caption: @x.RoomCaption</p>
+                        <p>Rules: @x.HostRules</p>
                     </div>
                 </div>
+                <div class="edrd">
+                    @Html.ActionLink("Edit", "Edit", new { id = x.HostPostInfoID }, new { @class = "btn btn-success text-white" }) |
+                    @Html.ActionLink("Detailsss", "DetailsOffice", new { id = x.HostPostInfoID }, new { @class = "btn btn-primary text-white" }) |
+                    @*@Html.ActionLink("Reviews", "Reviews", new { id = x.HostPostInfoID }, new { @class = "btn btn-dark text-white" }) |*@
+                    @Html.ActionLink("Delete", "Delete", new { id = x.HostPostInfoID }, new { @class = "btn btn-danger text-white" })
+                </div>
+            </div>
+                
             }
 
             @foreach (var x in Model.hostOfficePosts.ToList())
             {
-                <div class="card w-75">
-                    <div class="card-body d-flex align-items-center">
-                        <div class="post-img" style="margin-right:100px">
-                            <a href="#"><img src=@Url.Content(x.AddFile) alt=""></a>
-                        </div>
-                        <div class="post-content">
-                            <h4># @x.Title</h4>
-                            @*<p>Price: @x.Price (@x.PaymentType)</p>*@
-                            @if (x.PaymentType == 0)
-                            {
-                                <p>Price: @x.Price (Per Day)</p>
-                            }
-                            @if (x.PaymentType == 1)
-                            {
-                                <p>Price: @x.Price (Per Month)</p>
-                            }
-                            <span>@x.StreetName,</span><span>@x.CityName,</span><span>@x.CountryName.</span>
-                            <p>Offer: @x.Offer</p>
-                            <p>Caption: @x.RoomCaption</p>
-                            <p>Rules: @x.HostRules</p>
-                        </div>
-                    </div>
+        <div class="card w-75">
+            <div class="card-body d-flex align-items-center">
+                <div class="post-img" style="margin-right:100px">
+                    <a href="#"><img src=@Url.Content(x.AddFile) alt=""></a>
                 </div>
+                <div class="post-content">
+                    <h4># @x.Title</h4>
+                    @*<p>Price: @x.Price (@x.PaymentType)</p>*@
+                    @if (x.PaymentType == 0)
+                    {
+                        <p>Price: @x.Price (Per Day)</p>
+                    }
+                    @if (x.PaymentType == 1)
+                    {
+                        <p>Price: @x.Price (Per Month)</p>
+                    }
+                    <span>@x.StreetName,</span><span>@x.CityName,</span><span>@x.CountryName.</span>
+                    <p>Offer: @x.Offer</p>
+                    <p>Caption: @x.RoomCaption</p>
+                    <p>Rules: @x.HostRules</p>
+                </div>
+            </div>
+            <div class="edrd">
+                @Html.ActionLink("Edit", "Edit", new { id = x.HostOfficePostID }, new { @class = "btn btn-success text-white" }) |
+                @Html.ActionLink("Details", "DetailsOffice", new { id = x.HostOfficePostID }, new { @class = "btn btn-primary text-white" }) |
+                @*@Html.ActionLink("Reviews", "Reviews", new { id = x.HostOfficePostID }, new { @class = "btn btn-dark text-white" }) |*@
+                @Html.ActionLink("Delete", "Delete", new { x.HostOfficePostID }, new { @class = "btn btn-danger text-white" })
+            </div>
+        </div>
+                
             }
         </section>
 
