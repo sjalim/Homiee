@@ -51,6 +51,12 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.2\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -252,6 +258,14 @@
     <Compile Include="Migrations\202110041714297_titleAdd.Designer.cs">
       <DependentUpon>202110041714297_titleAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110042011415_hostofficepostchanged.cs" />
+    <Compile Include="Migrations\202110042011415_hostofficepostchanged.Designer.cs">
+      <DependentUpon>202110042011415_hostofficepostchanged.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110042210170_reviewtimeadded.cs" />
+    <Compile Include="Migrations\202110042210170_reviewtimeadded.Designer.cs">
+      <DependentUpon>202110042210170_reviewtimeadded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AllPostViewModel.cs" />
@@ -265,6 +279,7 @@
     <Compile Include="Models\Hotel.cs" />
     <Compile Include="Models\HotelAddress.cs" />
     <Compile Include="Models\HotelInfo.cs" />
+    <Compile Include="Models\HotelPostViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LoginUser.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -279,6 +294,7 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserComment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="signalr\hubs\ChatHub.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -418,6 +434,9 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.2.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.2.min.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.3.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -1127,7 +1146,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\SignUp.cshtml" />
     <Content Include="Views\Users\Login.cshtml" />
@@ -1425,6 +1443,8 @@
     <Content Include="Views\Shared\_HostFooter.cshtml" />
     <Content Include="Views\Host\ApartmentPost.cshtml" />
     <Content Include="Views\Host\OfficePost.cshtml" />
+    <Content Include="Views\Home\Chat.cshtml" />
+    <Content Include="Views\Host\DetailsOffice.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1499,6 +1519,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110041714297_titleAdd.resx">
       <DependentUpon>202110041714297_titleAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110042011415_hostofficepostchanged.resx">
+      <DependentUpon>202110042011415_hostofficepostchanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110042210170_reviewtimeadded.resx">
+      <DependentUpon>202110042210170_reviewtimeadded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

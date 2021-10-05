@@ -1,13 +1,6 @@
-﻿@*Hotel AddAPlace*@
-
-@model Homiee.Models.HotelInfo
-
-@{
-    //ViewBag.Title = "AddAPlace";
+﻿@{
     Layout = null;
 }
-
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,374 +15,216 @@
     <link rel="canonical" href="https://www.wrappixel.com/templates/niceadmin-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="~/Template/Hotel/assets/images/favicon.png">
-
-
     <!-- Custom CSS -->
     <link href="~/Template/Hotel/dist/css/style.min.css" rel="stylesheet" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
+
+    <style>
+        .section-post {
+            margin-left: 250px;
+        }
+
+        .sub-section {
+            display: inline-block;
+        }
+
+        .text-box {
+            border: 2px solid black;
+        }
+
+        body {
+            font-size: 20px;
+            color: black;
+        }
+
+        .add-more-btn {
+            width: 190px;
+            float: left;
+            margin-left: 1100px;
+            margin-top: -40px;
+        }
+    </style>
 </head>
 
+
 <body>
-    <!-- ============================================================== -->
-    <!-- Preloader - style you can find in spinners.css -->
-    <!-- ============================================================== -->
-    @* <div class="preloader">
-            <div class="lds-ripple">
-                <div class="lds-pos"></div>
-                <div class="lds-pos"></div>
-            </div>
-        </div>*@
-    <!-- ============================================================== -->
-    <!-- Main wrapper - style you can find in pages.scss -->
-    <!-- ============================================================== -->
+
     <div id="main-wrapper" data-navbarbg="skin6" data-theme="light" data-layout="vertical" data-sidebartype="full"
          data-boxed-layout="full">
-        <!-- ============================================================== -->
-        <!-- Topbar header - style you can find in pages.scss -->
-        <!-- ============================================================== -->
-        <header class="topbar" data-navbarbg="skin6">
-            <nav class="navbar top-navbar navbar-expand-md navbar-light">
-                <div class="navbar-header" data-logobg="skin5">
-                    <!-- This is for the sidebar toggle which is visible on mobile only -->
-                    <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)">
-                        <i class="ti-menu ti-close"></i>
-                    </a>
-                    <!-- ============================================================== -->
-                    <!-- Logo -->
-                    <!-- ============================================================== -->
-                    <div class="navbar-brand">
-                        <a href="../Hotel/Index" class="logo">
-                            <!-- Logo icon -->
-                            <!--<b class="logo-icon">-->
-                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                            <!-- Dark Logo icon -->
-                            <!--<img src="~/Template/Hotel/assets/images/logo-icon.png" alt="homepage" class="dark-logo" />-->
-                            <!-- Light Logo icon -->
-                            <!--<img src="~/Template/Hotel/assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
-    </b>-->
-                            <!--End Logo icon -->
-                            <!-- Logo text -->
-                            <span class="logo-text">
-                                <!-- dark Logo text -->
-                                <img src="~/Template/Hotel/assets/images/logo-text.png" alt="homepage" class="dark-logo" />
 
-                                <!-- Light Logo text -->
-
-                                <img src="~/Template/Hotel/assets/images/homiee-light.png" class="light-logo" alt="homepage" />
-
-                            </span>
-                        </a>
-                    </div>
-                    <!-- ============================================================== -->
-                    <!-- End Logo -->
-                    <!-- ============================================================== -->
-                    <!-- ============================================================== -->
-                    <!-- Toggle which is visible on mobile only -->
-                    <!-- ============================================================== -->
-
-                </div>
-                <!-- ============================================================== -->
-                <!-- End Logo -->
-                <!-- ============================================================== -->
-                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin6">
-                    <!-- ============================================================== -->
-                    <!-- toggle and nav items -->
-                    <!-- ============================================================== -->
-                    <ul class="navbar-nav float-start me-auto">
-                        <!-- ============================================================== -->
-                        <!-- Search -->
-                        <!-- ============================================================== -->
-                        <li class="nav-item search-box">
-                            <a class="nav-link waves-effect waves-dark" href="javascript:void(0)">
-                                <div class="d-flex align-items-center">
-                                    <i class="mdi mdi-magnify font-20 me-1"></i>
-                                    <div class="ms-1 d-none d-sm-block">
-                                        <span>Search</span>
-                                    </div>
-                                </div>
-                            </a>
-                            <form class="app-search position-absolute">
-                                <input type="text" class="form-control" placeholder="Search &amp; enter">
-                                <a class="srh-btn">
-                                    <i class="ti-close"></i>
-                                </a>
-                            </form>
-                        </li>
-                    </ul>
-                    <!-- ============================================================== -->
-                    <!-- Right side toggle and nav items -->
-                    <!-- ============================================================== -->
-                    <ul class="navbar-nav float-end">
-                        <!-- ============================================================== -->
-                        <!-- User profile and search -->
-                        <!-- ============================================================== -->
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="~/Template/Hotel/assets/images/users/2.jpg" alt="user" class="rounded-circle" width="31">
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="javascript:void(0)">
-                                    <i class="ti-user me-1 ms-1"></i>
-                                    My Profile
-                                </a>
-                                <a class="dropdown-item" href="javascript:void(0)">
-                                    <i class="ti-wallet me-1 ms-1"></i>
-                                    My Balance
-                                </a>
-                                <a class="dropdown-item" href="javascript:void(0)">
-                                    <i class="ti-email me-1 ms-1"></i>
-                                    Inbox
-                                </a>
-                            </ul>
-                        </li>
-                        <!-- ============================================================== -->
-                        <!-- User profile and search -->
-                        <!-- ============================================================== -->
-                    </ul>
-                </div>
-            </nav>
-        </header>
-        <!-- ============================================================== -->
-        <!-- End Topbar header -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <aside class="left-sidebar" data-sidebarbg="skin6">
-            <!-- Sidebar scroll-->
-            <div class="scroll-sidebar">
-                <!-- Sidebar navigation-->
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Hotel/Index"
-                               aria-expanded="false">
-                                <i class="mdi mdi-av-timer"></i>
-                                <span class="hide-menu">Dashboard</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Hotel/Profile"
-                               aria-expanded="false">
-                                <i class="mdi mdi-account-network"></i>
-                                <span class="hide-menu">Profile</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Hotel/AddAPlace"
-                               aria-expanded="false">
-                                <i class="mdi mdi-arrange-bring-forward"></i>
-                                <span class="hide-menu">Add Your Hotel Room</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Hotel/MyPlaces"
-                               aria-expanded="false">
-                                <i class="mdi mdi-border-none"></i>
-                                <span class="hide-menu">My Hotel Rooms</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../Hotel/Reviews"
-                               aria-expanded="false">
-                                <i class="mdi mdi-face"></i>
-                                <span class="hide-menu">Reviews</span>
-                            </a>
-                        </li>
-
-                    </ul>
-                </nav>
-                <!-- End Sidebar navigation -->
-            </div>
-            <!-- End Sidebar scroll-->
-        </aside>
-        <!-- ============================================================== -->
-        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Page wrapper  -->
-        <!-- ============================================================== -->
-        <div class="page-wrapper">
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <div class="page-breadcrumb">
+        @*@Html.Partial("_HostSideBar")*@
+        <section class="section-post">
+            <div class="container ">
                 <div class="row">
-                    <div class="col-5 align-self-center">
-                        <h4 class="page-title">Place Information</h4>
-                    </div>
-                    <div class="col-7 align-self-center">
-                        <div class="d-flex align-items-center justify-content-end">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item">
-                                        <a href="#">Home</a>
-                                    </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Place Information</li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Container fluid  -->
-            <!-- ============================================================== -->
-            <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Start Page Content -->
-                <!-- ============================================================== -->
-                <div class="row">
-                    @using (Html.BeginForm("AddAPlace", "Hotel", FormMethod.Post))
-                    {
-                        @Html.AntiForgeryToken()
-                        <div class="col-12">
-                            <div class="card card-body">
+                    <div class="col-12">
+                        <div class="card card-body">
+                            <h4 class="card-title">General Info</h4>
+                            <h5 class="card-subtitle"><input class="form-control" type="text" placeholder="Add general informations about your place" readonly></h5>
 
-                                <form class="form-horizontal mt-4">
-                                    <h4 class="card-title">General Info</h4>
-                                    <h5 class="card-subtitle"><input class="form-control" type="text" placeholder="Add general informations about your place" readonly></h5>
+                            @using (Html.BeginForm("AddAPlaceData", "Hotel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                <div id="apartment-form">
+                                    <div>
+                                        @Html.ValidationSummary()
 
-                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        <div class="form-group sub-section">
+                                            <label for="Title"><span class="help">Title</span></label>
+                                            @Html.TextBox("Hotel Name", "", new { type = "text", @class = "form-control valid  text-box", @data_val = "true", @data_val_required = "Title Field is Invalid text-box" })
 
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.HotelName, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        @Html.EditorFor(model => model.HotelName, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.HotelName, "", new { @class = "text-danger" })
+                                        </div>
+
+                                        <div class="form-group sub-section">
+                                            <label for="Title"><span class="help">Title</span></label>
+                                            @Html.TextBox("Hotel Trader Licence", "", new { type = "text", @class = "form-control valid  text-box", @data_val = "true", @data_val_required = "Title Field is Invalid text-box" })
+
+                                        </div>
+
+                                        <div class="form-group sub-section">
+                                            <label for="NumRooms"><span class="help">Number of Rooms</span></label>
+                                            @Html.TextBox("NumRooms", "", new { type = "number", @class = "form-control valid  text-box", @data_val = "true", @data_val_required = "NumRooms Field is Invalid text-box" })
+
+                                        </div>
+                                        <div class="form-group sub-section">
+
+                                            <label for="NumKitchens"><span class="help">Number of Kitchens</span></label>
+                                            @Html.TextBox("NumKitchens", "", new { type = "number", @class = "form-control valid  text-box", @data_val = "true", @data_val_required = "NumKitchens Field is Invalid text-box" })
+
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="form-group sub-section">
+                                            <label for="NumWash "><span class="help">Number of <br />Wash-Rooms</span></label>
+                                            @Html.TextBox("NumWash", "", new { type = "number", @class = "form-control valid text-box text-box", @data_val = "true", @data_val_required = "NumWash Field is Invalid text-box" })
+                                        </div>
+                                        <div class="form-group sub-section">
+                                            <label for="NumBalconys "><span class="help">Number of <br />Balconys</span></label>
+                                            @Html.TextBox("NumBalconys", "", new { type = "number", @class = "form-control valid text-box text-box", @data_val = "true", @data_val_required = "NumBalconys Field is Invalid text-box" })
+                                        </div>
                                     </div>
 
                                     <div class="form-group">
-                                        @Html.LabelFor(model => model.HotelTradeLicence, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        @Html.EditorFor(model => model.HotelTradeLicence, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.HotelTradeLicence, "", new { @class = "text-danger" })
+
+                                        <label for="AdditionalFeatures"><span class="help">Additional Features</span></label>
+                                        @Html.TextBox("AdditionalFeatures", "", new { type = "text", @class = "form-control valid text-box", @data_val = "true", @data_val_required = "AdditionalFeatures Field is Invalid text-box" })
+
+
                                     </div>
 
-                                    <div class="form-group">
-                                        @*@Html.LabelFor(model => model.Room, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                                        <label>Room Type</label>
-                                        @*@Html.EditorFor(model => model.Room, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Room, "", new { @class = "text-danger" })*@
-                                        <select class="form-select shadow-none col-12" name="HotelRoomType" id="hotelroomtype">
-                                            <option selected>Choose...</option>
-                                            <option value="Single Room">Single Room</option>
-                                            <option value="Double Room">Double Room</option>
-                                            <option value="Luxury Room">Luxury Room</option>
-                                            <option value="Delux Room">Delux Room</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.NumBed, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        @Html.EditorFor(model => model.NumBed, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.NumBed, "", new { @class = "text-danger" })
-                                    </div>
-
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.NumWash, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        @Html.EditorFor(model => model.NumWash, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.NumWash, "", new { @class = "text-danger" })
-                                    </div>
-
-                                  
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.AdditionalFeatures, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        @*<label><span class="help">Additional Features</span></label>*@
-                                        @Html.EditorFor(model => model.AdditionalFeatures, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.AdditionalFeatures, "", new { @class = "text-danger" })
-                                        @*<input type="text" class="form-control" value="" name="AdditionalFeatures" id="additionalfeatures">*@
-                                    </div>
-
-                                    @*Adress*@
                                     <h4 class="card-title">Address Info</h4>
                                     <h5 class="card-subtitle"><input class="form-control" type="text" placeholder="Add address informations of your place" readonly></h5>
                                     <div class="form-group">
-                                        @Html.LabelFor(model => model.CountryName, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        @*<label><span class="help">Country</span></label>*@
-                                        @Html.EditorFor(model => model.CountryName, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.CountryName, "", new { @class = "text-danger" })
-                                        @*<input type="text" class="form-control" value="" name="CountryName" id="countryname">*@
+
+
+                                        <label for="CountryName"><span class="help">Country Name</span></label>
+                                        @Html.TextBox("CountryName", "", new { type = "text", @class = "form-control valid text-box", @data_val = "true", @data_val_required = "Country Name Field is Invalid text-box" })
+
+
+
+                                    </div>
+                                    <div class="form-group">
+
+
+                                        <label for="StreetName"><span class="help">Street Name</span></label>
+                                        @Html.TextBox("StreetName", "", new { type = "text", @class = "form-control valid text-box", @data_val = "true", @data_val_required = "Street Name Field is Invalid text-box" })
+
+
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label for="CityName"><span class="help">City Name</span></label>
+                                        @Html.TextBox("CityName", "", new { type = "text", @class = "form-control valid text-box", @data_val = "true", @data_val_required = "City Name Field is Invalid text-box" })
+
+
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label for="StateName"><span class="help">State Name</span></label>
+                                        @Html.TextBox("StateName", "", new { type = "text", @class = "form-control valid text-box", @data_val = "true", @data_val_required = "State Name Field is Invalid text-box" })
+
+
+
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label for="PostCode"><span class="help">Post Code</span></label>
+                                        @Html.TextBox("PostCode", "", new { type = "number", @class = "form-control valid text-box", @data_val = "true", @data_val_required = "Post Code Field is Invalid text-box" })
+
+
                                     </div>
 
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.StreetName, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        @*<label><span class="help">Street Address</span></label>*@
-                                        @Html.EditorFor(model => model.StreetName, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.StreetName, "", new { @class = "text-danger" })
-                                        @*<input type="text" class="form-control" value="" name="StreetName" id="streetname">*@
-                                    </div>
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.CityName, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        @*<label><span class="help">City</span></label>*@
-                                        @Html.EditorFor(model => model.CityName, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.CityName, "", new { @class = "text-danger" })
-                                        @*<input type="text" class="form-control" value="" name="CityName" id="cityname">*@
-                                    </div>
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.StateName, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        @*<label><span class="help">State</span></label>*@
-                                        @Html.EditorFor(model => model.StateName, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.StateName, "", new { @class = "text-danger" })
-                                        @*<input type="text" class="form-control" value="" name="StateName" id="statename">*@
-                                    </div>
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.PostCode, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        @*<label><span class="help">Postal Code</span></label>*@
-                                        @Html.EditorFor(model => model.PostCode, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.PostCode, "", new { @class = "text-danger" })
-                                        @*<input type="text" class="form-control" value="" name="PostCode" id="postcode">*@
-                                    </div>
-
-                                    @*Rules & pricing*@
                                     <h4 class="card-title">Rental Rules and Pricing</h4>
                                     <h5 class="card-subtitle"><input class="form-control" type="text" placeholder="Add your rental rules & pricing" readonly></h5>
                                     <div class="form-group">
-                                        @Html.LabelFor(model => model.HotelRules, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        @*<label><span class="help">Hotel Rules</span></label>*@
-                                        @Html.EditorFor(model => model.HotelRules, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.HotelRules, "", new { @class = "text-danger" })
-                                        @*<input type="text" class="form-control" value="" name="HotelRules" id="Hotelrules">*@
+
+
+                                        <label for="HotelRules"><span class="help">Hotel Rules</span></label>
+                                        @Html.TextBox("HotelRules", "", new { type = "text", @class = "form-control valid text-box", @data_val = "true", @data_val_required = "Hotel Rules Field is Invalid text-box" })
+
+
                                     </div>
-                                   
                                     <div class="form-group">
-                                        @Html.LabelFor(model => model.Cost, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        @*<label><span class="help">Cost Per Day (BDT)</span></label>*@
-                                        @Html.EditorFor(model => model.Cost, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Cost, "", new { @class = "text-danger" })
-                                        @*<input type="number" class="form-control" value="" name="Cost" id="cost">*@
-                                    </div>
 
+                                        <label for="MinStay"><span class="help">Minimum Stay</span></label>
+                                        @Html.TextBox("MinStay", "", new { type = "number", @class = "form-control valid text-box", @data_val = "true", @data_val_required = "Minimum Stay Field is Invalid text-box" })
+
+
+                                    </div>
                                     <div class="form-group">
-                                        @Html.LabelFor(model => model.Offer, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        @*<label><span class="help">Offer</span></label>*@
-                                        @Html.EditorFor(model => model.Offer, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Offer, "", new { @class = "text-danger" })
-                                        @*<input type="text" class="form-control" value="" name="Offer" id="offer">*@
+
+                                        <label for="MaxStay"><span class="help">Maximum Stay</span></label>
+                                        @Html.TextBox("MaxStay", "", new { type = "number", @class = "form-control valid text-box", @data_val = "true", @data_val_required = "Maximum Stay Field is Invalid text-box" })
+
+
                                     </div>
+                                    <div class="form-group">
+
+                                        <label for="Price"><span class="help">Price</span></label>
+                                        @Html.TextBox("Price", "", new { type = "number", @class = "form-control valid text-box", @data_val = "true", @data_val_required = "Price Field is Invalid text-box" })
 
 
+                                    </div>
+                                    <div class="form-control">
+                                        <label for="PaymentType">Payment Type</label>
+
+                                        <div class="form-check form-check-inline">
+                                            <input type="radio" class="valid form-check-input" name="PaymentType" id="PaymentType" data_val="true" , data_val_required="Price Field is Invalid text-box" value=0 />
+
+                                            <label class="form-check-label" for="inlineCheckbox1">Per day</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input type="radio" class="valid form-check-input" name="PaymentType" id="PaymentType" data_val="true" , data_val_required="Price Field is Invalid text-box" value=1 />
+
+                                            <label class="form-check-label" for="PaymentType">Per month</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Offer"><span class="help">Offer</span></label>
+                                        @Html.TextBox("Offer", "", new { type = "text", @class = "form-control valid text-box", @data_val = "true", @data_val_required = "Offer Field is Invalid text-box" })
+                                    </div>
                                     <h4 class="card-title">Posts & Caption</h4>
                                     <h5 class="card-subtitle"><input class="form-control" type="text" placeholder="Add some images of your property and write a caption" readonly></h5>
-                                    <div class="form-group">
-                                        <label>Upload property images</label>
-                                        <input type="file" class="form-control" multiple name="AddFile" id="addfile">
-                                    </div>
 
-                                    <div class="form-group">
-                                        @Html.LabelFor(model => model.HotelRoomCaption, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        @*<label>Add Caption</label>*@
-                                        @Html.EditorFor(model => model.HotelRoomCaption, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.HotelRoomCaption, "", new { @class = "text-danger" })
-
-                                        @*<input type="text" class="form-control" placeholder="Write something about your property here..." name="HotelRoomCaption" id="hotelroomcaption">*@
-                                        <span class="help-block">
-                                            <small>
-                                                Thanks for joinig with us. Click on Submit button to proceed.
-                                            </small>
-                                        </span>
+                                    <div id="image-section">
+                                        <div class="form-group">
+                                            <label>Upload property images</label>
+                                            <input type="file" class="form-control text-box" multiple name="AddFile" id="AddFile">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="RoomCaption"><span class="help">Room Caption</span></label>
+                                            @Html.TextBox("RoomCaption", "", new { type = "text", @class = "form-control valid text-box", @data_val = "true", @data_val_required = "Room Caption Field is Invalid text-box" })
+                                            <span class="help-block">
+                                                <small>
+                                                    Thanks for joinig with us. Click on Submit button to proceed.
+                                                </small>
+                                            </span>
+                                        </div>
                                     </div>
 
                                     <div class="form-group">
@@ -397,53 +232,27 @@
                                             <input type="submit" value="Submit" class="btn btn-default" />
                                         </div>
                                     </div>
-                                </form>
-                            </div>
+
+                                </div>
+                            }
                         </div>
-                        }
                     </div>
-                <!-- ============================================================== -->
-                <!-- End PAge Content -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Right sidebar -->
-                <!-- ============================================================== -->
-                <!-- .right-sidebar -->
-                <!-- ============================================================== -->
-                <!-- End Right sidebar -->
-                <!-- ============================================================== -->
+
+                    @*<button class="add-more-btn" onclick="AddImage()">Add more image</button>*@
+                </div>
             </div>
-            <!-- ============================================================== -->
-            <!-- End Container fluid  -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- footer -->
-            <!-- ============================================================== -->
-            <footer class="footer text-center">
-                All Rights Reserved by Homiee.
 
-            </footer>
-            <!-- ============================================================== -->
-            <!-- End footer -->
-            <!-- ============================================================== -->
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
-        <!-- ============================================================== -->
+        </section>
+
+        @*@Html.Partial("_HostFooter")*@
+
     </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
-
     <script src="~/Template/Hotel/assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="~/Template/Hotel/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <!-- slimscrollbar scrollbar JavaScript -->
-
     <script src="~/Template/Hotel/assets/extra-libs/sparkline/sparkline.js"></script>
+
     <!--Wave Effects -->
     <script src="~/Template/Hotel/dist/js/waves.js"></script>
     <!--Menu sidebar -->

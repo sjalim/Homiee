@@ -1,0 +1,250 @@
+﻿@model Homiee.Models.HostOfficePost
+
+
+@{
+
+    Layout = null;
+}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords"
+          content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Nice lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Nice admin lite design, Nice admin lite dashboard bootstrap 5 dashboard template">
+    <meta name="description"
+          content="Nice Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Homiee</title>
+    <link rel="canonical" href="https://www.wrappixel.com/templates/niceadmin-lite/" />
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Template/Host/assets/images/favicon.png">
+    <!-- Custom CSS -->
+    <link href="~/Template/Host/dist/css/style.min.css" rel="stylesheet" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Bootstrap core CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link href="~/Template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="~/Template/assets/css/templatemo-plot-listing.css" rel="stylesheet" />
+    <link href="~/Template/assets/css/owl.css" rel="stylesheet" />
+    <link href="~/Template/assets/css/fontawesome.css" rel="stylesheet" />
+    <link href="~/Template/assets/css/animated.css" rel="stylesheet" />
+    <style>
+        .section-allpost {
+            margin-left: 300px;
+        }
+
+        .post-img {
+            width: 200px;
+            display: inline-block;
+        }
+
+        .post-content {
+            display: inline-block;
+        }
+
+
+        .edrd {
+            padding-left: 70%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="main-wrapper" data-navbarbg="skin6" data-theme="light" data-layout="vertical" data-sidebartype="full"
+         data-boxed-layout="full">
+
+        @Html.Partial("_HostSideBar")
+
+        <section class="section-post" >
+            <div class="container section-allpost">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card card-body">
+                            <h4 class="card-title">General Info</h4>
+                            <h5 class="card-subtitle"><input class="form-control" type="text" placeholder="Add general informations about your place" readonly></h5>
+
+
+                            <h4>Office</h4>
+
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Title)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Title)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.SpaceSize)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.SpaceSize)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.NumRooms)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.NumRooms)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.NumWash)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.NumWash)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.NumBalconys)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.NumBalconys)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.AdditionalFeatures)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.AdditionalFeatures)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.CountryName)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.CountryName)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.StreetName)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.StreetName)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.CityName)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.CityName)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.StateName)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.StateName)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.PostCode)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.PostCode)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.HostRules)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.HostRules)
+                                </dd>
+
+
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Price)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Price)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.PaymentType)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.PaymentType)
+                                </dd>
+
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Offer)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Offer)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.AddFile)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.AddFile)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.RoomCaption)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.RoomCaption)
+                                </dd>
+
+                            </dl>
+                        
+                        <p>
+                            @Html.ActionLink("Edit", "EditOffice", new { id = Model.HostOfficePostID }, new { @class = "btn btn-success text-white" }) |
+                            @Html.ActionLink("Back", "AllPost", "/", new { @class = "btn btn-primary text-white" })
+                        </p>
+                    </div>
+                </div>
+
+                @*<button class="add-more-btn" onclick="AddImage()">Add more image</button>*@
+            </div>
+    </div>
+
+    </section>
+
+    @Html.Partial("_HostFooter")
+
+    </div>
+
+    <script src="~/Template/Host/assets/libs/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="~/Template/Host/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+
+    <script src="~/Template/Host/assets/extra-libs/sparkline/sparkline.js"></script>
+    <!--Wave Effects -->
+    <script src="~/Template/Host/dist/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="~/Template/Host/dist/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="~/Template/Host/dist/js/custom.min.js"></script>
+</body>
+

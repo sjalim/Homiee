@@ -88,6 +88,85 @@
 
                             </div>
 
+                            <div class="form-group sub-section">
+                                <label for="NumRooms"><span class="help">Number of Rooms</span></label>
+                                @Html.TextBox("NumRooms", "", new { type = "number", @class = "form-control valid  text-box", @data_val = "true", @data_val_required = "NumRooms Field is Invalid text-box" })
+
+                            </div>
+
+                            <div>
+                                <div class="form-group sub-section">
+                                    <label for="NumWash "><span class="help">Number of <br />Wash-Rooms</span></label>
+                                    @Html.TextBox("NumWash", "", new { type = "number", @class = "form-control valid text-box text-box", @data_val = "true", @data_val_required = "NumWash Field is Invalid text-box" })
+                                </div>
+                                <div class="form-group sub-section">
+                                    <label for="NumBalconys "><span class="help">Number of <br />Balconys</span></label>
+                                    @Html.TextBox("NumBalconys", "", new { type = "number", @class = "form-control valid text-box text-box", @data_val = "true", @data_val_required = "NumBalconys Field is Invalid text-box" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <label for="AdditionalFeatures"><span class="help">Additional Features</span></label>
+                                @Html.TextBox("AdditionalFeatures", "", new { type = "text", @class = "form-control valid text-box", @data_val = "true", @data_val_required = "AdditionalFeatures Field is Invalid text-box" })
+
+
+                            </div>
+
+                            <h4 class="card-title">Address Info</h4>
+                            <h5 class="card-subtitle"><input class="form-control" type="text" placeholder="Add address informations of your place" readonly></h5>
+                            <div class="form-group">
+
+
+                                <label for="CountryName"><span class="help">Country Name</span></label>
+                                @Html.TextBox("CountryName", "", new { type = "text", @class = "form-control valid text-box", @data_val = "true", @data_val_required = "Country Name Field is Invalid text-box" })
+
+
+
+                            </div>
+
+                            <div class="form-group">
+
+
+                                <label for="StreetName"><span class="help">Street Name</span></label>
+                                @Html.TextBox("StreetName", "", new { type = "text", @class = "form-control valid text-box", @data_val = "true", @data_val_required = "Street Name Field is Invalid text-box" })
+
+
+                            </div>
+                            <div class="form-group">
+
+                                <label for="CityName"><span class="help">City Name</span></label>
+                                @Html.TextBox("CityName", "", new { type = "text", @class = "form-control valid text-box", @data_val = "true", @data_val_required = "City Name Field is Invalid text-box" })
+
+
+                            </div>
+                            <div class="form-group">
+
+                                <label for="StateName"><span class="help">State Name</span></label>
+                                @Html.TextBox("StateName", "", new { type = "text", @class = "form-control valid text-box", @data_val = "true", @data_val_required = "State Name Field is Invalid text-box" })
+
+
+
+                            </div>
+                            <div class="form-group">
+
+                                <label for="PostCode"><span class="help">Post Code</span></label>
+                                @Html.TextBox("PostCode", "", new { type = "number", @class = "form-control valid text-box", @data_val = "true", @data_val_required = "Post Code Field is Invalid text-box" })
+
+
+                            </div>
+
+                            <h4 class="card-title">Rental Rules and Pricing</h4>
+                            <h5 class="card-subtitle"><input class="form-control" type="text" placeholder="Add your rental rules & pricing" readonly></h5>
+                            <div class="form-group">
+
+
+                                <label for="HostRules"><span class="help">Host Rules</span></label>
+                                @Html.TextBox("HostRules", "", new { type = "text", @class = "form-control valid text-box", @data_val = "true", @data_val_required = "Host Rules Field is Invalid text-box" })
+
+
+                            </div>
+
                             <div class="form-group">
 
                                 <label for="Price"><span class="help">Price</span></label>
